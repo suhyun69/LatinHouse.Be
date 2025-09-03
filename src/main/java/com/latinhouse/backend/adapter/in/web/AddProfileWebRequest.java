@@ -21,6 +21,6 @@ public class AddProfileWebRequest {
     private String nickname;
 
     @NotBlank(message = "sex cannot be blank")
-    @Pattern(regexp = "^[MFX]$", message = "sex must be 'M' or 'F'")
+    @Pattern(regexp = "^[MF]$", message = "sex must be 'M' or 'F'")
     private String sex;
 }
