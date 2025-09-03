@@ -44,6 +44,15 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @org.springframework.web.bind.annotation.ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException ex) {
+        StackTraceElement element = ex.getStackTrace()[0];
+        String[] parts = element.getClassName().split("\\.");
+        String className = parts[parts.length - 1]; // 마지막 요소
+        ErrorResponse errorResponse = new ErrorResponse(String.format("[%s] %s", className, ex.getMessage()));
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
     protected final ResponseEntity<?> handleAllExceptions(Exception ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
