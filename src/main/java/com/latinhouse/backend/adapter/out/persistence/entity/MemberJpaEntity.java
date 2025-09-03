@@ -1,5 +1,6 @@
 package com.latinhouse.backend.adapter.out.persistence.entity;
 
+import com.latinhouse.backend.common.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder // mapToJpaEntity
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberJpaEntity {
+public class MemberJpaEntity extends BaseEntity {
 
     @Id
     private String email;
