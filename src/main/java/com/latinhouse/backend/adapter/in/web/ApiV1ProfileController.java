@@ -50,4 +50,15 @@ public class ApiV1ProfileController {
                 .status(HttpStatus.OK)
                 .body(webRes);
     }
+
+    @GetMapping("/{profileId}")
+    @Operation(summary = "Find Profiles")
+    public ResponseEntity<ProfileWebResponse> getProfile(@PathVariable String profileId) {
+
+        ProfileWebResponse webRes = ProfileWebResponse.from(findProfileUseCase.getProfile(profileId));
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(webRes);
+    }
+
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -39,5 +40,11 @@ public class ProfilePersistenceAdapter implements CreateProfilePort, ReadProfile
         return profileRepository.findAll().stream()
                 .map(profileMapper::mapToDomainEntity)
                 .toList();
+    }
+
+    @Override
+    public Optional<Profile> getProfileById(String profileId) {
+        return profileRepository.findByProfileId(profileId)
+                .map(profileMapper::mapToDomainEntity);
     }
 }
