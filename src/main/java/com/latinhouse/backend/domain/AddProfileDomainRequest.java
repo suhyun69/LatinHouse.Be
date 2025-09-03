@@ -1,6 +1,6 @@
 package com.latinhouse.backend.domain;
 
-import com.latinhouse.backend.application.port.in.AddProfileAppRequest;
+import com.latinhouse.backend.application.port.in.dto.AddProfileAppRequest;
 import com.latinhouse.backend.common.SelfValidating;
 import com.latinhouse.backend.util.RandomUtil;
 import jakarta.validation.constraints.NotBlank;

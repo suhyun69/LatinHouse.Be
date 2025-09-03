@@ -1,16 +1,13 @@
-package com.latinhouse.backend.application.port.in;
+package com.latinhouse.backend.application.port.in.dto;
 
-import com.latinhouse.backend.adapter.in.web.AddProfileWebRequest;
+import com.latinhouse.backend.adapter.in.web.dto.AddProfileWebRequest;
 import com.latinhouse.backend.common.SelfValidating;
 import com.latinhouse.backend.domain.Sex;
-import com.latinhouse.backend.util.RandomUtil;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
-
-import java.util.UUID;
 
 @Value
 @EqualsAndHashCode(callSuper = false)

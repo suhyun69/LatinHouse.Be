@@ -1,4 +1,4 @@
-package com.latinhouse.backend.application.port.in;
+package com.latinhouse.backend.application.port.in.dto;
 
 import com.latinhouse.backend.domain.Profile;
 import lombok.AllArgsConstructor;

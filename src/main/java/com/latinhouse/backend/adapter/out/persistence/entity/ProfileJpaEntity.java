@@ -1,6 +1,7 @@
 package com.latinhouse.backend.adapter.out.persistence.entity;
 
 import com.latinhouse.backend.common.BaseEntity;
+import com.latinhouse.backend.domain.AddProfileDomainRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
