@@ -10,14 +10,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "members")
+@Table(name = "profiles")
 @Data
 @Builder // mapToJpaEntity
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberJpaEntity extends BaseEntity {
+public class ProfileJpaEntity extends BaseEntity {
 
     @Id
     private String email;
     private String password;
+    private String profileId;
+    private String nickname;
+    private String sex;
+    private Boolean isInstructor;
 }

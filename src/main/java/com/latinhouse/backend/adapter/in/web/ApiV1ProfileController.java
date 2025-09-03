@@ -1,7 +1,7 @@
 package com.latinhouse.backend.adapter.in.web;
 
-import com.latinhouse.backend.application.port.in.AddMemberAppRequest;
-import com.latinhouse.backend.application.port.in.AddMemberAppResponse;
+import com.latinhouse.backend.application.port.in.AddProfileAppRequest;
+import com.latinhouse.backend.application.port.in.AddProfileAppResponse;
 import com.latinhouse.backend.application.port.in.SignupUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/member")
-@Tag(name = "Member", description = "Member API Document")
+@RequestMapping("/api/v1/profile")
+@Tag(name = "Profile", description = "Profile API Document")
 @RequiredArgsConstructor
-public class ApiV1MemberController {
+public class ApiV1ProfileController {
 
     private final SignupUseCase signupUseCase;
 
     @PostMapping("")
-    @Operation(summary = "Add Member", description = "by email")
-    public ResponseEntity<AddMemberWebResponse> addMember(@Valid @RequestBody AddMemberWebRequest webReq) {
+    @Operation(summary = "Add Profile", description = "by email")
+    public ResponseEntity<AddProfileWebResponse> addProfile(@Valid @RequestBody AddProfileWebRequest webReq) {
 
-        AddMemberAppRequest appReq = AddMemberAppRequest.from(webReq);
-        AddMemberAppResponse appRes = signupUseCase.addByEmail(appReq);
-        AddMemberWebResponse webRes = AddMemberWebResponse.from(appRes);
+        AddProfileAppRequest appReq = AddProfileAppRequest.from(webReq);
+        AddProfileAppResponse appRes = signupUseCase.addByEmail(appReq);
+        AddProfileWebResponse webRes = AddProfileWebResponse.from(appRes);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)

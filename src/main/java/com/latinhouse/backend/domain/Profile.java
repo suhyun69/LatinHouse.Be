@@ -9,7 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+public class Profile {
     private String email;
     private String password;
+    private String profileId;
+    private String nickname;
+    private Sex sex;
+    private Boolean isInstructor;
 }
