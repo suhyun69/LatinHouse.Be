@@ -1,6 +1,6 @@
-package com.latinhouse.backend.adapter.out.persistence.mapper;
+package com.latinhouse.backend.adapter.out.persistence.profile.mapper;
 
-import com.latinhouse.backend.adapter.out.persistence.entity.ProfileJpaEntity;
+import com.latinhouse.backend.adapter.out.persistence.profile.entity.ProfileJpaEntity;
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.Sex;
 import lombok.RequiredArgsConstructor;

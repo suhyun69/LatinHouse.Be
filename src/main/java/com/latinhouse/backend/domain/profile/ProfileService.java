@@ -1,8 +1,8 @@
 package com.latinhouse.backend.domain.profile;
 
-import com.latinhouse.backend.application.port.out.CreateProfilePort;
-import com.latinhouse.backend.application.port.out.ReadProfilePort;
-import com.latinhouse.backend.application.port.out.UpdateProfilePort;
+import com.latinhouse.backend.application.port.out.profile.CreateProfilePort;
+import com.latinhouse.backend.application.port.out.profile.ReadProfilePort;
+import com.latinhouse.backend.application.port.out.profile.UpdateProfilePort;
 import com.latinhouse.backend.util.RandomUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

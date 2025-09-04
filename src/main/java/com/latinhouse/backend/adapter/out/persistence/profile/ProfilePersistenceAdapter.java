@@ -1,11 +1,11 @@
-package com.latinhouse.backend.adapter.out.persistence;
+package com.latinhouse.backend.adapter.out.persistence.profile;
 
-import com.latinhouse.backend.adapter.out.persistence.entity.ProfileJpaEntity;
-import com.latinhouse.backend.adapter.out.persistence.mapper.ProfileMapper;
-import com.latinhouse.backend.adapter.out.persistence.repository.ProfileRepository;
-import com.latinhouse.backend.application.port.out.CreateProfilePort;
-import com.latinhouse.backend.application.port.out.ReadProfilePort;
-import com.latinhouse.backend.application.port.out.UpdateProfilePort;
+import com.latinhouse.backend.adapter.out.persistence.profile.entity.ProfileJpaEntity;
+import com.latinhouse.backend.adapter.out.persistence.profile.mapper.ProfileMapper;
+import com.latinhouse.backend.adapter.out.persistence.profile.repository.ProfileRepository;
+import com.latinhouse.backend.application.port.out.profile.CreateProfilePort;
+import com.latinhouse.backend.application.port.out.profile.ReadProfilePort;
+import com.latinhouse.backend.application.port.out.profile.UpdateProfilePort;
 import com.latinhouse.backend.domain.profile.Profile;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
