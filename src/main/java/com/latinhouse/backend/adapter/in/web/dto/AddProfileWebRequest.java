@@ -1,5 +1,6 @@
-package com.latinhouse.backend.adapter.in.web;
+package com.latinhouse.backend.adapter.in.web.dto;
 
+import com.latinhouse.backend.application.port.in.dto.AddProfileAppRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -23,4 +24,13 @@ public class AddProfileWebRequest {
     @NotBlank(message = "sex cannot be blank")
     @Pattern(regexp = "^[MF]$", message = "sex must be 'M' or 'F'")
     private String sex;
+
+    public AddProfileAppRequest toAppReq() {
+        return AddProfileAppRequest.builder()
+                .email(this.getEmail())
+                .password(this.getPassword())
+                .nickname(this.getNickname())
+                .sex(this.getSex())
+                .build();
+    }
 }

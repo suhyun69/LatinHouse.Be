@@ -16,4 +16,8 @@ public class Profile {
     private String nickname;
     private Sex sex;
     private Boolean isInstructor;
+
+    public void enrollInstructor() {
+        this.isInstructor = true;
+    }
 }

@@ -53,6 +53,12 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @org.springframework.web.bind.annotation.ExceptionHandler(ProfileNotFoundException.class)
+    public ResponseEntity<?> handleProfileNotFoundException(ProfileNotFoundException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
     protected final ResponseEntity<?> handleAllExceptions(Exception ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
