@@ -1,7 +1,6 @@
 package com.latinhouse.backend.adapter.out.persistence.repository;
 
 import com.latinhouse.backend.adapter.out.persistence.entity.ProfileJpaEntity;
-import com.latinhouse.backend.domain.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

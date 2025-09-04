@@ -1,8 +1,7 @@
 package com.latinhouse.backend.application.port.in.dto;
 
-import com.latinhouse.backend.adapter.in.web.dto.AddProfileWebRequest;
 import com.latinhouse.backend.common.SelfValidating;
-import com.latinhouse.backend.domain.Sex;
+import com.latinhouse.backend.domain.profile.Sex;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;

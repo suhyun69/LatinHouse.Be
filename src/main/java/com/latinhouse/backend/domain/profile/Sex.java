@@ -1,4 +1,4 @@
-package com.latinhouse.backend.domain;
+package com.latinhouse.backend.domain.profile;
 
 import java.util.Arrays;
 

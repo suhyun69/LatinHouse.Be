@@ -3,8 +3,8 @@ package com.latinhouse.backend.application.port.in.impl;
 import com.latinhouse.backend.application.port.in.FindProfileUseCase;
 import com.latinhouse.backend.application.port.in.dto.ProfileAppResponse;
 import com.latinhouse.backend.common.exception.ProfileNotFoundException;
-import com.latinhouse.backend.domain.Profile;
-import com.latinhouse.backend.domain.ProfileService;
+import com.latinhouse.backend.domain.profile.Profile;
+import com.latinhouse.backend.domain.profile.ProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.latinhouse.backend.application.port.in.dto;
 
 import com.latinhouse.backend.adapter.in.web.dto.AddProfileWebResponse;
-import com.latinhouse.backend.domain.Profile;
+import com.latinhouse.backend.domain.profile.Profile;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

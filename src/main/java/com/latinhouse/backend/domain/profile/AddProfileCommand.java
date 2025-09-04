@@ -1,4 +1,4 @@
-package com.latinhouse.backend.domain;
+package com.latinhouse.backend.domain.profile;
 
 import lombok.Builder;
 import lombok.Value;

@@ -6,8 +6,7 @@ import com.latinhouse.backend.adapter.out.persistence.repository.ProfileReposito
 import com.latinhouse.backend.application.port.out.CreateProfilePort;
 import com.latinhouse.backend.application.port.out.ReadProfilePort;
 import com.latinhouse.backend.application.port.out.UpdateProfilePort;
-import com.latinhouse.backend.domain.AddProfileCommand;
-import com.latinhouse.backend.domain.Profile;
+import com.latinhouse.backend.domain.profile.Profile;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

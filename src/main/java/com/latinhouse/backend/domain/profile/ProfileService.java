@@ -1,4 +1,4 @@
-package com.latinhouse.backend.domain;
+package com.latinhouse.backend.domain.profile;
 
 import com.latinhouse.backend.application.port.out.CreateProfilePort;
 import com.latinhouse.backend.application.port.out.ReadProfilePort;
