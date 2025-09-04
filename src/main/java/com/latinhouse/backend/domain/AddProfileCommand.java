@@ -6,7 +6,6 @@ import lombok.Value;
 @Value
 @Builder
 public class AddProfileCommand {
-
     String email;
     String password;
     String profileId;

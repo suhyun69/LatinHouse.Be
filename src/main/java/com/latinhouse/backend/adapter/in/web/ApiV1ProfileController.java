@@ -52,10 +52,11 @@ public class ApiV1ProfileController {
     }
 
     @GetMapping("/{profileId}")
-    @Operation(summary = "Get Profile")
+    @Operation(summary = "Get Profile", description = "by profileId")
     public ResponseEntity<ProfileWebResponse> getProfile(@PathVariable String profileId) {
 
         ProfileWebResponse webRes = ProfileWebResponse.from(findProfileUseCase.getProfile(profileId));
+
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(webRes);

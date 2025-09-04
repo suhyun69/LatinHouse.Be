@@ -9,6 +9,11 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface ProfileRepository extends JpaRepository<ProfileJpaEntity, String> {
-    @Query("select p from ProfileJpaEntity p where p.profileId = :profileId order by p.updatedAt desc limit 1")
+    @Query(value = """
+      select * from profiles
+       where profile_id = :profileId
+       order by updated_at desc
+       limit 1
+    """, nativeQuery = true)
     Optional<ProfileJpaEntity> findByProfileId(@Param("profileId") String profileId);
 }

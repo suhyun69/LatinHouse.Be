@@ -27,6 +27,7 @@ public class FindProfileImpl implements FindProfileUseCase {
     public ProfileAppResponse getProfile(String profileId) {
         Profile profile = profileService.getProfile(profileId)
                 .orElseThrow(() -> new ProfileNotFoundException(profileId));
+
         return ProfileAppResponse.from(profile);
     }
 }

@@ -28,6 +28,7 @@ public class SignupImpl implements SignupUseCase {
             .sex(appReq.getSex())
             .build();
         Profile profile = profileService.addProfile(cmd);
+
         return AddProfileAppResponse.from(profile);
     }
 }
