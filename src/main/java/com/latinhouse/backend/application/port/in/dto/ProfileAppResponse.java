@@ -1,5 +1,6 @@
 package com.latinhouse.backend.application.port.in.dto;
 
+import com.latinhouse.backend.adapter.in.web.dto.ProfileWebResponse;
 import com.latinhouse.backend.domain.Profile;
 import com.latinhouse.backend.domain.Sex;
 import lombok.AccessLevel;
@@ -22,6 +23,15 @@ public class ProfileAppResponse {
                 .nickname(profile.getNickname())
                 .sex(profile.getSex())
                 .isInstructor(Boolean.TRUE.equals(profile.getIsInstructor()))
+                .build();
+    }
+
+    public ProfileWebResponse toWebRes() {
+        return ProfileWebResponse.builder()
+                .profileId(this.getProfileId())
+                .nickname(this.getNickname())
+                .sex(this.getSex() != null ? this.getSex().getCode() : null) // null-safe
+                .isInstructor(Boolean.TRUE.equals(this.getIsInstructor()))
                 .build();
     }
 }

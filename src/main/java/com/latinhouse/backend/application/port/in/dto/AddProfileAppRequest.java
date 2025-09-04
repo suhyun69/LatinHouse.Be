@@ -34,13 +34,4 @@ public class AddProfileAppRequest extends SelfValidating<AddProfileAppRequest> {
 
         this.validateSelf();
     }
-
-    public static AddProfileAppRequest from(AddProfileWebRequest webReq) {
-        return AddProfileAppRequest.builder()
-                .email(webReq.getEmail())
-                .password(webReq.getPassword())
-                .nickname(webReq.getNickname())
-                .sex(webReq.getSex())
-                .build();
-    }
 }

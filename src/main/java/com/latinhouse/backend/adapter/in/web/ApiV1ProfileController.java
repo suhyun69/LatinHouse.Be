@@ -6,6 +6,7 @@ import com.latinhouse.backend.adapter.in.web.dto.ProfileWebResponse;
 import com.latinhouse.backend.application.port.in.*;
 import com.latinhouse.backend.application.port.in.dto.AddProfileAppRequest;
 import com.latinhouse.backend.application.port.in.dto.AddProfileAppResponse;
+import com.latinhouse.backend.application.port.in.dto.ProfileAppResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -29,13 +30,9 @@ public class ApiV1ProfileController {
     @Operation(summary = "Add Profile", description = "by email")
     public ResponseEntity<AddProfileWebResponse> addProfile(@Valid @RequestBody AddProfileWebRequest webReq) {
 
-        AddProfileAppRequest appReq = AddProfileAppRequest.from(webReq);
-        AddProfileAppResponse appRes = signupUseCase.addByEmail(appReq);
-        AddProfileWebResponse webRes = AddProfileWebResponse.from(appRes);
-
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(webRes);
+                .body(signupUseCase.addByEmail(webReq.toAppReq()).toWebRes());
     }
 
     @GetMapping("")
@@ -43,7 +40,7 @@ public class ApiV1ProfileController {
     public ResponseEntity<List<ProfileWebResponse>> findProfiles() {
 
         List<ProfileWebResponse> webRes = findProfileUseCase.search().stream()
-                .map(ProfileWebResponse::from)
+                .map(ProfileAppResponse::toWebRes)
                 .toList();
 
         return ResponseEntity
@@ -55,11 +52,9 @@ public class ApiV1ProfileController {
     @Operation(summary = "Get Profile", description = "by profileId")
     public ResponseEntity<ProfileWebResponse> getProfile(@PathVariable String profileId) {
 
-        ProfileWebResponse webRes = ProfileWebResponse.from(findProfileUseCase.getProfile(profileId));
-
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(webRes);
+                .body(findProfileUseCase.getProfile(profileId).toWebRes());
     }
 
 }

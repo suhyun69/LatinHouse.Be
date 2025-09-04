@@ -14,13 +14,4 @@ public class ProfileWebResponse {
     private String nickname;
     private String sex;
     private Boolean isInstructor;
-
-    public static ProfileWebResponse from(ProfileAppResponse appRes) {
-        return ProfileWebResponse.builder()
-                .profileId(appRes.getProfileId())
-                .nickname(appRes.getNickname())
-                .sex(appRes.getSex() != null ? appRes.getSex().getCode() : null) // null-safe
-                .isInstructor(Boolean.TRUE.equals(appRes.getIsInstructor()))
-                .build();
-    }
 }
