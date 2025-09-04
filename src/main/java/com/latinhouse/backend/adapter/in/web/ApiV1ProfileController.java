@@ -25,6 +25,7 @@ public class ApiV1ProfileController {
 
     private final SignupUseCase signupUseCase;
     private final FindProfileUseCase findProfileUseCase;
+    private final UpdateProfileUseCase updateProfileUseCase;
 
     @PostMapping("")
     @Operation(summary = "Add Profile", description = "by email")
@@ -57,4 +58,12 @@ public class ApiV1ProfileController {
                 .body(findProfileUseCase.getProfile(profileId).toWebRes());
     }
 
+    @PutMapping("/instructor/{profileId}")
+    @Operation(summary = "Enroll Instructor", description = "True only")
+    public ResponseEntity<Void> enrollInstructor(@PathVariable String profileId) {
+
+        updateProfileUseCase.enrollInstructor(profileId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
 }
