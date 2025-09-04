@@ -5,12 +5,11 @@ import com.latinhouse.backend.adapter.out.persistence.mapper.ProfileMapper;
 import com.latinhouse.backend.adapter.out.persistence.repository.ProfileRepository;
 import com.latinhouse.backend.application.port.out.CreateProfilePort;
 import com.latinhouse.backend.application.port.out.ReadProfilePort;
-import com.latinhouse.backend.domain.AddProfileDomainRequest;
+import com.latinhouse.backend.domain.AddProfileCommand;
 import com.latinhouse.backend.domain.Profile;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,21 +21,13 @@ public class ProfilePersistenceAdapter implements CreateProfilePort, ReadProfile
     private final ProfileRepository profileRepository;
 
     @Override
-    public Profile create(AddProfileDomainRequest req) {
-
-        ProfileJpaEntity profileT = ProfileJpaEntity.builder()
-                .email(req.getEmail())
-                .password(req.getPassword())
-                .profileId(req.getProfileId())
-                .nickname(req.getNickname())
-                .sex(req.getSex().getCode())
-                .isInstructor(req.getIsInstructor())
-                .build();
+    public Profile create(Profile profile) {
+        ProfileJpaEntity profileT = profileMapper.mapToJpaEntity(profile);
         return profileMapper.mapToDomainEntity(profileRepository.save(profileT));
     }
 
     @Override
-    public List<Profile> search() {
+    public List<Profile> findAll() {
         return profileRepository.findAll().stream()
                 .map(profileMapper::mapToDomainEntity)
                 .toList();
