@@ -1,5 +1,7 @@
 package com.latinhouse.backend.util;
 
+import com.latinhouse.backend.common.exception.BadRequestException;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -27,9 +29,7 @@ public final class DateTimeUtil {
             LocalTime localTime = LocalTime.parse(time, TIME_FORMATTER);
             return LocalDateTime.of(localDate, localTime);
         } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException(
-                    String.format("Invalid date/time format. date='%s', time='%s'", date, time), e
-            );
+            throw new BadRequestException(String.format("Invalid dateTime format : %s %s", date, time));
         }
     }
 }
