@@ -7,19 +7,25 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 @Entity
-@Table(name = "contacts")
+@Table(name = "options")
 @Data
 @Builder // mapToJpaEntity
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactJpaEntity extends BaseEntity {
+public class OptionT extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
     // private Long lessonNo;
 
-    private String type;
-    private String name;
-    private String address;
+    private LocalDateTime startDateTime;
+    private LocalDateTime endDateTime;
+    private String region;
+    private String location;
+    private String locationUrl;
+    private BigDecimal price;
 }

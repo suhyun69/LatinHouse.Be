@@ -1,6 +1,6 @@
 package com.latinhouse.backend.adapter.out.persistence.lesson;
 
-import com.latinhouse.backend.adapter.out.persistence.lesson.entity.LessonJpaEntity;
+import com.latinhouse.backend.adapter.out.persistence.lesson.entity.LessonT;
 import com.latinhouse.backend.adapter.out.persistence.lesson.mapper.LessonMapper;
 import com.latinhouse.backend.adapter.out.persistence.lesson.repository.LessonRepository;
 import com.latinhouse.backend.application.port.out.lesson.CreateLessonPort;
@@ -17,7 +17,7 @@ public class LessonPersistenceAdapter implements CreateLessonPort {
 
     @Override
     public Lesson create(Lesson lesson) {
-        LessonJpaEntity lessonT = lessonMapper.mapToJpaEntity(lesson);
-        return lessonMapper.mapToDomainEntity(lessonRepository.save(lessonT));
+        LessonT lessonT = lessonMapper.mapToEntity(lesson);
+        return lessonMapper.mapToDomain(lessonRepository.save(lessonT));
     }
 }

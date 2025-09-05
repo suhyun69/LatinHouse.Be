@@ -1,6 +1,6 @@
 package com.latinhouse.backend.adapter.out.persistence.profile.mapper;
 
-import com.latinhouse.backend.adapter.out.persistence.profile.entity.ProfileJpaEntity;
+import com.latinhouse.backend.adapter.out.persistence.profile.entity.ProfileT;
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.Sex;
 import lombok.RequiredArgsConstructor;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class ProfileMapper {
-    public ProfileJpaEntity mapToJpaEntity(Profile profile) {
-        return ProfileJpaEntity.builder()
+    public ProfileT mapToEntity(Profile profile) {
+        return ProfileT.builder()
                 .email(profile.getEmail())
                 .password(profile.getPassword())
                 .profileId(profile.getProfileId())
@@ -20,7 +20,7 @@ public class ProfileMapper {
                 .build();
     }
 
-    public Profile mapToDomainEntity(ProfileJpaEntity userT) {
+    public Profile mapToDomain(ProfileT userT) {
         return Profile.builder()
                 .email(userT.getEmail())
                 .password(userT.getPassword())

@@ -1,6 +1,6 @@
 package com.latinhouse.backend.adapter.out.persistence.profile;
 
-import com.latinhouse.backend.adapter.out.persistence.profile.entity.ProfileJpaEntity;
+import com.latinhouse.backend.adapter.out.persistence.profile.entity.ProfileT;
 import com.latinhouse.backend.adapter.out.persistence.profile.mapper.ProfileMapper;
 import com.latinhouse.backend.adapter.out.persistence.profile.repository.ProfileRepository;
 import com.latinhouse.backend.application.port.out.profile.CreateProfilePort;
@@ -22,25 +22,25 @@ public class ProfilePersistenceAdapter implements CreateProfilePort, ReadProfile
 
     @Override
     public Profile create(Profile profile) {
-        ProfileJpaEntity profileT = profileMapper.mapToJpaEntity(profile);
-        return profileMapper.mapToDomainEntity(profileRepository.save(profileT));
+        ProfileT profileT = profileMapper.mapToEntity(profile);
+        return profileMapper.mapToDomain(profileRepository.save(profileT));
     }
 
     @Override
     public List<Profile> findAll() {
         return profileRepository.findAll().stream()
-                .map(profileMapper::mapToDomainEntity)
+                .map(profileMapper::mapToDomain)
                 .toList();
     }
 
     @Override
     public Optional<Profile> getProfileById(String profileId) {
         return profileRepository.findByProfileId(profileId)
-                .map(profileMapper::mapToDomainEntity);
+                .map(profileMapper::mapToDomain);
     }
 
     @Override
     public void save(Profile profile) {
-        profileRepository.save(profileMapper.mapToJpaEntity(profile));
+        profileRepository.save(profileMapper.mapToEntity(profile));
     }
 }

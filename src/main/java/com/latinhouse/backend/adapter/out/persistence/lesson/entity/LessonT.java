@@ -1,7 +1,6 @@
 package com.latinhouse.backend.adapter.out.persistence.lesson.entity;
 
 import com.latinhouse.backend.common.BaseEntity;
-import com.latinhouse.backend.domain.lesson.Genre;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +19,7 @@ import static jakarta.persistence.CascadeType.ALL;
 @Builder // mapToJpaEntity
 @NoArgsConstructor
 @AllArgsConstructor
-public class LessonJpaEntity extends BaseEntity {
+public class LessonT extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +31,7 @@ public class LessonJpaEntity extends BaseEntity {
 
     @OneToMany(cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "lesson_no", nullable = false)
-    private List<OptionJpaEntity> options =  new ArrayList<>();
+    private List<OptionT> options =  new ArrayList<>();
 
     private String bank;
     private String accountNumber;
@@ -40,10 +39,10 @@ public class LessonJpaEntity extends BaseEntity {
 
     @OneToMany(cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "lesson_no", nullable = false)
-    private List<DiscountJpaEntity> discounts = new ArrayList<>();
+    private List<DiscountT> discounts = new ArrayList<>();
     private BigDecimal maxDiscountAmount;
 
     @OneToMany(cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "lesson_no", nullable = false)
-    private List<ContactJpaEntity> contacts = new ArrayList<>();
+    private List<ContactT> contacts = new ArrayList<>();
 }

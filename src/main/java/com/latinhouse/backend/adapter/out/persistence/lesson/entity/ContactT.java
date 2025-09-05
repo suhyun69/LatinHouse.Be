@@ -7,21 +7,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Entity
-@Table(name = "discounts")
+@Table(name = "contacts")
 @Data
 @Builder // mapToJpaEntity
 @NoArgsConstructor
 @AllArgsConstructor
-public class DiscountJpaEntity extends BaseEntity {
+public class ContactT extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
     // private Long lessonNo;
 
     private String type;
-    private String condition;
-    private BigDecimal amount;
+    private String name;
+    private String address;
 }

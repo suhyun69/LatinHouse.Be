@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder // mapToJpaEntity
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfileJpaEntity extends BaseEntity {
+public class ProfileT extends BaseEntity {
 
     @Id
     private String email;
