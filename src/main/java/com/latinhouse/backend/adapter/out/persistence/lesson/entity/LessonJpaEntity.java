@@ -26,7 +26,7 @@ public class LessonJpaEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long no;
     private String title;
-    private Genre genre;
+    private String genre;
     private String instructorLo;
     private String instructorLa;
 

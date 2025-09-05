@@ -18,7 +18,7 @@ public class LessonMapper {
         return LessonJpaEntity.builder()
                 .no(lesson.getNo())
                 .title(lesson.getTitle())
-                .genre(lesson.getGenre())
+                .genre(lesson.getGenre().getCode())
                 .instructorLo(lesson.getInstructorLo())
                 .instructorLa(lesson.getInstructorLa())
                 .options(mapToOptionTs(lesson.getOptions()))
@@ -35,7 +35,7 @@ public class LessonMapper {
         return Lesson.builder()
                 .no(lessonT.getNo())
                 .title(lessonT.getTitle())
-                .genre(lessonT.getGenre())
+                .genre(Genre.of(lessonT.getGenre()))
                 .instructorLo(lessonT.getInstructorLo())
                 .instructorLa(lessonT.getInstructorLa())
                 .options(mapToOptions(lessonT.getOptions()) )
@@ -71,7 +71,7 @@ public class LessonMapper {
         for (DiscountJpaEntity x : list) {
             if (x == null) continue;
             out.add(Discount.builder()
-                    .type(DiscountType.valueOf(x.getType()))
+                    .type(DiscountType.of(x.getType()))
                     .condition(x.getCondition())
                     .amount(x.getAmount())
                     .build());
@@ -85,7 +85,7 @@ public class LessonMapper {
         for (ContactJpaEntity x : list) {
             if (x == null) continue;
             out.add(Contact.builder()
-                    .type(ContactType.valueOf(x.getType()))
+                    .type(ContactType.of(x.getType()))
                     .name(x.getName())
                     .address(x.getAddress())
                     .build());
