@@ -1,6 +1,6 @@
-package com.latinhouse.backend.application.port.in.impl;
+package com.latinhouse.backend.application.port.in.profile.impl;
 
-import com.latinhouse.backend.application.port.in.UpdateProfileUseCase;
+import com.latinhouse.backend.application.port.in.profile.UpdateProfileUseCase;
 import com.latinhouse.backend.common.exception.ProfileNotFoundException;
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.ProfileService;

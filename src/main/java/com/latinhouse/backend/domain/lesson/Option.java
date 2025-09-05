@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -17,5 +18,5 @@ public class Option {
     private Region region;
     private String location;
     private String locationUrl;
-    private Integer price;
+    private BigDecimal price;
 }

@@ -1,6 +1,6 @@
-package com.latinhouse.backend.adapter.in.web.dto;
+package com.latinhouse.backend.adapter.in.web.profile.dto;
 
-import com.latinhouse.backend.application.port.in.dto.AddProfileAppRequest;
+import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;

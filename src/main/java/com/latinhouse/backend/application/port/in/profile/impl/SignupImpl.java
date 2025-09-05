@@ -1,8 +1,8 @@
-package com.latinhouse.backend.application.port.in.impl;
+package com.latinhouse.backend.application.port.in.profile.impl;
 
-import com.latinhouse.backend.application.port.in.dto.AddProfileAppRequest;
-import com.latinhouse.backend.application.port.in.dto.AddProfileAppResponse;
-import com.latinhouse.backend.application.port.in.SignupUseCase;
+import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppRequest;
+import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppResponse;
+import com.latinhouse.backend.application.port.in.profile.SignupUseCase;
 import com.latinhouse.backend.domain.profile.AddProfileCommand;
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.ProfileService;

@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "discounts")
 @Data
@@ -21,5 +23,5 @@ public class DiscountJpaEntity extends BaseEntity {
 
     private String type;
     private String condition;
-    private Integer amount;
+    private BigDecimal amount;
 }

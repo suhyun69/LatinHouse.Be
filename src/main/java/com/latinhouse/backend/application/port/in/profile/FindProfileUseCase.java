@@ -1,6 +1,6 @@
-package com.latinhouse.backend.application.port.in;
+package com.latinhouse.backend.application.port.in.profile;
 
-import com.latinhouse.backend.application.port.in.dto.ProfileAppResponse;
+import com.latinhouse.backend.application.port.in.profile.dto.ProfileAppResponse;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.latinhouse.backend.application.port.in.dto;
+package com.latinhouse.backend.application.port.in.profile.dto;
 
 import com.latinhouse.backend.common.SelfValidating;
 import com.latinhouse.backend.domain.profile.Sex;

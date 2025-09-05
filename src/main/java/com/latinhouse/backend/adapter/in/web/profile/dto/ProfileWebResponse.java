@@ -1,6 +1,5 @@
-package com.latinhouse.backend.adapter.in.web.dto;
+package com.latinhouse.backend.adapter.in.web.profile.dto;
 
-import com.latinhouse.backend.application.port.in.dto.ProfileAppResponse;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

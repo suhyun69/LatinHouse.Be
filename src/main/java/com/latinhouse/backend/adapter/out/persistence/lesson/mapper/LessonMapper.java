@@ -25,9 +25,9 @@ public class LessonMapper {
                 .bank(lesson.getBank())
                 .accountNumber(lesson.getAccountNumber())
                 .accountOwner(lesson.getAccountOwner())
-                .discounts(new ArrayList<>())
+                .discounts(mapToDiscountTs(lesson.getDiscounts()))
                 .maxDiscountAmount(lesson.getMaxDiscountAmount())
-                .contacts(new ArrayList<>())
+                .contacts(mapToContactTs(lesson.getContacts()))
                 .build();
     }
 
@@ -99,45 +99,42 @@ public class LessonMapper {
         for (Option x : list) {
             if (x == null) continue;
             OptionJpaEntity e = OptionJpaEntity.builder()
-                    .seq(x.seq())
-                    .startDateTime(x.startDateTime())
-                    .endDateTime(x.endDateTime())
-                    .region(x.region())
-                    .place(x.place())
-                    .placeUrl(x.placeUrl())
-                    .price(x.price())
+                    .startDateTime(x.getStartDateTime())
+                    .endDateTime(x.getEndDateTime())
+                    .region(x.getRegion() != null ? x.getRegion().getCode() : null)
+                    .location(x.getLocation())
+                    .locationUrl(x.getLocationUrl())
+                    .price(x.getPrice())
                     .build();
             out.add(e);
         }
         return out;
     }
 
-    private static List<DiscountJpaEntity> toEntityDiscounts(List<Discount> list) {
+    private static List<DiscountJpaEntity> mapToDiscountTs(List<Discount> list) {
         if (list == null) return List.of();
         List<DiscountJpaEntity> out = new ArrayList<>(list.size());
         for (Discount x : list) {
             if (x == null) continue;
             DiscountJpaEntity e = DiscountJpaEntity.builder()
-                    .seq(x.seq())
-                    .type(x.type())
-                    .condition(x.condition())
-                    .amount(x.amount())
+                    .type(x.getType() != null ? x.getType().getCode() : null)
+                    .condition(x.getCondition())
+                    .amount(x.getAmount())
                     .build();
             out.add(e);
         }
         return out;
     }
 
-    private static List<ContactJpaEntity> toEntityContacts(List<Contact> list) {
+    private static List<ContactJpaEntity> mapToContactTs(List<Contact> list) {
         if (list == null) return List.of();
         List<ContactJpaEntity> out = new ArrayList<>(list.size());
         for (Contact x : list) {
             if (x == null) continue;
             ContactJpaEntity e = ContactJpaEntity.builder()
-                    .seq(x.seq())
-                    .type(x.type())
-                    .name(x.name())
-                    .address(x.address())
+                    .type(x.getType() != null ? x.getType().getCode() : null)
+                    .name(x.getName())
+                    .address(x.getAddress())
                     .build();
             out.add(e);
         }

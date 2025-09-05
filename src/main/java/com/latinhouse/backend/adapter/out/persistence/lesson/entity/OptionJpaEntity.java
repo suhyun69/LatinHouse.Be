@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,5 +27,5 @@ public class OptionJpaEntity extends BaseEntity {
     private String region;
     private String location;
     private String locationUrl;
-    private Integer price;
+    private BigDecimal price;
 }

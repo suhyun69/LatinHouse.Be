@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class LessonJpaEntity extends BaseEntity {
     @OneToMany(cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "lesson_no", nullable = false)
     private List<DiscountJpaEntity> discounts = new ArrayList<>();
-    private Integer maxDiscountAmount;
+    private BigDecimal maxDiscountAmount;
 
     @OneToMany(cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "lesson_no", nullable = false)

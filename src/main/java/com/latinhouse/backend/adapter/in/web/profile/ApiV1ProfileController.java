@@ -1,12 +1,12 @@
-package com.latinhouse.backend.adapter.in.web;
+package com.latinhouse.backend.adapter.in.web.profile;
 
-import com.latinhouse.backend.adapter.in.web.dto.AddProfileWebRequest;
-import com.latinhouse.backend.adapter.in.web.dto.AddProfileWebResponse;
-import com.latinhouse.backend.adapter.in.web.dto.ProfileWebResponse;
-import com.latinhouse.backend.application.port.in.*;
-import com.latinhouse.backend.application.port.in.dto.AddProfileAppRequest;
-import com.latinhouse.backend.application.port.in.dto.AddProfileAppResponse;
-import com.latinhouse.backend.application.port.in.dto.ProfileAppResponse;
+import com.latinhouse.backend.adapter.in.web.profile.dto.AddProfileWebRequest;
+import com.latinhouse.backend.adapter.in.web.profile.dto.AddProfileWebResponse;
+import com.latinhouse.backend.adapter.in.web.profile.dto.ProfileWebResponse;
+import com.latinhouse.backend.application.port.in.profile.FindProfileUseCase;
+import com.latinhouse.backend.application.port.in.profile.SignupUseCase;
+import com.latinhouse.backend.application.port.in.profile.UpdateProfileUseCase;
+import com.latinhouse.backend.application.port.in.profile.dto.ProfileAppResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
