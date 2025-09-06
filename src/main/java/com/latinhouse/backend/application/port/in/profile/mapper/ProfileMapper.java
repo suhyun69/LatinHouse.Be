@@ -8,7 +8,7 @@ import com.latinhouse.backend.application.domain.profile.service.AddProfileComma
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Component("profileApplicationMapper")
+@Component("profilePortMapper")
 @RequiredArgsConstructor
 public class ProfileMapper {
     /*

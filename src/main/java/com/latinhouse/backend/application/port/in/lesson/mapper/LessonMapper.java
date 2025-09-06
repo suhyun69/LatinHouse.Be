@@ -11,7 +11,7 @@ import com.latinhouse.backend.application.domain.lesson.service.AddLessonCommand
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Component("lessonApplicationMapper")
+@Component("lessonPortMapper")
 @RequiredArgsConstructor
 public class LessonMapper {
     /*
