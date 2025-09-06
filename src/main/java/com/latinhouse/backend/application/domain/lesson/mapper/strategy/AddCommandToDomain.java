@@ -1,30 +1,36 @@
-package com.latinhouse.backend.application.domain.lesson.mapper;
+package com.latinhouse.backend.application.domain.lesson.mapper.strategy;
 
 import com.latinhouse.backend.application.domain.lesson.Contact;
 import com.latinhouse.backend.application.domain.lesson.Discount;
 import com.latinhouse.backend.application.domain.lesson.Lesson;
 import com.latinhouse.backend.application.domain.lesson.Option;
+import com.latinhouse.backend.application.domain.lesson.mapper.CommandToDomainStrategy;
 import com.latinhouse.backend.application.domain.lesson.service.AddLessonCommand;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Component("lessonDomainMapper")
-@RequiredArgsConstructor
-public class LessonMapper {
+@Component
+public class AddCommandToDomain implements CommandToDomainStrategy<AddLessonCommand, Lesson> {
 
+    @Override
+    public boolean supports(Class<?> c, Class<?> d) {
+        return AddLessonCommand.class.isAssignableFrom(c)
+                && Lesson.class.isAssignableFrom(d);
+    }
+
+    @Override
     public Lesson toDomain(AddLessonCommand cmd) {
         return Lesson.builder()
                 .title(cmd.getTitle())
                 .genre(cmd.getGenre())
                 .instructorLo(cmd.getInstructorLo())
                 .instructorLa(cmd.getInstructorLa())
-                .options(cmd.getOptions().stream().map(LessonMapper::convertTo).toList())
+                .options(cmd.getOptions().stream().map(AddCommandToDomain::convertTo).toList())
                 .bank(cmd.getBank())
                 .accountNumber(cmd.getAccountNumber())
                 .accountOwner(cmd.getAccountOwner())
-                .discounts(cmd.getDiscounts().stream().map(LessonMapper::convertTo).toList())
+                .discounts(cmd.getDiscounts().stream().map(AddCommandToDomain::convertTo).toList())
                 .maxDiscountAmount(cmd.getMaxDiscountAmount())
-                .contacts(cmd.getContacts().stream().map(LessonMapper::convertTo).toList())
+                .contacts(cmd.getContacts().stream().map(AddCommandToDomain::convertTo).toList())
                 .build();
     }
 

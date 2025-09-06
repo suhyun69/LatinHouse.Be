@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AddAppToCommand implements AppToCommandStrategy<AddLessonAppRequest, AddLessonCommand> {
 
-    @Override public boolean supports(Class<?> a, Class<?> c) {
+    @Override
+    public boolean supports(Class<?> a, Class<?> c) {
         return AddLessonAppRequest.class.isAssignableFrom(a)
                 && AddLessonCommand.class.isAssignableFrom(c);
     }

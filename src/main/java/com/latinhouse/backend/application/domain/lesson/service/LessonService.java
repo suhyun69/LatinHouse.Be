@@ -3,7 +3,7 @@ package com.latinhouse.backend.application.domain.lesson.service;
 import com.latinhouse.backend.application.port.out.lesson.CreateLessonPort;
 import com.latinhouse.backend.application.port.out.lesson.ReadLessonPort;
 import com.latinhouse.backend.application.domain.lesson.Lesson;
-import com.latinhouse.backend.application.domain.lesson.mapper.LessonMapper;
+import com.latinhouse.backend.application.domain.lesson.mapper.LessonDomainMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +14,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class LessonService {
 
-    private final LessonMapper lessonMapper;
+    private final LessonDomainMapper lessonDomainMapper;
     private final CreateLessonPort createLessonPort;
     private final ReadLessonPort readLessonPort;
 
     public Lesson addLesson(AddLessonCommand cmd) {
-        return createLessonPort.create(lessonMapper.toDomain(cmd));
+        return createLessonPort.create(lessonDomainMapper.toDomain(cmd));
     }
 
     public List<Lesson> search() { return readLessonPort.findAll(); }
