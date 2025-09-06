@@ -1,8 +1,10 @@
 package com.latinhouse.backend.adapter.in.web.lesson.mapper;
 
 import com.latinhouse.backend.adapter.in.web.lesson.dto.AddLessonWebRequest;
+import com.latinhouse.backend.adapter.in.web.lesson.dto.AddLessonWebResponse;
 import com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse;
 import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppRequest;
+import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppResponse;
 import com.latinhouse.backend.application.port.in.lesson.dto.LessonAppResponse;
 import com.latinhouse.backend.domain.lesson.ContactType;
 import com.latinhouse.backend.domain.lesson.DiscountType;
@@ -20,7 +22,7 @@ import java.util.Optional;
 public class LessonMapper {
     /*
         WebRequest -> AppRequest
-        AppResponse -(static)-> WebResponse
+        AppResponse -> WebResponse
      */
     public AddLessonAppRequest toAppReq(AddLessonWebRequest webReq) {
         return AddLessonAppRequest.builder()
@@ -66,6 +68,12 @@ public class LessonMapper {
                 .type(ContactType.of(c.getType()))
                 .name(c.getName())
                 .address(c.getAddress())
+                .build();
+    }
+
+    public AddLessonWebResponse toWebRes(AddLessonAppResponse appRes) {
+        return AddLessonWebResponse.builder()
+                .no(appRes.getNo())
                 .build();
     }
 

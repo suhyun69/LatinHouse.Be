@@ -1,6 +1,7 @@
 package com.latinhouse.backend.application.port.in.lesson.mapper;
 
 import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppRequest;
+import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppResponse;
 import com.latinhouse.backend.application.port.in.lesson.dto.LessonAppResponse;
 import com.latinhouse.backend.domain.lesson.*;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class LessonMapper {
     /*
         AppRequest -> Command
-        Domain -(static)-> AppResponse
+        Domain -> AppResponse
      */
     public AddLessonCommand toCommand(AddLessonAppRequest appReq) {
         return AddLessonCommand.builder()
@@ -53,6 +54,12 @@ public class LessonMapper {
                 .type(c.getType())
                 .name(c.getName())
                 .address(c.getAddress())
+                .build();
+    }
+
+    public AddLessonAppResponse toAddLessonAppRes(Lesson lesson) {
+        return AddLessonAppResponse.builder()
+                .no(lesson.getNo())
                 .build();
     }
 

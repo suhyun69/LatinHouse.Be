@@ -33,7 +33,7 @@ public class ApiV1LessonController {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(addLessonUseCase.addLesson(lessonMapper.toAppReq(webReq)).toWebRes());
+                .body(lessonMapper.toWebRes(addLessonUseCase.addLesson(lessonMapper.toAppReq(webReq))));
     }
 
     @GetMapping("")

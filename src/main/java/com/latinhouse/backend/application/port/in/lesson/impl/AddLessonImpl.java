@@ -21,6 +21,6 @@ public class AddLessonImpl implements AddLessonUseCase {
     @Transactional
     public AddLessonAppResponse addLesson(AddLessonAppRequest appReq) {
         Lesson lesson = lessonService.addLesson(lessonMapper.toCommand(appReq));
-        return AddLessonAppResponse.from(lesson);
+        return lessonMapper.toAddLessonAppRes(lesson);
     }
 }
