@@ -1,6 +1,7 @@
 package com.latinhouse.backend.domain.lesson;
 
 import com.latinhouse.backend.application.port.out.lesson.CreateLessonPort;
+import com.latinhouse.backend.application.port.out.lesson.ReadLessonPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class LessonService {
 
     private final CreateLessonPort createLessonPort;
+    private final ReadLessonPort readLessonPort;
 
     public Lesson addLesson(AddLessonCommand cmd) {
 
@@ -67,4 +69,6 @@ public class LessonService {
                 .address(c.getAddress())
                 .build();
     }
+
+    public List<Lesson> search() { return readLessonPort.findAll(); }
 }
