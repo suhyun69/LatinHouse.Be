@@ -32,4 +32,12 @@ public final class DateTimeUtil {
             throw new BadRequestException(String.format("Invalid dateTime format : %s %s", date, time));
         }
     }
+
+    public static String toDateString(LocalDateTime localDateTime) {
+        return localDateTime.format(DATE_FORMATTER);
+    }
+
+    public static String toTimeString(LocalDateTime localDateTime) {
+        return localDateTime.format(TIME_FORMATTER);
+    }
 }

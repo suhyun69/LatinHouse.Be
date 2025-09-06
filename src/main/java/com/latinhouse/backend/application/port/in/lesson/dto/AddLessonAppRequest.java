@@ -99,74 +99,35 @@ public class AddLessonAppRequest extends SelfValidating<AddLessonAppRequest> {
             , String genre
             , String instructorLa
             , String instructorLo
-            , List<AddLessonWebRequest.Option> options
+            , List<Option> options
             , String bank
             , String accountNumber
             , String accountOwner
-            , List<AddLessonWebRequest.Discount> discounts
+            , List<Discount> discounts
             , BigDecimal maxDiscountAmount
-            , List<AddLessonWebRequest.Contact> contacts
+            , List<Contact> contacts
     ) {
         this.title = title;
         this.genre = Genre.of(genre);
         this.instructorLo = instructorLo;
         this.instructorLa = instructorLa;
-        this.options = Optional.ofNullable(options).orElse(List.of()).stream()
-                .filter(Objects::nonNull)
-                .map(AddLessonAppRequest::convertTo)
-                .toList();
+        this.options = options;
         this.bank = bank;
         this.accountNumber = accountNumber;
         this.accountOwner = accountOwner;
-        this.discounts = Optional.ofNullable(discounts).orElse(List.of()).stream()
-                .filter(Objects::nonNull)
-                .map(AddLessonAppRequest::convertTo)
-                .toList();
+        this.discounts = discounts;
         this.maxDiscountAmount = maxDiscountAmount;
-        this.contacts = Optional.ofNullable(contacts).orElse(List.of()).stream()
-                .filter(Objects::nonNull)
-                .map(AddLessonAppRequest::convertTo)
-                .toList();
+        this.contacts = contacts;
 
         if(instructorLo == null && instructorLa == null) {
             throw new BadRequestException(String.format("instructorLo and instructorLa both null are not allowed"), 0);
         }
 
-        this.validateSelf();
-    }
-
-    private static Option convertTo(AddLessonWebRequest.Option o) {
-
-        LocalDateTime startDateTime = DateTimeUtil.toLocalDateTime(o.getStartDate(), o.getStartTime());
-        LocalDateTime endDateTime = DateTimeUtil.toLocalDateTime(o.getEndDate(), o.getEndTime());
-
-        if (!startDateTime.isBefore(endDateTime)) {
-            throw new BadRequestException(String.format("startDateTime(%s) must be before endDateTime(%s)", startDateTime, endDateTime), 0);
+        for(Option o : options) {
+            if(!o.startDateTime.isBefore(o.endDateTime))
+                throw new BadRequestException(String.format("startDateTime(%s) must be before endDateTime(%s)", o.startDateTime, o.endDateTime), 0);
         }
 
-        return Option.builder()
-                .startDateTime(startDateTime)
-                .endDateTime(endDateTime)
-                .region(Region.of(o.getRegion()))
-                .location(o.getLocation())
-                .locationUrl(o.getLocationUrl())
-                .price(o.getPrice())
-                .build();
-    }
-
-    private static Discount convertTo(AddLessonWebRequest.Discount d) {
-        return Discount.builder()
-                .type(DiscountType.of(d.getType()))
-                .condition(d.getCondition())
-                .amount(d.getAmount())
-                .build();
-    }
-
-    private static Contact convertTo(AddLessonWebRequest.Contact c) {
-        return Contact.builder()
-                .type(ContactType.of(c.getType()))
-                .name(c.getName())
-                .address(c.getAddress())
-                .build();
+        this.validateSelf();
     }
 }

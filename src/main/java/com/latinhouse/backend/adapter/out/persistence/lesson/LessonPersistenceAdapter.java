@@ -20,14 +20,14 @@ public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPor
 
     @Override
     public Lesson create(Lesson lesson) {
-        LessonT lessonT = lessonMapper.mapToEntity(lesson);
-        return lessonMapper.mapToDomain(lessonRepository.save(lessonT));
+        LessonT lessonT = lessonMapper.toEntity(lesson);
+        return lessonMapper.toDomain(lessonRepository.save(lessonT));
     }
 
     @Override
     public List<Lesson> findAll() {
         return lessonRepository.findAll().stream()
-                .map(lessonMapper::mapToDomain)
+                .map(lessonMapper::toDomain)
                 .toList();
     }
 }

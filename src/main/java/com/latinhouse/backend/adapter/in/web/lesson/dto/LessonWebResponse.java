@@ -31,8 +31,10 @@ public class LessonWebResponse {
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Option {
         private Long seq;
-        private LocalDateTime startDateTime;
-        private LocalDateTime endDateTime;
+        private String startDate;
+        private String endDate;
+        private String startTime;
+        private String endTime;
         private String region;
         private String location;
         private String locationUrl;

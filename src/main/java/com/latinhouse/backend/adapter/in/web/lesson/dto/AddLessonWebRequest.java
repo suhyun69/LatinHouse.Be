@@ -1,6 +1,7 @@
 package com.latinhouse.backend.adapter.in.web.lesson.dto;
 
 import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppRequest;
+import com.latinhouse.backend.adapter.in.web.lesson.mapper.LessonMapper;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -98,21 +99,5 @@ public class AddLessonWebRequest {
 
         @NotBlank(message = "contact.address cannot be blank")
         String address;
-    }
-
-    public AddLessonAppRequest toAppReq() {
-        return AddLessonAppRequest.builder()
-                .title(this.getTitle())
-                .genre(this.getGenre())
-                .instructorLa(this.getInstructorLa())
-                .instructorLo(this.getInstructorLo())
-                .options(this.getOptions())
-                .bank(this.getBank())
-                .accountNumber(this.getAccountNumber())
-                .accountOwner(this.getAccountOwner())
-                .discounts(this.getDiscounts())
-                .maxDiscountAmount(this.getMaxDiscountAmount())
-                .contacts(this.getContacts())
-                .build();
     }
 }

@@ -11,139 +11,98 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Component("lessonPersistenceMapper")
 @RequiredArgsConstructor
 public class LessonMapper {
-    public LessonT mapToEntity(Lesson lesson) {
+    public LessonT toEntity(Lesson lesson) {
         return LessonT.builder()
                 .no(lesson.getNo())
                 .title(lesson.getTitle())
                 .genre(lesson.getGenre().getCode())
                 .instructorLo(lesson.getInstructorLo())
                 .instructorLa(lesson.getInstructorLa())
-                .options(mapToOptionTs(lesson.getOptions()))
+                .options(lesson.getOptions().stream().map(LessonMapper::convertTo).toList())
                 .bank(lesson.getBank())
                 .accountNumber(lesson.getAccountNumber())
                 .accountOwner(lesson.getAccountOwner())
-                .discounts(mapToDiscountTs(lesson.getDiscounts()))
+                .discounts(lesson.getDiscounts().stream().map(LessonMapper::convertTo).toList())
                 .maxDiscountAmount(lesson.getMaxDiscountAmount())
-                .contacts(mapToContactTs(lesson.getContacts()))
+                .contacts(lesson.getContacts().stream().map(LessonMapper::convertTo).toList())
                 .build();
     }
 
-    public Lesson mapToDomain(LessonT lessonT) {
+    private static OptionT convertTo(Option o) {
+        return OptionT.builder()
+                .startDateTime(o.getStartDateTime())
+                .endDateTime(o.getEndDateTime())
+                .region(o.getRegion().getCode())
+                .location(o.getLocation())
+                .locationUrl(o.getLocationUrl())
+                .price(o.getPrice())
+                .build();
+    }
+
+    private static DiscountT convertTo(Discount d) {
+        return DiscountT.builder()
+                .type(d.getType().getCode())
+                .condition(d.getCondition())
+                .amount(d.getAmount())
+                .build();
+    }
+
+    private static ContactT convertTo(Contact c) {
+        return ContactT.builder()
+                .seq(c.getSeq())
+                .type(c.getType().getCode())
+                .name(c.getName())
+                .address(c.getAddress())
+                .build();
+    }
+
+    public Lesson toDomain(LessonT lessonT) {
         return Lesson.builder()
                 .no(lessonT.getNo())
                 .title(lessonT.getTitle())
                 .genre(Genre.of(lessonT.getGenre()))
                 .instructorLo(lessonT.getInstructorLo())
                 .instructorLa(lessonT.getInstructorLa())
-                .options(mapToOptions(lessonT.getOptions()) )
+                .options(lessonT.getOptions().stream().map(LessonMapper::convertTo).toList())
                 .bank(lessonT.getBank())
                 .accountNumber(lessonT.getAccountNumber())
                 .accountOwner(lessonT.getAccountOwner())
-                .discounts(mapToDiscounts(lessonT.getDiscounts()))
+                .discounts(lessonT.getDiscounts().stream().map(LessonMapper::convertTo).toList())
                 .maxDiscountAmount(lessonT.getMaxDiscountAmount())
-                .contacts(mapToContacts(lessonT.getContacts()))
+                .contacts(lessonT.getContacts().stream().map(LessonMapper::convertTo).toList())
                 .build();
     }
 
-    private List<Option> mapToOptions(List<OptionT> list) {
-        if (list == null) return List.of();
-        List<Option> out = new ArrayList<>(list.size());
-        for (OptionT x : list) {
-            if (x == null) continue;
-            out.add(Option.builder()
-                    .seq(x.getSeq())
-                    .startDateTime(x.getStartDateTime())
-                    .endDateTime(x.getEndDateTime())
-                    .region(Region.of(x.getRegion()))
-                    .location(x.getLocation())
-                    .locationUrl(x.getLocationUrl())
-                    .price(x.getPrice())
-                    .build());
-        }
-        return out;
+    private static Option convertTo(OptionT o) {
+        return Option.builder()
+                .seq(o.getSeq())
+                .startDateTime(o.getStartDateTime())
+                .endDateTime(o.getEndDateTime())
+                .region(Region.of(o.getRegion()))
+                .location(o.getLocation())
+                .locationUrl(o.getLocationUrl())
+                .price(o.getPrice())
+                .build();
     }
 
-    private List<Discount> mapToDiscounts(List<DiscountT> list) {
-        if (list == null) return List.of();
-        List<Discount> out = new ArrayList<>(list.size());
-        for (DiscountT x : list) {
-            if (x == null) continue;
-            out.add(Discount.builder()
-                    .seq(x.getSeq())
-                    .type(DiscountType.of(x.getType()))
-                    .condition(x.getCondition())
-                    .amount(x.getAmount())
-                    .build());
-        }
-        return out;
+    private static Discount convertTo(DiscountT d) {
+        return Discount.builder()
+                .seq(d.getSeq())
+                .type(DiscountType.of(d.getType()))
+                .condition(d.getCondition())
+                .amount(d.getAmount())
+                .build();
     }
 
-    private List<Contact> mapToContacts(List<ContactT> list) {
-        if (list == null) return List.of();
-        List<Contact> out = new ArrayList<>(list.size());
-        for (ContactT x : list) {
-            if (x == null) continue;
-            out.add(Contact.builder()
-                    .seq(x.getSeq())
-                    .type(ContactType.of(x.getType()))
-                    .name(x.getName())
-                    .address(x.getAddress())
-                    .build());
-        }
-        return out;
-    }
-
-    private static List<OptionT> mapToOptionTs(List<Option> list) {
-        if (list == null) return List.of();
-        List<OptionT> out = new ArrayList<>(list.size());
-        for (Option x : list) {
-            if (x == null) continue;
-            OptionT e = OptionT.builder()
-                    .seq(x.getSeq())
-                    .startDateTime(x.getStartDateTime())
-                    .endDateTime(x.getEndDateTime())
-                    .region(x.getRegion() != null ? x.getRegion().getCode() : null)
-                    .location(x.getLocation())
-                    .locationUrl(x.getLocationUrl())
-                    .price(x.getPrice())
-                    .build();
-            out.add(e);
-        }
-        return out;
-    }
-
-    private static List<DiscountT> mapToDiscountTs(List<Discount> list) {
-        if (list == null) return List.of();
-        List<DiscountT> out = new ArrayList<>(list.size());
-        for (Discount x : list) {
-            if (x == null) continue;
-            DiscountT e = DiscountT.builder()
-                    .seq(x.getSeq())
-                    .type(x.getType() != null ? x.getType().getCode() : null)
-                    .condition(x.getCondition())
-                    .amount(x.getAmount())
-                    .build();
-            out.add(e);
-        }
-        return out;
-    }
-
-    private static List<ContactT> mapToContactTs(List<Contact> list) {
-        if (list == null) return List.of();
-        List<ContactT> out = new ArrayList<>(list.size());
-        for (Contact x : list) {
-            if (x == null) continue;
-            ContactT e = ContactT.builder()
-                    .seq(x.getSeq())
-                    .type(x.getType() != null ? x.getType().getCode() : null)
-                    .name(x.getName())
-                    .address(x.getAddress())
-                    .build();
-            out.add(e);
-        }
-        return out;
+    private static Contact convertTo(ContactT c) {
+        return Contact.builder()
+                .seq(c.getSeq())
+                .type(ContactType.of(c.getType()))
+                .name(c.getName())
+                .address(c.getAddress())
+                .build();
     }
 }
