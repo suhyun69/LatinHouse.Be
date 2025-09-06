@@ -129,9 +129,7 @@ public class AddLessonAppRequest extends SelfValidating<AddLessonAppRequest> {
                 .toList();
 
         if(instructorLo == null && instructorLa == null) {
-            throw new IllegalArgumentException(
-                    String.format("instructorLo and instructorLa both null are not allowed")
-            );
+            throw new BadRequestException(String.format("instructorLo and instructorLa both null are not allowed"), 0);
         }
 
         this.validateSelf();
@@ -143,9 +141,7 @@ public class AddLessonAppRequest extends SelfValidating<AddLessonAppRequest> {
         LocalDateTime endDateTime = DateTimeUtil.toLocalDateTime(o.getEndDate(), o.getEndTime());
 
         if (!startDateTime.isBefore(endDateTime)) {
-            throw new IllegalArgumentException(
-                    String.format("startDateTime(%s) must be before endDateTime(%s)", startDateTime, endDateTime)
-            );
+            throw new BadRequestException(String.format("startDateTime(%s) must be before endDateTime(%s)", startDateTime, endDateTime), 0);
         }
 
         return Option.builder()
