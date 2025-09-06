@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component("lessonPersistenceMapper")
 @RequiredArgsConstructor
-public class LessonMapper {
+public class LessonPersistenceMapper {
     public LessonT toEntity(Lesson lesson) {
         return LessonT.builder()
                 .no(lesson.getNo())
@@ -18,13 +18,13 @@ public class LessonMapper {
                 .genre(lesson.getGenre().getCode())
                 .instructorLo(lesson.getInstructorLo())
                 .instructorLa(lesson.getInstructorLa())
-                .options(lesson.getOptions().stream().map(LessonMapper::convertTo).toList())
+                .options(lesson.getOptions().stream().map(LessonPersistenceMapper::convertTo).toList())
                 .bank(lesson.getBank())
                 .accountNumber(lesson.getAccountNumber())
                 .accountOwner(lesson.getAccountOwner())
-                .discounts(lesson.getDiscounts().stream().map(LessonMapper::convertTo).toList())
+                .discounts(lesson.getDiscounts().stream().map(LessonPersistenceMapper::convertTo).toList())
                 .maxDiscountAmount(lesson.getMaxDiscountAmount())
-                .contacts(lesson.getContacts().stream().map(LessonMapper::convertTo).toList())
+                .contacts(lesson.getContacts().stream().map(LessonPersistenceMapper::convertTo).toList())
                 .build();
     }
 
@@ -63,13 +63,13 @@ public class LessonMapper {
                 .genre(Genre.of(lessonT.getGenre()))
                 .instructorLo(lessonT.getInstructorLo())
                 .instructorLa(lessonT.getInstructorLa())
-                .options(lessonT.getOptions().stream().map(LessonMapper::convertTo).toList())
+                .options(lessonT.getOptions().stream().map(LessonPersistenceMapper::convertTo).toList())
                 .bank(lessonT.getBank())
                 .accountNumber(lessonT.getAccountNumber())
                 .accountOwner(lessonT.getAccountOwner())
-                .discounts(lessonT.getDiscounts().stream().map(LessonMapper::convertTo).toList())
+                .discounts(lessonT.getDiscounts().stream().map(LessonPersistenceMapper::convertTo).toList())
                 .maxDiscountAmount(lessonT.getMaxDiscountAmount())
-                .contacts(lessonT.getContacts().stream().map(LessonMapper::convertTo).toList())
+                .contacts(lessonT.getContacts().stream().map(LessonPersistenceMapper::convertTo).toList())
                 .build();
     }
 

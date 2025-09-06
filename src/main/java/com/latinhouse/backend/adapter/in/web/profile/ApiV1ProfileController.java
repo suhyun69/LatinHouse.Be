@@ -4,7 +4,7 @@ import com.latinhouse.backend.adapter.in.web.profile.dto.AddProfileWebRequest;
 import com.latinhouse.backend.adapter.in.web.profile.dto.AddProfileWebResponse;
 import com.latinhouse.backend.adapter.in.web.profile.dto.ProfileWebResponse;
 import com.latinhouse.backend.adapter.in.web.profile.mapper.ProfileMapper;
-import com.latinhouse.backend.adapter.out.persistence.lesson.mapper.LessonMapper;
+import com.latinhouse.backend.adapter.out.persistence.lesson.mapper.LessonPersistenceMapper;
 import com.latinhouse.backend.application.port.in.profile.FindProfileUseCase;
 import com.latinhouse.backend.application.port.in.profile.SignupUseCase;
 import com.latinhouse.backend.application.port.in.profile.UpdateProfileUseCase;
@@ -29,7 +29,7 @@ public class ApiV1ProfileController {
     private final SignupUseCase signupUseCase;
     private final FindProfileUseCase findProfileUseCase;
     private final UpdateProfileUseCase updateProfileUseCase;
-    private final LessonMapper lessonMapper;
+    private final LessonPersistenceMapper lessonPersistenceMapper;
 
     @PostMapping("")
     @Operation(summary = "Add Profile", description = "by email")
