@@ -22,25 +22,25 @@ public class ProfilePersistenceAdapter implements CreateProfilePort, ReadProfile
 
     @Override
     public Profile create(Profile profile) {
-        ProfileT profileT = profileMapper.mapToEntity(profile);
-        return profileMapper.mapToDomain(profileRepository.save(profileT));
+        ProfileT profileT = profileMapper.toEntity(profile);
+        return profileMapper.toDomain(profileRepository.save(profileT));
     }
 
     @Override
     public List<Profile> findAll() {
         return profileRepository.findAll().stream()
-                .map(profileMapper::mapToDomain)
+                .map(profileMapper::toDomain)
                 .toList();
     }
 
     @Override
     public Optional<Profile> getProfileById(String profileId) {
         return profileRepository.findByProfileId(profileId)
-                .map(profileMapper::mapToDomain);
+                .map(profileMapper::toDomain);
     }
 
     @Override
-    public void save(Profile profile) {
-        profileRepository.save(profileMapper.mapToEntity(profile));
+    public void update(Profile profile) {
+        profileRepository.save(profileMapper.toEntity(profile));
     }
 }

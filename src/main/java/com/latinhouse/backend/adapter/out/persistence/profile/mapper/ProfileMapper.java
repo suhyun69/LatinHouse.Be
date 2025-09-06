@@ -6,10 +6,10 @@ import com.latinhouse.backend.domain.profile.Sex;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("profilePersistenceMapper")
 @RequiredArgsConstructor
 public class ProfileMapper {
-    public ProfileT mapToEntity(Profile profile) {
+    public ProfileT toEntity(Profile profile) {
         return ProfileT.builder()
                 .email(profile.getEmail())
                 .password(profile.getPassword())
@@ -20,14 +20,14 @@ public class ProfileMapper {
                 .build();
     }
 
-    public Profile mapToDomain(ProfileT userT) {
+    public Profile toDomain(ProfileT profileT) {
         return Profile.builder()
-                .email(userT.getEmail())
-                .password(userT.getPassword())
-                .profileId(userT.getProfileId())
-                .nickname(userT.getNickname())
-                .sex(Sex.of(userT.getSex()))
-                .isInstructor(userT.getIsInstructor())
+                .email(profileT.getEmail())
+                .password(profileT.getPassword())
+                .profileId(profileT.getProfileId())
+                .nickname(profileT.getNickname())
+                .sex(Sex.of(profileT.getSex()))
+                .isInstructor(profileT.getIsInstructor())
                 .build();
     }
 }

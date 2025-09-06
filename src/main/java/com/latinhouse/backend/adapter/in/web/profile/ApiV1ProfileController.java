@@ -3,10 +3,11 @@ package com.latinhouse.backend.adapter.in.web.profile;
 import com.latinhouse.backend.adapter.in.web.profile.dto.AddProfileWebRequest;
 import com.latinhouse.backend.adapter.in.web.profile.dto.AddProfileWebResponse;
 import com.latinhouse.backend.adapter.in.web.profile.dto.ProfileWebResponse;
+import com.latinhouse.backend.adapter.in.web.profile.mapper.ProfileMapper;
+import com.latinhouse.backend.adapter.out.persistence.lesson.mapper.LessonMapper;
 import com.latinhouse.backend.application.port.in.profile.FindProfileUseCase;
 import com.latinhouse.backend.application.port.in.profile.SignupUseCase;
 import com.latinhouse.backend.application.port.in.profile.UpdateProfileUseCase;
-import com.latinhouse.backend.application.port.in.profile.dto.ProfileAppResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -23,9 +24,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ApiV1ProfileController {
 
+    private final ProfileMapper profileMapper;
+
     private final SignupUseCase signupUseCase;
     private final FindProfileUseCase findProfileUseCase;
     private final UpdateProfileUseCase updateProfileUseCase;
+    private final LessonMapper lessonMapper;
 
     @PostMapping("")
     @Operation(summary = "Add Profile", description = "by email")
@@ -33,7 +37,7 @@ public class ApiV1ProfileController {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(signupUseCase.addByEmail(webReq.toAppReq()).toWebRes());
+                .body(profileMapper.toWebRes(signupUseCase.addByEmail(profileMapper.toAppReq(webReq))));
     }
 
     @GetMapping("")
@@ -41,7 +45,7 @@ public class ApiV1ProfileController {
     public ResponseEntity<List<ProfileWebResponse>> findProfiles() {
 
         List<ProfileWebResponse> webRes = findProfileUseCase.search().stream()
-                .map(ProfileAppResponse::toWebRes)
+                .map(profileMapper::toWebRes)
                 .toList();
 
         return ResponseEntity
@@ -55,7 +59,7 @@ public class ApiV1ProfileController {
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(findProfileUseCase.getProfile(profileId).toWebRes());
+                .body(profileMapper.toWebRes(findProfileUseCase.getProfile(profileId)));
     }
 
     @PutMapping("/instructor/{profileId}")

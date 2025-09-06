@@ -3,7 +3,7 @@ package com.latinhouse.backend.application.port.in.profile.impl;
 import com.latinhouse.backend.application.port.in.profile.UpdateProfileUseCase;
 import com.latinhouse.backend.common.exception.ProfileNotFoundException;
 import com.latinhouse.backend.domain.profile.Profile;
-import com.latinhouse.backend.domain.profile.ProfileService;
+import com.latinhouse.backend.domain.profile.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +22,6 @@ public class UpdateProfileImpl implements UpdateProfileUseCase {
                 .orElseThrow(() -> new ProfileNotFoundException(profileId));
         profile.enrollInstructor();
 
-        profileService.save(profile);
+        profileService.update(profile);
     }
 }

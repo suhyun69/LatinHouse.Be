@@ -25,11 +25,11 @@ public class AddProfileAppRequest extends SelfValidating<AddProfileAppRequest> {
     Sex sex;
 
     @Builder
-    public AddProfileAppRequest(String email, String password, String nickname, String sex) {
+    public AddProfileAppRequest(String email, String password, String nickname, Sex sex) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.sex = Sex.of(sex);
+        this.sex = sex;
 
         this.validateSelf();
     }
