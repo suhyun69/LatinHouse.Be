@@ -1,10 +1,10 @@
-package com.latinhouse.backend.domain.lesson.mapper;
+package com.latinhouse.backend.application.domain.lesson.mapper;
 
-import com.latinhouse.backend.domain.lesson.Contact;
-import com.latinhouse.backend.domain.lesson.Discount;
-import com.latinhouse.backend.domain.lesson.Lesson;
-import com.latinhouse.backend.domain.lesson.Option;
-import com.latinhouse.backend.domain.lesson.service.AddLessonCommand;
+import com.latinhouse.backend.application.domain.lesson.Contact;
+import com.latinhouse.backend.application.domain.lesson.Discount;
+import com.latinhouse.backend.application.domain.lesson.Lesson;
+import com.latinhouse.backend.application.domain.lesson.Option;
+import com.latinhouse.backend.application.domain.lesson.service.AddLessonCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

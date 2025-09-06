@@ -1,10 +1,11 @@
 package com.latinhouse.backend.application.port.in.lesson.dto;
 
-import com.latinhouse.backend.adapter.in.web.lesson.dto.AddLessonWebRequest;
+import com.latinhouse.backend.application.domain.lesson.ContactType;
+import com.latinhouse.backend.application.domain.lesson.DiscountType;
+import com.latinhouse.backend.application.domain.lesson.Genre;
+import com.latinhouse.backend.application.domain.lesson.Region;
 import com.latinhouse.backend.common.SelfValidating;
 import com.latinhouse.backend.common.exception.BadRequestException;
-import com.latinhouse.backend.domain.lesson.*;
-import com.latinhouse.backend.util.DateTimeUtil;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -17,8 +18,6 @@ import lombok.Value;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Value
 @EqualsAndHashCode(callSuper = false)

@@ -1,9 +1,9 @@
-package com.latinhouse.backend.domain.lesson.service;
+package com.latinhouse.backend.application.domain.lesson.service;
 
 import com.latinhouse.backend.application.port.out.lesson.CreateLessonPort;
 import com.latinhouse.backend.application.port.out.lesson.ReadLessonPort;
-import com.latinhouse.backend.domain.lesson.Lesson;
-import com.latinhouse.backend.domain.lesson.mapper.LessonMapper;
+import com.latinhouse.backend.application.domain.lesson.Lesson;
+import com.latinhouse.backend.application.domain.lesson.mapper.LessonMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

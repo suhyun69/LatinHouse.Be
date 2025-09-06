@@ -6,7 +6,7 @@ import com.latinhouse.backend.adapter.in.web.profile.dto.ProfileWebResponse;
 import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppRequest;
 import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppResponse;
 import com.latinhouse.backend.application.port.in.profile.dto.ProfileAppResponse;
-import com.latinhouse.backend.domain.profile.Sex;
+import com.latinhouse.backend.application.domain.profile.Sex;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

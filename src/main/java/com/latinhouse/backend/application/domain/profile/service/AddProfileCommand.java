@@ -1,6 +1,6 @@
-package com.latinhouse.backend.domain.profile.service;
+package com.latinhouse.backend.application.domain.profile.service;
 
-import com.latinhouse.backend.domain.profile.Sex;
+import com.latinhouse.backend.application.domain.profile.Sex;
 import lombok.Builder;
 import lombok.Value;
 

@@ -1,7 +1,9 @@
 package com.latinhouse.backend.application.port.in.lesson.dto;
 
-import com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse;
-import com.latinhouse.backend.domain.lesson.*;
+import com.latinhouse.backend.application.domain.lesson.ContactType;
+import com.latinhouse.backend.application.domain.lesson.DiscountType;
+import com.latinhouse.backend.application.domain.lesson.Genre;
+import com.latinhouse.backend.application.domain.lesson.Region;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

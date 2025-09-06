@@ -1,8 +1,8 @@
 package com.latinhouse.backend.adapter.out.persistence.profile.mapper;
 
 import com.latinhouse.backend.adapter.out.persistence.profile.entity.ProfileT;
-import com.latinhouse.backend.domain.profile.Profile;
-import com.latinhouse.backend.domain.profile.Sex;
+import com.latinhouse.backend.application.domain.profile.Profile;
+import com.latinhouse.backend.application.domain.profile.Sex;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

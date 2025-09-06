@@ -5,7 +5,7 @@ import com.latinhouse.backend.adapter.out.persistence.lesson.mapper.LessonMapper
 import com.latinhouse.backend.adapter.out.persistence.lesson.repository.LessonRepository;
 import com.latinhouse.backend.application.port.out.lesson.CreateLessonPort;
 import com.latinhouse.backend.application.port.out.lesson.ReadLessonPort;
-import com.latinhouse.backend.domain.lesson.Lesson;
+import com.latinhouse.backend.application.domain.lesson.Lesson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

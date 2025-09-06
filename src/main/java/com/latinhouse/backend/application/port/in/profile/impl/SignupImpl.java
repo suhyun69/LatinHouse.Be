@@ -4,9 +4,8 @@ import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppReque
 import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppResponse;
 import com.latinhouse.backend.application.port.in.profile.SignupUseCase;
 import com.latinhouse.backend.application.port.in.profile.mapper.ProfileMapper;
-import com.latinhouse.backend.domain.profile.service.AddProfileCommand;
-import com.latinhouse.backend.domain.profile.Profile;
-import com.latinhouse.backend.domain.profile.service.ProfileService;
+import com.latinhouse.backend.application.domain.profile.Profile;
+import com.latinhouse.backend.application.domain.profile.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

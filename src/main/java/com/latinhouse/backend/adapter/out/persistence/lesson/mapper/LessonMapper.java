@@ -4,12 +4,9 @@ import com.latinhouse.backend.adapter.out.persistence.lesson.entity.ContactT;
 import com.latinhouse.backend.adapter.out.persistence.lesson.entity.DiscountT;
 import com.latinhouse.backend.adapter.out.persistence.lesson.entity.LessonT;
 import com.latinhouse.backend.adapter.out.persistence.lesson.entity.OptionT;
-import com.latinhouse.backend.domain.lesson.*;
+import com.latinhouse.backend.application.domain.lesson.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component("lessonPersistenceMapper")
 @RequiredArgsConstructor

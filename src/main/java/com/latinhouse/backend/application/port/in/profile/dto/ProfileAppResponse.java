@@ -1,6 +1,6 @@
 package com.latinhouse.backend.application.port.in.profile.dto;
 
-import com.latinhouse.backend.domain.profile.Sex;
+import com.latinhouse.backend.application.domain.profile.Sex;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

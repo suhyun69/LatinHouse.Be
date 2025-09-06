@@ -1,4 +1,4 @@
-package com.latinhouse.backend.domain.lesson;
+package com.latinhouse.backend.application.domain.lesson;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

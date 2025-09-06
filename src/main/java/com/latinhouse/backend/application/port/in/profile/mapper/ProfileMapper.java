@@ -3,8 +3,8 @@ package com.latinhouse.backend.application.port.in.profile.mapper;
 import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppRequest;
 import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppResponse;
 import com.latinhouse.backend.application.port.in.profile.dto.ProfileAppResponse;
-import com.latinhouse.backend.domain.profile.Profile;
-import com.latinhouse.backend.domain.profile.service.AddProfileCommand;
+import com.latinhouse.backend.application.domain.profile.Profile;
+import com.latinhouse.backend.application.domain.profile.service.AddProfileCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

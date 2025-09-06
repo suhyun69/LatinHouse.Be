@@ -1,7 +1,7 @@
-package com.latinhouse.backend.domain.profile.mapper;
+package com.latinhouse.backend.application.domain.profile.mapper;
 
-import com.latinhouse.backend.domain.profile.Profile;
-import com.latinhouse.backend.domain.profile.service.AddProfileCommand;
+import com.latinhouse.backend.application.domain.profile.Profile;
+import com.latinhouse.backend.application.domain.profile.service.AddProfileCommand;
 import com.latinhouse.backend.util.RandomUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

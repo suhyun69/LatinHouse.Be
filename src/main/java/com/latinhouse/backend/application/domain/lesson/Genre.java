@@ -1,6 +1,4 @@
-package com.latinhouse.backend.domain.lesson;
-
-import com.latinhouse.backend.domain.profile.Sex;
+package com.latinhouse.backend.application.domain.lesson;
 
 import java.util.Arrays;
 

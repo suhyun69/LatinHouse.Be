@@ -1,4 +1,4 @@
-package com.latinhouse.backend.domain.profile;
+package com.latinhouse.backend.application.domain.profile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
