@@ -1,46 +1,31 @@
-package com.latinhouse.backend.domain.lesson;
+package com.latinhouse.backend.domain.lesson.mapper;
 
-import com.latinhouse.backend.application.port.out.lesson.CreateLessonPort;
-import com.latinhouse.backend.application.port.out.lesson.ReadLessonPort;
+import com.latinhouse.backend.domain.lesson.Contact;
+import com.latinhouse.backend.domain.lesson.Discount;
+import com.latinhouse.backend.domain.lesson.Lesson;
+import com.latinhouse.backend.domain.lesson.Option;
+import com.latinhouse.backend.domain.lesson.service.AddLessonCommand;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Optional;
-
-@Service
+@Component("lessonDomainMapper")
 @RequiredArgsConstructor
-public class LessonService {
+public class LessonMapper {
 
-    private final CreateLessonPort createLessonPort;
-    private final ReadLessonPort readLessonPort;
-
-    public Lesson addLesson(AddLessonCommand cmd) {
-
-        List<Option> options = Optional.ofNullable(cmd.getOptions()).orElse(List.of()).stream()
-                .map(LessonService::convertTo)
-                .toList();
-        List<Discount> discounts = Optional.ofNullable(cmd.getDiscounts()).orElse(List.of()).stream()
-                .map(LessonService::convertTo)
-                .toList();
-        List<Contact> contacts = Optional.ofNullable(cmd.getContacts()).orElse(List.of()).stream()
-                .map(LessonService::convertTo)
-                .toList();
-
-        Lesson lesson = Lesson.builder()
+    public Lesson toDomain(AddLessonCommand cmd) {
+        return Lesson.builder()
                 .title(cmd.getTitle())
                 .genre(cmd.getGenre())
                 .instructorLo(cmd.getInstructorLo())
                 .instructorLa(cmd.getInstructorLa())
-                .options(options)
+                .options(cmd.getOptions().stream().map(LessonMapper::convertTo).toList())
                 .bank(cmd.getBank())
                 .accountNumber(cmd.getAccountNumber())
                 .accountOwner(cmd.getAccountOwner())
-                .discounts(discounts)
+                .discounts(cmd.getDiscounts().stream().map(LessonMapper::convertTo).toList())
                 .maxDiscountAmount(cmd.getMaxDiscountAmount())
-                .contacts(contacts)
+                .contacts(cmd.getContacts().stream().map(LessonMapper::convertTo).toList())
                 .build();
-        return createLessonPort.create(lesson);
     }
 
     private static Option convertTo(AddLessonCommand.Option o) {
@@ -69,6 +54,4 @@ public class LessonService {
                 .address(c.getAddress())
                 .build();
     }
-
-    public List<Lesson> search() { return readLessonPort.findAll(); }
 }

@@ -1,5 +1,9 @@
-package com.latinhouse.backend.domain.lesson;
+package com.latinhouse.backend.domain.lesson.service;
 
+import com.latinhouse.backend.domain.lesson.ContactType;
+import com.latinhouse.backend.domain.lesson.DiscountType;
+import com.latinhouse.backend.domain.lesson.Genre;
+import com.latinhouse.backend.domain.lesson.Region;
 import lombok.Builder;
 import lombok.Value;
 

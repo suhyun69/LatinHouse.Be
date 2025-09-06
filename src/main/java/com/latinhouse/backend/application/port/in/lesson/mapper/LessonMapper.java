@@ -4,6 +4,7 @@ import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppRequest
 import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppResponse;
 import com.latinhouse.backend.application.port.in.lesson.dto.LessonAppResponse;
 import com.latinhouse.backend.domain.lesson.*;
+import com.latinhouse.backend.domain.lesson.service.AddLessonCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

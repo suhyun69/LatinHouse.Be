@@ -3,7 +3,7 @@ package com.latinhouse.backend.application.port.in.lesson.impl;
 import com.latinhouse.backend.application.port.in.lesson.FindLessonUseCase;
 import com.latinhouse.backend.application.port.in.lesson.dto.LessonAppResponse;
 import com.latinhouse.backend.application.port.in.lesson.mapper.LessonMapper;
-import com.latinhouse.backend.domain.lesson.LessonService;
+import com.latinhouse.backend.domain.lesson.service.LessonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
