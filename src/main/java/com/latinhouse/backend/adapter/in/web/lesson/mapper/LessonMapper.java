@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Component("lessonWebMapper")
 @RequiredArgsConstructor
@@ -30,7 +32,7 @@ public class LessonMapper {
                 .bank(webReq.getBank())
                 .accountNumber(webReq.getAccountNumber())
                 .accountOwner(webReq.getAccountOwner())
-                .discounts(webReq.getDiscounts().stream().map(LessonMapper::convertTo).toList())
+                .discounts(Optional.ofNullable(webReq.getDiscounts()).orElse(List.of()).stream().map(LessonMapper::convertTo).toList())
                 .maxDiscountAmount(webReq.getMaxDiscountAmount())
                 .contacts(webReq.getContacts().stream().map(LessonMapper::convertTo).toList())
                 .build();

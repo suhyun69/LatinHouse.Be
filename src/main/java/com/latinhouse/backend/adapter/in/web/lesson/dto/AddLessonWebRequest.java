@@ -1,7 +1,5 @@
 package com.latinhouse.backend.adapter.in.web.lesson.dto;
 
-import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppRequest;
-import com.latinhouse.backend.adapter.in.web.lesson.mapper.LessonMapper;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.*;
