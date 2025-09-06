@@ -48,4 +48,13 @@ public class ApiV1LessonController {
                 .status(HttpStatus.OK)
                 .body(webRes);
     }
+
+    @GetMapping("/{lessonNo}")
+    @Operation(summary = "Get Lesson", description = "by lessonNo")
+    public ResponseEntity<LessonWebResponse> getLesson(@PathVariable Long lessonNo) {
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(lessonMapper.toWebRes(findLessonUseCase.getLesson(lessonNo)));
+    }
 }

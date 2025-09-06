@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,4 +23,5 @@ public class LessonService {
     }
 
     public List<Lesson> search() { return readLessonPort.findAll(); }
+    public Optional<Lesson> getLesson(Long lessonNo) { return readLessonPort.findById(lessonNo); }
 }

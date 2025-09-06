@@ -3,6 +3,8 @@ package com.latinhouse.backend.application.port.in.lesson.impl;
 import com.latinhouse.backend.application.port.in.lesson.FindLessonUseCase;
 import com.latinhouse.backend.application.port.in.lesson.dto.LessonAppResponse;
 import com.latinhouse.backend.application.port.in.lesson.mapper.LessonMapper;
+import com.latinhouse.backend.common.exception.LessonNotFoundException;
+import com.latinhouse.backend.domain.lesson.Lesson;
 import com.latinhouse.backend.domain.lesson.service.LessonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,5 +23,13 @@ public class FindLessonImpl implements FindLessonUseCase {
         return lessonService.search().stream()
                 .map(lessonMapper::toAppRes)
                 .toList();
+    }
+
+    @Override
+    public LessonAppResponse getLesson(Long LessonNo) {
+        Lesson lesson = lessonService.getLesson(LessonNo)
+                .orElseThrow(() -> new LessonNotFoundException(LessonNo));
+
+        return lessonMapper.toAppRes(lesson);
     }
 }

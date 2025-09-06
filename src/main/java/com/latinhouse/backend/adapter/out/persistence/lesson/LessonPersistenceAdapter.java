@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -29,5 +30,11 @@ public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPor
         return lessonRepository.findAll().stream()
                 .map(lessonMapper::toDomain)
                 .toList();
+    }
+
+    @Override
+    public Optional<Lesson> findById(Long no) {
+        return lessonRepository.findById(no)
+                .map(lessonMapper::toDomain);
     }
 }

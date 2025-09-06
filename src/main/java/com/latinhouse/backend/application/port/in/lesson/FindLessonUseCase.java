@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface FindLessonUseCase {
     List<LessonAppResponse> search();
+    LessonAppResponse getLesson(Long LessonNo);
 }
