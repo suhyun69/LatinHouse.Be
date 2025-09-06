@@ -2,7 +2,7 @@ package com.latinhouse.backend.application.port.in.lesson.impl;
 
 import com.latinhouse.backend.application.port.in.lesson.FindLessonUseCase;
 import com.latinhouse.backend.application.port.in.lesson.dto.LessonAppResponse;
-import com.latinhouse.backend.application.port.in.lesson.mapper.LessonMapper;
+import com.latinhouse.backend.application.port.in.lesson.mapper.LessonPortMapper;
 import com.latinhouse.backend.common.exception.LessonNotFoundException;
 import com.latinhouse.backend.application.domain.lesson.Lesson;
 import com.latinhouse.backend.application.domain.lesson.service.LessonService;
@@ -15,13 +15,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FindLessonImpl implements FindLessonUseCase {
 
-    private final LessonMapper lessonMapper;
+    private final LessonPortMapper lessonPortMapper;
     private final LessonService lessonService;
 
     @Override
     public List<LessonAppResponse> search() {
         return lessonService.search().stream()
-                .map(lessonMapper::toAppRes)
+                .map(lesson -> lessonPortMapper.toAppRes(lesson, LessonAppResponse.class))
                 .toList();
     }
 
@@ -30,6 +30,6 @@ public class FindLessonImpl implements FindLessonUseCase {
         Lesson lesson = lessonService.getLesson(LessonNo)
                 .orElseThrow(() -> new LessonNotFoundException(LessonNo));
 
-        return lessonMapper.toAppRes(lesson);
+        return lessonPortMapper.toAppRes(lesson, LessonAppResponse.class);
     }
 }
