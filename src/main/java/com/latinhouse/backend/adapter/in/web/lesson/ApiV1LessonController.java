@@ -3,7 +3,7 @@ package com.latinhouse.backend.adapter.in.web.lesson;
 import com.latinhouse.backend.adapter.in.web.lesson.dto.AddLessonWebRequest;
 import com.latinhouse.backend.adapter.in.web.lesson.dto.AddLessonWebResponse;
 import com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse;
-import com.latinhouse.backend.adapter.in.web.lesson.mapper.LessonMapper;
+import com.latinhouse.backend.adapter.in.web.lesson.mapper.LessonWebMapper;
 import com.latinhouse.backend.application.port.in.lesson.AddLessonUseCase;
 import com.latinhouse.backend.application.port.in.lesson.FindLessonUseCase;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,7 +25,7 @@ public class ApiV1LessonController {
     private final AddLessonUseCase addLessonUseCase;
     private final FindLessonUseCase findLessonUseCase;
 
-    private final LessonMapper lessonMapper;
+    private final LessonWebMapper lessonWebMapper;
 
     @PostMapping("")
     @Operation(summary = "Add Lesson")
@@ -33,7 +33,7 @@ public class ApiV1LessonController {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(lessonMapper.toWebRes(addLessonUseCase.addLesson(lessonMapper.toAppReq(webReq))));
+                .body(lessonWebMapper.toWebRes(addLessonUseCase.addLesson(lessonWebMapper.toAppReq(webReq))));
     }
 
     @GetMapping("")
@@ -41,7 +41,7 @@ public class ApiV1LessonController {
     public ResponseEntity<List<LessonWebResponse>> findLessons() {
 
         List<LessonWebResponse> webRes = findLessonUseCase.search().stream()
-                .map(lessonMapper::toWebRes)
+                .map(lessonWebMapper::toWebRes)
                 .toList();
 
         return ResponseEntity
@@ -55,6 +55,6 @@ public class ApiV1LessonController {
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(lessonMapper.toWebRes(findLessonUseCase.getLesson(lessonNo)));
+                .body(lessonWebMapper.toWebRes(findLessonUseCase.getLesson(lessonNo)));
     }
 }
