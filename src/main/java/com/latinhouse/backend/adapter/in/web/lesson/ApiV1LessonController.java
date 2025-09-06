@@ -35,7 +35,7 @@ public class ApiV1LessonController {
     }
 
     @GetMapping("")
-    @Operation(summary = "Find Profiles")
+    @Operation(summary = "Find Lessons")
     public ResponseEntity<List<LessonWebResponse>> findLessons() {
 
         List<LessonWebResponse> webRes = findLessonUseCase.search().stream()

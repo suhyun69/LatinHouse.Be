@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Option {
+    private Long seq;
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
     private Region region;

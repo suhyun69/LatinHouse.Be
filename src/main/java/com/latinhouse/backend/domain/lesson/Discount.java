@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Discount {
+    private Long seq;
     private DiscountType type;
     private String condition;
     private BigDecimal amount;

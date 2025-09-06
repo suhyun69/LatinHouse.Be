@@ -33,6 +33,7 @@ public class LessonAppResponse {
     @Builder
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Option {
+        private Long seq;
         private LocalDateTime startDateTime;
         private LocalDateTime endDateTime;
         private Region region;
@@ -45,6 +46,7 @@ public class LessonAppResponse {
     @Builder
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Discount {
+        private Long seq;
         private DiscountType type;
         private String condition;
         private BigDecimal amount;
@@ -54,6 +56,7 @@ public class LessonAppResponse {
     @Builder
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Contact {
+        private Long seq;
         private ContactType type;
         private String name;
         private String address;
@@ -78,6 +81,7 @@ public class LessonAppResponse {
 
     private static Option convertTo(com.latinhouse.backend.domain.lesson.Option o) {
         return Option.builder()
+                .seq(o.getSeq())
                 .startDateTime(o.getStartDateTime())
                 .endDateTime(o.getEndDateTime())
                 .region(o.getRegion())
@@ -89,6 +93,7 @@ public class LessonAppResponse {
 
     private static Discount convertTo(com.latinhouse.backend.domain.lesson.Discount d) {
         return Discount.builder()
+                .seq(d.getSeq())
                 .type(d.getType())
                 .condition(d.getCondition())
                 .amount(d.getAmount())
@@ -97,6 +102,7 @@ public class LessonAppResponse {
 
     private static Contact convertTo(com.latinhouse.backend.domain.lesson.Contact c) {
         return Contact.builder()
+                .seq(c.getSeq())
                 .type(c.getType())
                 .name(c.getName())
                 .address(c.getAddress())
@@ -122,6 +128,7 @@ public class LessonAppResponse {
 
     private static com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse.Option convertTo(Option o) {
         return com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse.Option.builder()
+                .seq(o.getSeq())
                 .startDateTime(o.getStartDateTime())
                 .endDateTime(o.getEndDateTime())
                 .region(o.getRegion().getCode())
@@ -133,6 +140,7 @@ public class LessonAppResponse {
 
     private static com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse.Discount convertTo(Discount d) {
         return com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse.Discount.builder()
+                .seq(d.getSeq())
                 .type(d.getType().getCode())
                 .condition(d.getCondition())
                 .amount(d.getAmount())
@@ -141,6 +149,7 @@ public class LessonAppResponse {
 
     private static com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse.Contact convertTo(Contact c) {
         return com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse.Contact.builder()
+                .seq(c.getSeq())
                 .type(c.getType().getCode())
                 .name(c.getName())
                 .address(c.getAddress())

@@ -54,6 +54,7 @@ public class LessonMapper {
         for (OptionT x : list) {
             if (x == null) continue;
             out.add(Option.builder()
+                    .seq(x.getSeq())
                     .startDateTime(x.getStartDateTime())
                     .endDateTime(x.getEndDateTime())
                     .region(Region.of(x.getRegion()))
@@ -71,6 +72,7 @@ public class LessonMapper {
         for (DiscountT x : list) {
             if (x == null) continue;
             out.add(Discount.builder()
+                    .seq(x.getSeq())
                     .type(DiscountType.of(x.getType()))
                     .condition(x.getCondition())
                     .amount(x.getAmount())
@@ -85,6 +87,7 @@ public class LessonMapper {
         for (ContactT x : list) {
             if (x == null) continue;
             out.add(Contact.builder()
+                    .seq(x.getSeq())
                     .type(ContactType.of(x.getType()))
                     .name(x.getName())
                     .address(x.getAddress())
@@ -99,6 +102,7 @@ public class LessonMapper {
         for (Option x : list) {
             if (x == null) continue;
             OptionT e = OptionT.builder()
+                    .seq(x.getSeq())
                     .startDateTime(x.getStartDateTime())
                     .endDateTime(x.getEndDateTime())
                     .region(x.getRegion() != null ? x.getRegion().getCode() : null)
@@ -117,6 +121,7 @@ public class LessonMapper {
         for (Discount x : list) {
             if (x == null) continue;
             DiscountT e = DiscountT.builder()
+                    .seq(x.getSeq())
                     .type(x.getType() != null ? x.getType().getCode() : null)
                     .condition(x.getCondition())
                     .amount(x.getAmount())
@@ -132,6 +137,7 @@ public class LessonMapper {
         for (Contact x : list) {
             if (x == null) continue;
             ContactT e = ContactT.builder()
+                    .seq(x.getSeq())
                     .type(x.getType() != null ? x.getType().getCode() : null)
                     .name(x.getName())
                     .address(x.getAddress())

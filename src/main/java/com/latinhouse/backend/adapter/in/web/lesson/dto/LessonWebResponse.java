@@ -30,6 +30,7 @@ public class LessonWebResponse {
     @Builder
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Option {
+        private Long seq;
         private LocalDateTime startDateTime;
         private LocalDateTime endDateTime;
         private String region;
@@ -42,6 +43,7 @@ public class LessonWebResponse {
     @Builder
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Discount {
+        private Long seq;
         private String type;
         private String condition;
         private BigDecimal amount;
@@ -51,6 +53,7 @@ public class LessonWebResponse {
     @Builder
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Contact {
+        private Long seq;
         private String type;
         private String name;
         private String address;
