@@ -1,11 +1,7 @@
 package com.latinhouse.backend.adapter.in.web.lesson.mapper;
 
-import com.latinhouse.backend.adapter.in.web.lesson.dto.AddLessonWebRequest;
-import com.latinhouse.backend.adapter.in.web.lesson.dto.AddLessonWebResponse;
-import com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse;
-import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppRequest;
-import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppResponse;
-import com.latinhouse.backend.application.port.in.lesson.dto.LessonAppResponse;
+import com.latinhouse.backend.adapter.in.web.lesson.dto.*;
+import com.latinhouse.backend.application.port.in.lesson.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -33,6 +29,15 @@ public class LessonWebMapper {
 
     public LessonWebResponse toWebRes(LessonAppResponse res) {
         return dispatchAppToWeb(res, LessonWebResponse.class);
+    }
+
+    public UpdateLessonAppRequest toAppReq(Long lessonNo, UpdateLessonWebRequest webReq) {
+        webReq.setNo(lessonNo);
+        return dispatchWebToApp(webReq, UpdateLessonAppRequest.class);
+    }
+
+    public UpdateLessonWebResponse toWebRes(UpdateLessonAppResponse appRes) {
+        return dispatchAppToWeb(appRes, UpdateLessonWebResponse.class);
     }
 
     @SuppressWarnings("unchecked")

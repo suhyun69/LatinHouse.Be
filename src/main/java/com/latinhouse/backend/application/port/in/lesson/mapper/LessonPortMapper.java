@@ -2,7 +2,9 @@ package com.latinhouse.backend.application.port.in.lesson.mapper;
 
 import com.latinhouse.backend.application.domain.lesson.Lesson;
 import com.latinhouse.backend.application.domain.lesson.service.AddLessonCommand;
+import com.latinhouse.backend.application.domain.lesson.service.UpdateLessonCommand;
 import com.latinhouse.backend.application.port.in.lesson.dto.AddLessonAppRequest;
+import com.latinhouse.backend.application.port.in.lesson.dto.UpdateLessonAppRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +28,10 @@ public class LessonPortMapper {
 
     public <A> A toAppRes(Lesson lesson, Class<A> appType) {
         return dispatchDomainToApp(lesson, appType);
+    }
+
+    public UpdateLessonCommand toCommand(UpdateLessonAppRequest appReq) {
+        return dispatchAppToCommand(appReq, UpdateLessonCommand.class);
     }
 
     @SuppressWarnings("unchecked")

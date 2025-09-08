@@ -6,6 +6,7 @@ import com.latinhouse.backend.adapter.out.persistence.lesson.repository.LessonRe
 import com.latinhouse.backend.application.port.out.lesson.CreateLessonPort;
 import com.latinhouse.backend.application.port.out.lesson.ReadLessonPort;
 import com.latinhouse.backend.application.domain.lesson.Lesson;
+import com.latinhouse.backend.application.port.out.lesson.UpdateLessonPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPort {
+public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPort, UpdateLessonPort {
 
     private final LessonPersistenceMapper lessonPersistenceMapper;
     private final LessonRepository lessonRepository;
@@ -36,5 +37,11 @@ public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPor
     public Optional<Lesson> findById(Long no) {
         return lessonRepository.findById(no)
                 .map(lessonPersistenceMapper::toDomain);
+    }
+
+    @Override
+    public Lesson update(Lesson lesson) {
+        LessonT lessonT = lessonPersistenceMapper.toEntity(lesson);
+        return lessonPersistenceMapper.toDomain(lessonRepository.save(lessonT));
     }
 }

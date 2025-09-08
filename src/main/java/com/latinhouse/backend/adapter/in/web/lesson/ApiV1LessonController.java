@@ -1,11 +1,10 @@
 package com.latinhouse.backend.adapter.in.web.lesson;
 
-import com.latinhouse.backend.adapter.in.web.lesson.dto.AddLessonWebRequest;
-import com.latinhouse.backend.adapter.in.web.lesson.dto.AddLessonWebResponse;
-import com.latinhouse.backend.adapter.in.web.lesson.dto.LessonWebResponse;
+import com.latinhouse.backend.adapter.in.web.lesson.dto.*;
 import com.latinhouse.backend.adapter.in.web.lesson.mapper.LessonWebMapper;
 import com.latinhouse.backend.application.port.in.lesson.AddLessonUseCase;
 import com.latinhouse.backend.application.port.in.lesson.FindLessonUseCase;
+import com.latinhouse.backend.application.port.in.lesson.UpdateLessonUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -24,6 +23,7 @@ public class ApiV1LessonController {
 
     private final AddLessonUseCase addLessonUseCase;
     private final FindLessonUseCase findLessonUseCase;
+    private final UpdateLessonUseCase updateLessonUseCase;
 
     private final LessonWebMapper lessonWebMapper;
 
@@ -56,5 +56,14 @@ public class ApiV1LessonController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(lessonWebMapper.toWebRes(findLessonUseCase.getLesson(lessonNo)));
+    }
+
+    @PutMapping("/{lessonNo}")
+    @Operation(summary = "Update Lesson")
+    public ResponseEntity<UpdateLessonWebResponse> updateLesson(@PathVariable Long lessonNo, @Valid @RequestBody UpdateLessonWebRequest webReq) {
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(lessonWebMapper.toWebRes(updateLessonUseCase.updateLesson(lessonWebMapper.toAppReq(lessonNo, webReq))));
     }
 }

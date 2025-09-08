@@ -2,6 +2,7 @@ package com.latinhouse.backend.application.domain.lesson.mapper;
 
 import com.latinhouse.backend.application.domain.lesson.Lesson;
 import com.latinhouse.backend.application.domain.lesson.service.AddLessonCommand;
+import com.latinhouse.backend.application.domain.lesson.service.UpdateLessonCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,10 @@ public class LessonDomainMapper {
     private final List<CommandToDomainStrategy<?, ?>> commandToDomainStrategies;
 
     public Lesson toDomain(AddLessonCommand cmd) {
+        return dispatchCommandToDomain(cmd, Lesson.class);
+    }
+
+    public Lesson toDomain(UpdateLessonCommand cmd) {
         return dispatchCommandToDomain(cmd, Lesson.class);
     }
 
