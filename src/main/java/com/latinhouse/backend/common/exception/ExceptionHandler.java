@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.time.format.DateTimeParseException;
+
 @Slf4j
 @RestControllerAdvice
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
@@ -37,7 +39,8 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
      */
     @org.springframework.web.bind.annotation.ExceptionHandler(BadRequestException.class)
     public ResponseEntity<?> handleBadRequestException(BadRequestException ex) {
-        StackTraceElement element = ex.getStackTrace()[1];
+        int index = ex.getStackTraceIndex();
+        StackTraceElement element = ex.getStackTrace()[index];
         String[] parts = element.getClassName().split("\\.");
         String className = parts[parts.length - 1]; // 마지막 요소
         ErrorResponse errorResponse = new ErrorResponse(String.format("[%s] %s", className, ex.getMessage()));
