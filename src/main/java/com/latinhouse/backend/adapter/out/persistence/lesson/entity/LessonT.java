@@ -30,7 +30,7 @@ public class LessonT extends BaseEntity {
     private String instructorLo;
     private String instructorLa;
 
-    @OneToMany(cascade = ALL, orphanRemoval = true)
+    @OneToMany(cascade = ALL, orphanRemoval = false)
     @JoinColumn(name = "lesson_no", nullable = false)
     @SQLRestriction("is_active = true")
     private List<OptionT> options =  new ArrayList<>();
@@ -39,13 +39,13 @@ public class LessonT extends BaseEntity {
     private String accountNumber;
     private String accountOwner;
 
-    @OneToMany(cascade = ALL, orphanRemoval = true)
+    @OneToMany(cascade = ALL, orphanRemoval = false)
     @JoinColumn(name = "lesson_no", nullable = false)
     @SQLRestriction("is_active = true")
     private List<DiscountT> discounts = new ArrayList<>();
     private BigDecimal maxDiscountAmount;
 
-    @OneToMany(cascade = ALL, orphanRemoval = true)
+    @OneToMany(cascade = ALL, orphanRemoval = false)
     @JoinColumn(name = "lesson_no", nullable = false)
     @SQLRestriction("is_active = true")
     private List<ContactT> contacts = new ArrayList<>();
