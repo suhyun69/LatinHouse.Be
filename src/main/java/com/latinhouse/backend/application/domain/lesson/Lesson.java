@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -16,8 +17,8 @@ public class Lesson {
     private Long no;
     private String title;
     private Genre genre;
-    private String instructorLa;
     private String instructorLo;
+    private String instructorLa;
     private List<Option> options;
     private String bank;
     private String accountNumber;
@@ -25,4 +26,9 @@ public class Lesson {
     private List<Discount> discounts;
     private BigDecimal maxDiscountAmount;
     private List<Contact> contacts;
+    private Boolean isActive;
+
+    public void addOption(Option o) { this.options.add(o); }
+    public void addDiscount(Discount d) { this.discounts.add(d); }
+    public void addContact(Contact c) { this.contacts.add(c); }
 }

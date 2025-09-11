@@ -25,7 +25,8 @@ public class UpdateLessonCommand {
     String accountOwner;
     List<Discount>  discounts;
     BigDecimal maxDiscountAmount;
-    List<Contact>  contacts;
+    List<Contact> contacts;
+    Boolean isActive;
 
     @Value
     @Builder
@@ -37,6 +38,7 @@ public class UpdateLessonCommand {
         String location;
         String locationUrl;
         BigDecimal price;
+        Boolean isActive;
     }
 
     @Value
@@ -46,6 +48,7 @@ public class UpdateLessonCommand {
         DiscountType type;
         String condition;
         BigDecimal amount;
+        Boolean isActive;
     }
 
     @Value
@@ -55,5 +58,6 @@ public class UpdateLessonCommand {
         ContactType type;
         String name;
         String address;
+        Boolean isActive;
     }
 }

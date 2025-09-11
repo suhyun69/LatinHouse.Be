@@ -8,6 +8,9 @@ import com.latinhouse.backend.application.domain.lesson.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 @Component("lessonPersistenceMapper")
 @RequiredArgsConstructor
 public class LessonPersistenceMapper {
@@ -25,25 +28,30 @@ public class LessonPersistenceMapper {
                 .discounts(lesson.getDiscounts().stream().map(LessonPersistenceMapper::convertTo).toList())
                 .maxDiscountAmount(lesson.getMaxDiscountAmount())
                 .contacts(lesson.getContacts().stream().map(LessonPersistenceMapper::convertTo).toList())
+                .isActive(lesson.getIsActive())
                 .build();
     }
 
     private static OptionT convertTo(Option o) {
         return OptionT.builder()
+                .seq(o.getSeq())
                 .startDateTime(o.getStartDateTime())
                 .endDateTime(o.getEndDateTime())
                 .region(o.getRegion().getCode())
                 .location(o.getLocation())
                 .locationUrl(o.getLocationUrl())
                 .price(o.getPrice())
+                .isActive(o.getIsActive())
                 .build();
     }
 
     private static DiscountT convertTo(Discount d) {
         return DiscountT.builder()
+                .seq(d.getSeq())
                 .type(d.getType().getCode())
                 .condition(d.getCondition())
                 .amount(d.getAmount())
+                .isActive(d.getIsActive())
                 .build();
     }
 
@@ -53,6 +61,7 @@ public class LessonPersistenceMapper {
                 .type(c.getType().getCode())
                 .name(c.getName())
                 .address(c.getAddress())
+                .isActive(c.getIsActive())
                 .build();
     }
 
@@ -63,13 +72,14 @@ public class LessonPersistenceMapper {
                 .genre(Genre.of(lessonT.getGenre()))
                 .instructorLo(lessonT.getInstructorLo())
                 .instructorLa(lessonT.getInstructorLa())
-                .options(lessonT.getOptions().stream().map(LessonPersistenceMapper::convertTo).toList())
+                .options(lessonT.getOptions().stream().map(LessonPersistenceMapper::convertTo).collect(Collectors.toCollection(ArrayList::new)))
                 .bank(lessonT.getBank())
                 .accountNumber(lessonT.getAccountNumber())
                 .accountOwner(lessonT.getAccountOwner())
-                .discounts(lessonT.getDiscounts().stream().map(LessonPersistenceMapper::convertTo).toList())
+                .discounts(lessonT.getDiscounts().stream().map(LessonPersistenceMapper::convertTo).collect(Collectors.toCollection(ArrayList::new)))
                 .maxDiscountAmount(lessonT.getMaxDiscountAmount())
-                .contacts(lessonT.getContacts().stream().map(LessonPersistenceMapper::convertTo).toList())
+                .contacts(lessonT.getContacts().stream().map(LessonPersistenceMapper::convertTo).collect(Collectors.toCollection(ArrayList::new)))
+                .isActive(lessonT.getIsActive())
                 .build();
     }
 
@@ -82,6 +92,7 @@ public class LessonPersistenceMapper {
                 .location(o.getLocation())
                 .locationUrl(o.getLocationUrl())
                 .price(o.getPrice())
+                .isActive(o.getIsActive())
                 .build();
     }
 
@@ -91,6 +102,7 @@ public class LessonPersistenceMapper {
                 .type(DiscountType.of(d.getType()))
                 .condition(d.getCondition())
                 .amount(d.getAmount())
+                .isActive(d.getIsActive())
                 .build();
     }
 
@@ -100,6 +112,7 @@ public class LessonPersistenceMapper {
                 .type(ContactType.of(c.getType()))
                 .name(c.getName())
                 .address(c.getAddress())
+                .isActive(c.getIsActive())
                 .build();
     }
 }

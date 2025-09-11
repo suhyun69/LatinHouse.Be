@@ -20,4 +20,5 @@ public class Option {
     private String location;
     private String locationUrl;
     private BigDecimal price;
+    private Boolean isActive;
 }

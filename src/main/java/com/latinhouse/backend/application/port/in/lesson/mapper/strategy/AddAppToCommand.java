@@ -28,6 +28,7 @@ public class AddAppToCommand implements AppToCommandStrategy<AddLessonAppRequest
                 .discounts(appReq.getDiscounts().stream().map(AddAppToCommand::convertTo).toList())
                 .maxDiscountAmount(appReq.getMaxDiscountAmount())
                 .contacts(appReq.getContacts().stream().map(AddAppToCommand::convertTo).toList())
+                .isActive(true)
                 .build();
     }
 
@@ -39,6 +40,7 @@ public class AddAppToCommand implements AppToCommandStrategy<AddLessonAppRequest
                 .location(o.getLocation())
                 .locationUrl(o.getLocationUrl())
                 .price(o.getPrice())
+                .isActive(true)
                 .build();
     }
 
@@ -47,6 +49,7 @@ public class AddAppToCommand implements AppToCommandStrategy<AddLessonAppRequest
                 .type(d.getType())
                 .condition(d.getCondition())
                 .amount(d.getAmount())
+                .isActive(true)
                 .build();
     }
 
@@ -55,6 +58,7 @@ public class AddAppToCommand implements AppToCommandStrategy<AddLessonAppRequest
                 .type(c.getType())
                 .name(c.getName())
                 .address(c.getAddress())
+                .isActive(true)
                 .build();
     }
 }

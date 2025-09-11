@@ -14,4 +14,5 @@ public class Contact {
     private ContactType type;
     private String name;
     private String address;
+    private Boolean isActive;
 }

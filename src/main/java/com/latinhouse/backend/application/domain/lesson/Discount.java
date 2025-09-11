@@ -16,4 +16,5 @@ public class Discount {
     private DiscountType type;
     private String condition;
     private BigDecimal amount;
+    private Boolean isActive;
 }

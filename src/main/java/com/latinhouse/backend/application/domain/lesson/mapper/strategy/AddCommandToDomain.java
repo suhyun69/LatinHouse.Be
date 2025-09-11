@@ -31,6 +31,7 @@ public class AddCommandToDomain implements CommandToDomainStrategy<AddLessonComm
                 .discounts(cmd.getDiscounts().stream().map(AddCommandToDomain::convertTo).toList())
                 .maxDiscountAmount(cmd.getMaxDiscountAmount())
                 .contacts(cmd.getContacts().stream().map(AddCommandToDomain::convertTo).toList())
+                .isActive(cmd.getIsActive())
                 .build();
     }
 
@@ -42,6 +43,7 @@ public class AddCommandToDomain implements CommandToDomainStrategy<AddLessonComm
                 .location(o.getLocation())
                 .locationUrl(o.getLocationUrl())
                 .price(o.getPrice())
+                .isActive(o.getIsActive())
                 .build();
     }
 
@@ -50,6 +52,7 @@ public class AddCommandToDomain implements CommandToDomainStrategy<AddLessonComm
                 .type(d.getType())
                 .condition(d.getCondition())
                 .amount(d.getAmount())
+                .isActive(d.getIsActive())
                 .build();
     }
 
@@ -58,6 +61,7 @@ public class AddCommandToDomain implements CommandToDomainStrategy<AddLessonComm
                 .type(c.getType())
                 .name(c.getName())
                 .address(c.getAddress())
+                .isActive(c.getIsActive())
                 .build();
     }
 }

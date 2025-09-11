@@ -22,4 +22,5 @@ public class ContactT extends BaseEntity {
     private String type;
     private String name;
     private String address;
+    private Boolean isActive;
 }

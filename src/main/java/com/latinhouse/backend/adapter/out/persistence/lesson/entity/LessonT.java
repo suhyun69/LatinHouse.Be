@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class LessonT extends BaseEntity {
 
     @OneToMany(cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "lesson_no", nullable = false)
+    @SQLRestriction("is_active = true")
     private List<OptionT> options =  new ArrayList<>();
 
     private String bank;
@@ -39,10 +41,14 @@ public class LessonT extends BaseEntity {
 
     @OneToMany(cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "lesson_no", nullable = false)
+    @SQLRestriction("is_active = true")
     private List<DiscountT> discounts = new ArrayList<>();
     private BigDecimal maxDiscountAmount;
 
     @OneToMany(cascade = ALL, orphanRemoval = true)
     @JoinColumn(name = "lesson_no", nullable = false)
+    @SQLRestriction("is_active = true")
     private List<ContactT> contacts = new ArrayList<>();
+
+    private Boolean isActive;
 }

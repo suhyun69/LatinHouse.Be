@@ -24,4 +24,5 @@ public class DiscountT extends BaseEntity {
     private String type;
     private String condition;
     private BigDecimal amount;
+    private Boolean isActive;
 }

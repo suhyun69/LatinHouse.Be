@@ -28,4 +28,5 @@ public class OptionT extends BaseEntity {
     private String location;
     private String locationUrl;
     private BigDecimal price;
+    private Boolean isActive;
 }
