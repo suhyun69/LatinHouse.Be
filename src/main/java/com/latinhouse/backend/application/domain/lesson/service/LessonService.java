@@ -63,7 +63,7 @@ public class LessonService {
                         .price(reqOpt.getPrice())
                         .isActive(true)
                         .build();
-                lesson.addOption(newOpt);
+                lesson.getOptions().add(newOpt);
             }
         }
 
@@ -90,7 +90,7 @@ public class LessonService {
                         .amount(reqDis.getAmount())
                         .isActive(true)
                         .build();
-                lesson.addDiscount(newDis);
+                lesson.getDiscounts().add(newDis);
             }
         }
 
@@ -115,7 +115,7 @@ public class LessonService {
                         .address(reqCon.getAddress())
                         .isActive(true)
                         .build();
-                lesson.addContact(newCon);
+                lesson.getContacts().add(newCon);
             }
         }
 

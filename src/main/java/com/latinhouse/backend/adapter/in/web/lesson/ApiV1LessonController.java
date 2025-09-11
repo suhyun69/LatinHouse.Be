@@ -38,7 +38,10 @@ public class ApiV1LessonController {
 
     @GetMapping("")
     @Operation(summary = "Find Lessons")
-    public ResponseEntity<List<LessonWebResponse>> findLessons() {
+    public ResponseEntity<List<LessonWebResponse>> findLessons(@RequestParam(required = false) String instructor
+            , @RequestParam(required = false) String genre
+            , @RequestParam(required = false) String region
+    ) {
 
         List<LessonWebResponse> webRes = findLessonUseCase.search().stream()
                 .map(lessonWebMapper::toWebRes)

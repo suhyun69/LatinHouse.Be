@@ -27,8 +27,4 @@ public class Lesson {
     private BigDecimal maxDiscountAmount;
     private List<Contact> contacts;
     private Boolean isActive;
-
-    public void addOption(Option o) { this.options.add(o); }
-    public void addDiscount(Discount d) { this.discounts.add(d); }
-    public void addContact(Contact c) { this.contacts.add(c); }
 }
