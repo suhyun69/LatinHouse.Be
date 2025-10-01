@@ -1,6 +1,7 @@
 package com.latinhouse.backend.application.port.in.profile.impl;
 
 import com.latinhouse.backend.application.port.in.profile.FindProfileUseCase;
+import com.latinhouse.backend.application.port.in.profile.dto.FindProfileAppRequest;
 import com.latinhouse.backend.application.port.in.profile.dto.ProfileAppResponse;
 import com.latinhouse.backend.application.port.in.profile.mapper.ProfileMapper;
 import com.latinhouse.backend.common.exception.ProfileNotFoundException;
@@ -19,8 +20,8 @@ public class FindProfileImpl implements FindProfileUseCase {
     private final ProfileService profileService;
 
     @Override
-    public List<ProfileAppResponse> search() {
-        return profileService.search().stream()
+    public List<ProfileAppResponse> search(FindProfileAppRequest appReq) {
+        return profileService.search(appReq).stream()
                 .map(profileMapper::toAppRes)
                 .toList();
     }

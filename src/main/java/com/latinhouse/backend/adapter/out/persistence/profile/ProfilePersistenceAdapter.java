@@ -27,8 +27,8 @@ public class ProfilePersistenceAdapter implements CreateProfilePort, ReadProfile
     }
 
     @Override
-    public List<Profile> findAll() {
-        return profileRepository.findAll().stream()
+    public List<Profile> findAll(String sex, Boolean isInstructor) {
+        return profileRepository.findAll(sex, isInstructor).stream()
                 .map(profileMapper::toDomain)
                 .toList();
     }

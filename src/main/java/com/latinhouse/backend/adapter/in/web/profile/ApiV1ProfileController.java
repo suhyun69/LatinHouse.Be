@@ -8,6 +8,7 @@ import com.latinhouse.backend.adapter.out.persistence.lesson.mapper.LessonPersis
 import com.latinhouse.backend.application.port.in.profile.FindProfileUseCase;
 import com.latinhouse.backend.application.port.in.profile.SignupUseCase;
 import com.latinhouse.backend.application.port.in.profile.UpdateProfileUseCase;
+import com.latinhouse.backend.application.port.in.profile.dto.FindProfileAppRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -42,9 +43,12 @@ public class ApiV1ProfileController {
 
     @GetMapping("")
     @Operation(summary = "Find Profiles")
-    public ResponseEntity<List<ProfileWebResponse>> findProfiles() {
+    public ResponseEntity<List<ProfileWebResponse>> findProfiles(
+            @RequestParam(value = "sex", required = false) String sex,
+            @RequestParam(value = "isInstructor", required = false) Boolean isInstructor) {
 
-        List<ProfileWebResponse> webRes = findProfileUseCase.search().stream()
+        FindProfileAppRequest appReq = profileMapper.toAppReq(sex, isInstructor);
+        List<ProfileWebResponse> webRes = findProfileUseCase.search(appReq).stream()
                 .map(profileMapper::toWebRes)
                 .toList();
 

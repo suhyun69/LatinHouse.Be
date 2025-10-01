@@ -5,6 +5,7 @@ import com.latinhouse.backend.adapter.in.web.profile.dto.AddProfileWebResponse;
 import com.latinhouse.backend.adapter.in.web.profile.dto.ProfileWebResponse;
 import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppRequest;
 import com.latinhouse.backend.application.port.in.profile.dto.AddProfileAppResponse;
+import com.latinhouse.backend.application.port.in.profile.dto.FindProfileAppRequest;
 import com.latinhouse.backend.application.port.in.profile.dto.ProfileAppResponse;
 import com.latinhouse.backend.application.domain.profile.Sex;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,13 @@ public class ProfileMapper {
                 .nickname(appRes.getNickname())
                 .sex(appRes.getSex().getCode())
                 .isInstructor(appRes.getIsInstructor())
+                .build();
+    }
+
+    public FindProfileAppRequest toAppReq(String sex, Boolean isInstructor) {
+        return FindProfileAppRequest.builder()
+                .sex(sex)
+                .isInstructor(isInstructor)
                 .build();
     }
 }

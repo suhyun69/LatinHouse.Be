@@ -1,5 +1,6 @@
 package com.latinhouse.backend.application.domain.profile.service;
 
+import com.latinhouse.backend.application.port.in.profile.dto.FindProfileAppRequest;
 import com.latinhouse.backend.application.port.out.profile.CreateProfilePort;
 import com.latinhouse.backend.application.port.out.profile.ReadProfilePort;
 import com.latinhouse.backend.application.port.out.profile.UpdateProfilePort;
@@ -25,7 +26,10 @@ public class ProfileService {
         return createProfilePort.create(profileMapper.toDomain(cmd));
     }
 
-    public List<Profile> search() { return readProfilePort.findAll(); }
+    public List<Profile> search(FindProfileAppRequest appReq) {
+
+        return readProfilePort.findAll(appReq.getSex(), appReq.getIsInstructor());
+    }
     public Optional<Profile> getProfile(String profileId) { return readProfilePort.getProfileById(profileId); }
 
     public void update(Profile profile) {
