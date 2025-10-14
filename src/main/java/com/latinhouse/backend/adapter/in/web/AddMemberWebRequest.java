@@ -15,4 +15,6 @@ public class AddMemberWebRequest {
 
     @NotBlank(message = "password cannot be blank")
     private String password;
+
+    private String role;
 }

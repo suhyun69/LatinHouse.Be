@@ -12,6 +12,7 @@ public class MemberMapper {
         return MemberJpaEntity.builder()
                 .email(member.getEmail())
                 .password(member.getPassword())
+                .role(member.getRole())
                 .build();
     }
 
@@ -19,6 +20,7 @@ public class MemberMapper {
         return Member.builder()
                 .email(userT.getEmail())
                 .password(userT.getPassword())
+                .role(userT.getRole())
                 .build();
     }
 }

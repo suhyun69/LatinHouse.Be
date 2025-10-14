@@ -1,9 +1,8 @@
 package com.latinhouse.backend.adapter.out.persistence.entity;
 
 import com.latinhouse.backend.common.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.latinhouse.backend.domain.Role;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +19,7 @@ public class MemberJpaEntity extends BaseEntity {
     @Id
     private String email;
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

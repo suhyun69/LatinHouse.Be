@@ -17,10 +17,13 @@ public class AddMemberDomainRequest extends SelfValidating<AddMemberDomainReques
     @NotBlank(message = "password cannot be blank.")
     String password;
 
+    Role role;
+
     @Builder
-    public AddMemberDomainRequest(String email, String password) {
+    public AddMemberDomainRequest(String email, String password, Role role) {
         this.email = email;
         this.password = password;
+        this.role = role;
 
         this.validateSelf();
     }
@@ -29,6 +32,7 @@ public class AddMemberDomainRequest extends SelfValidating<AddMemberDomainReques
         return AddMemberDomainRequest.builder()
                 .email(appReq.getEmail())
                 .password(appReq.getPassword())
+                .role(appReq.getRole())
                 .build();
     }
 }

@@ -27,6 +27,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest req) {
+        // call CustomUserDetailsService
         Authentication authentication = authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(req.username(), req.password())
         );

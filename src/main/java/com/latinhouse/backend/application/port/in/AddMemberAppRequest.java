@@ -2,6 +2,7 @@ package com.latinhouse.backend.application.port.in;
 
 import com.latinhouse.backend.adapter.in.web.AddMemberWebRequest;
 import com.latinhouse.backend.common.SelfValidating;
+import com.latinhouse.backend.domain.Role;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -17,10 +18,13 @@ public class AddMemberAppRequest extends SelfValidating<AddMemberAppRequest> {
     @NotBlank(message = "password cannot be blank.")
     String password;
 
+    Role role;
+
     @Builder
     public AddMemberAppRequest(String email, String password) {
         this.email = email;
         this.password = password;
+        this.role = Role.ADMIN;
 
         this.validateSelf();
     }

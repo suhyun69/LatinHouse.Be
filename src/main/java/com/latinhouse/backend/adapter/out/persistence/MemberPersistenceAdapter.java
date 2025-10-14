@@ -22,6 +22,7 @@ public class MemberPersistenceAdapter implements CreateMemberPort {
         MemberJpaEntity memberT = MemberJpaEntity.builder()
                 .email(req.getEmail())
                 .password(req.getPassword())
+                .role(req.getRole())
                 .build();
         return memberMapper.mapToDomainEntity(memberRepository.save(memberT));
     }
