@@ -1,4 +1,4 @@
-package com.latinhouse.backend.domain;
+package com.latinhouse.backend.application.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+public class User {
     private String email;
     private String password;
 }

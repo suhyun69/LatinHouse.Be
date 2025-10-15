@@ -10,12 +10,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "members")
+@Table(name = "users")
 @Data
 @Builder // mapToJpaEntity
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberJpaEntity extends BaseEntity {
+public class UserJpaEntity extends BaseEntity {
 
     @Id
     private String email;

@@ -1,4 +1,4 @@
-package com.latinhouse.backend.adapter.in.web;
+package com.latinhouse.backend.adapter.in.web.signup;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddMemberWebRequest {
+public class AddUserWebRequest {
 
     @NotBlank(message = "email cannot be blank")
     private String email;

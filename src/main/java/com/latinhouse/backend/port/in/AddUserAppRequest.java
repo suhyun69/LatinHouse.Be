@@ -1,6 +1,6 @@
-package com.latinhouse.backend.application.port.in;
+package com.latinhouse.backend.port.in;
 
-import com.latinhouse.backend.adapter.in.web.AddMemberWebRequest;
+import com.latinhouse.backend.adapter.in.web.signup.AddUserWebRequest;
 import com.latinhouse.backend.common.SelfValidating;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.Value;
 
 @Value
 @EqualsAndHashCode(callSuper = false)
-public class AddMemberAppRequest extends SelfValidating<AddMemberAppRequest> {
+public class AddUserAppRequest extends SelfValidating<AddUserAppRequest> {
 
     @NotBlank(message = "email cannot be blank.")
     String email;
@@ -18,15 +18,15 @@ public class AddMemberAppRequest extends SelfValidating<AddMemberAppRequest> {
     String password;
 
     @Builder
-    public AddMemberAppRequest(String email, String password) {
+    public AddUserAppRequest(String email, String password) {
         this.email = email;
         this.password = password;
 
         this.validateSelf();
     }
 
-    public static AddMemberAppRequest from(AddMemberWebRequest webReq) {
-        return AddMemberAppRequest.builder()
+    public static AddUserAppRequest from(AddUserWebRequest webReq) {
+        return AddUserAppRequest.builder()
                 .email(webReq.getEmail())
                 .password(webReq.getPassword())
                 .build();
