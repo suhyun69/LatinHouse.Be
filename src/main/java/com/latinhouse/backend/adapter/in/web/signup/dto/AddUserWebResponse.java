@@ -1,4 +1,4 @@
-package com.latinhouse.backend.adapter.in.web.signup;
+package com.latinhouse.backend.adapter.in.web.signup.dto;
 
 import com.latinhouse.backend.port.in.AddUserAppResponse;
 import lombok.Builder;

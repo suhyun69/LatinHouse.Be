@@ -1,4 +1,4 @@
-package com.latinhouse.backend.adapter.in.web.signup;
+package com.latinhouse.backend.adapter.in.web.signup.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

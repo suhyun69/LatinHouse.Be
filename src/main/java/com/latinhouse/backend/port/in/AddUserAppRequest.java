@@ -1,6 +1,6 @@
 package com.latinhouse.backend.port.in;
 
-import com.latinhouse.backend.adapter.in.web.signup.AddUserWebRequest;
+import com.latinhouse.backend.adapter.in.web.signup.dto.AddUserWebRequest;
 import com.latinhouse.backend.common.SelfValidating;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;

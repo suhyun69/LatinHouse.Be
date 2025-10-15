@@ -18,7 +18,7 @@ public class SignupUsecaseImpl implements SignupUseCase {
 
     @Override
     @Transactional
-    public AddUserAppResponse addByEmail(AddUserAppRequest appReq) {
+    public AddUserAppResponse addUser(AddUserAppRequest appReq) {
         AddUserCommand req = AddUserCommand.from(appReq);
         User user = userService.addUser(req);
 
