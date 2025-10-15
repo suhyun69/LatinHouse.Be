@@ -1,4 +1,4 @@
-package com.latinhouse.backend.application.domain.user;
+package com.latinhouse.backend.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

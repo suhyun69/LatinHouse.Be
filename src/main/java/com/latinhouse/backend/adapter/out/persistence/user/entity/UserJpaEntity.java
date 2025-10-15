@@ -1,4 +1,4 @@
-package com.latinhouse.backend.adapter.out.persistence.entity;
+package com.latinhouse.backend.adapter.out.persistence.user.entity;
 
 import com.latinhouse.backend.common.BaseEntity;
 import jakarta.persistence.Entity;

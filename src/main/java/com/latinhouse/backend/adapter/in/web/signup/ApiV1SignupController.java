@@ -3,8 +3,6 @@ package com.latinhouse.backend.adapter.in.web.signup;
 import com.latinhouse.backend.adapter.in.web.signup.dto.AddUserWebRequest;
 import com.latinhouse.backend.adapter.in.web.signup.dto.AddUserWebResponse;
 import com.latinhouse.backend.adapter.in.web.signup.mapper.SignupWebMapper;
-import com.latinhouse.backend.port.in.AddUserAppRequest;
-import com.latinhouse.backend.port.in.AddUserAppResponse;
 import com.latinhouse.backend.port.in.SignupUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
