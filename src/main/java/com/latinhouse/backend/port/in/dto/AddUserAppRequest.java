@@ -24,11 +24,4 @@ public class AddUserAppRequest extends SelfValidating<AddUserAppRequest> {
 
         this.validateSelf();
     }
-
-    public static AddUserAppRequest from(AddUserWebRequest webReq) {
-        return AddUserAppRequest.builder()
-                .email(webReq.getEmail())
-                .password(webReq.getPassword())
-                .build();
-    }
 }
