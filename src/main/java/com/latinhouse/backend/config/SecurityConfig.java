@@ -50,7 +50,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/api/v1/signup/**").permitAll()
                         // (선택) Swagger/H2 등 개발 편의
                         .requestMatchers("/v3/api-docs/**","/swagger-ui/**","/h2-console/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/public/**").permitAll()

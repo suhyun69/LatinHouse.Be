@@ -19,6 +19,7 @@ public class DomainToEntity implements DomainToEntityStrategy<User, UserJpaEntit
         return UserJpaEntity.builder()
                 .email(user.getEmail())
                 .password(user.getPassword())
+                .role(user.getRole().getCode())
                 .build();
     }
 }

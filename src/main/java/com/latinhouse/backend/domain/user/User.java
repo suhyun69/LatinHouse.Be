@@ -13,10 +13,13 @@ import lombok.NoArgsConstructor;
 public class User {
     private String email;
     private String password;
+    private Role role;
 
     public static User from(AddUserCommand command) {
         return User.builder()
                 .email(command.getEmail())
-                .password(command.getPassword()).build();
+                .password(command.getPassword())
+                .role(command.getRole())
+                .build();
     }
 }
