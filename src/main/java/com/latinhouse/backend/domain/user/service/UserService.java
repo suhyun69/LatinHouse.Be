@@ -13,11 +13,6 @@ public class UserService {
     private final CreateUserPort createUserPort;
 
     public User addUser(AddUserCommand cmd) {
-
-        User user = User.builder()
-                .email(cmd.getEmail())
-                .password(cmd.getPassword())
-                .build();
-        return createUserPort.create(user);
+        return createUserPort.create(User.from(cmd));
     }
 }
