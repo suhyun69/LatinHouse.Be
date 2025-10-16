@@ -1,3 +1,10 @@
+server:
+  port: 8080
+app:
+  jwt:
+    secret: "bDmonrfSh6mtGW7WRq2wNbnZsHuIfVgstkR4lKDfre8x+0scsbgXoSKXWjfulHSeQog/pqnnTkypjD6rPhCn9A=="
+    access-exp-minutes: 60
+    issuer: "latinhouse.be"
 spring:
   profiles:
     active: local
