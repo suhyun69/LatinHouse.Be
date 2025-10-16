@@ -1,7 +1,7 @@
 package com.latinhouse.backend.adapter.in.web.signup;
 
-import com.latinhouse.backend.adapter.in.web.signup.dto.AddUserWebRequest;
-import com.latinhouse.backend.adapter.in.web.signup.dto.AddUserWebResponse;
+import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebRequest;
+import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebResponse;
 import com.latinhouse.backend.adapter.in.web.signup.mapper.SignupWebMapper;
 import com.latinhouse.backend.port.in.SignupUseCase;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,8 +26,8 @@ public class ApiV1SignupController {
     private final SignupWebMapper signupWebMapper;
 
     @PostMapping("")
-    @Operation(summary = "Add User", description = "by email")
-    public ResponseEntity<AddUserWebResponse> addUser(@Valid @RequestBody AddUserWebRequest webReq) {
+    @Operation(summary = "SignUp", description = "Add User")
+    public ResponseEntity<SignupWebResponse> Signup(@Valid @RequestBody SignupWebRequest webReq) {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)

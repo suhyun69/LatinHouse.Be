@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class AddUserWebResponse {
+public class SignupWebResponse {
     private String email;
 }

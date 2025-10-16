@@ -1,7 +1,7 @@
 package com.latinhouse.backend.adapter.in.web.signup.mapper;
 
-import com.latinhouse.backend.adapter.in.web.signup.dto.AddUserWebRequest;
-import com.latinhouse.backend.adapter.in.web.signup.dto.AddUserWebResponse;
+import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebRequest;
+import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebResponse;
 import com.latinhouse.backend.port.in.dto.AddUserAppRequest;
 import com.latinhouse.backend.port.in.dto.AddUserAppResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,12 +21,12 @@ public class SignupWebMapper {
     private final List<WebToAppStrategy<?, ?>> webToAppStrategies;
     private final List<AppToWebStrategy<?, ?>> appToWebStrategies;
 
-    public AddUserAppRequest toAppReq(AddUserWebRequest req) {
+    public AddUserAppRequest toAppReq(SignupWebRequest req) {
         return dispatchWebToApp(req, AddUserAppRequest.class);
     }
 
-    public AddUserWebResponse toWebRes(AddUserAppResponse res) {
-        return dispatchAppToWeb(res, AddUserWebResponse.class);
+    public SignupWebResponse toWebRes(AddUserAppResponse res) {
+        return dispatchAppToWeb(res, SignupWebResponse.class);
     }
 
     @SuppressWarnings("unchecked")

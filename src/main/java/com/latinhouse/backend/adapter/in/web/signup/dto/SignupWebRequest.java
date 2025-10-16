@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddUserWebRequest {
+public class SignupWebRequest {
 
     @NotBlank(message = "email cannot be blank")
     private String email;
