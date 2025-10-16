@@ -1,7 +1,7 @@
-package com.latinhouse.backend.adapter.out.persistence.user.mapper;
+package com.latinhouse.backend.adapter.out.persistence.todo.mapper;
 
-import com.latinhouse.backend.adapter.out.persistence.user.entity.UserJpaEntity;
-import com.latinhouse.backend.domain.user.User;
+import com.latinhouse.backend.adapter.out.persistence.todo.entity.TodoJpaEntity;
+import com.latinhouse.backend.domain.todo.Todo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -9,17 +9,17 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class UserPersistenceMapper {
+public class TodoPersistenceMapper {
 
     private final List<DomainToEntityStrategy<?, ?>> domainToEntityStrategies;
     private final List<EntityToDomainStrategy<?, ?>> entityToDomainStrategies;
 
-    public UserJpaEntity toEntity(User user) {
-        return dispatchDomainToEntity(user, UserJpaEntity.class);
+    public TodoJpaEntity toEntity(Todo todo) {
+        return dispatchDomainToEntity(todo, TodoJpaEntity.class);
     }
 
-    public User toDomain(UserJpaEntity userT) {
-        return dispatchEntityToDomain(userT, User.class);
+    public Todo toDomain(TodoJpaEntity todoT) {
+        return dispatchEntityToDomain(todoT, Todo.class);
     }
 
     @SuppressWarnings("unchecked")

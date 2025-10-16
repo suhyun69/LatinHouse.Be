@@ -1,6 +1,6 @@
 package com.latinhouse.backend.domain.user;
 
-import com.latinhouse.backend.domain.user.dto.AddUserCommand;
+import com.latinhouse.backend.domain.user.command.AddUserCommand;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

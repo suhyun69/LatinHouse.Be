@@ -5,8 +5,8 @@ import com.latinhouse.backend.adapter.out.persistence.user.mapper.DomainToEntity
 import com.latinhouse.backend.domain.user.User;
 import org.springframework.stereotype.Component;
 
-@Component
-public class DomainToEntity implements DomainToEntityStrategy<User, UserJpaEntity> {
+@Component("userDomainToEntity")
+public class UserDomainToEntity implements DomainToEntityStrategy<User, UserJpaEntity> {
 
     @Override
     public boolean supports(Class<?> c, Class<?> d) {

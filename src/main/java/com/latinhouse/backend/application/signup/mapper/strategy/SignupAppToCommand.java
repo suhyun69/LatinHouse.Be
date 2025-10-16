@@ -1,7 +1,7 @@
 package com.latinhouse.backend.application.signup.mapper.strategy;
 
 import com.latinhouse.backend.application.signup.mapper.AppToCommandStrategy;
-import com.latinhouse.backend.domain.user.dto.AddUserCommand;
+import com.latinhouse.backend.domain.user.command.AddUserCommand;
 import com.latinhouse.backend.port.in.dto.AddUserAppRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class AddAppToCommand implements AppToCommandStrategy<AddUserAppRequest, AddUserCommand> {
+public class SignupAppToCommand implements AppToCommandStrategy<AddUserAppRequest, AddUserCommand> {
 
     private final PasswordEncoder passwordEncoder;
 

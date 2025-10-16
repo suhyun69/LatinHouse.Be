@@ -4,6 +4,8 @@ import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebRequest;
 import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebResponse;
 import com.latinhouse.backend.adapter.in.web.signup.mapper.SignupWebMapper;
 import com.latinhouse.backend.port.in.SignupUseCase;
+import com.latinhouse.backend.port.in.dto.AddUserAppRequest;
+import com.latinhouse.backend.port.in.dto.AddUserAppResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

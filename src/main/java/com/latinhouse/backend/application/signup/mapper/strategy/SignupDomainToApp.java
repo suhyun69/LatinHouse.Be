@@ -6,7 +6,7 @@ import com.latinhouse.backend.port.in.dto.AddUserAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AddDomainToApp implements DomainToAppStrategy<User, AddUserAppResponse> {
+public class SignupDomainToApp implements DomainToAppStrategy<User, AddUserAppResponse> {
 
     @Override
     public boolean supports(Class<?> d, Class<?> a) {

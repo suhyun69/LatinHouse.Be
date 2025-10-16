@@ -1,8 +1,9 @@
-package com.latinhouse.backend.application.signup.mapper;
+package com.latinhouse.backend.application.addTodo.mapper;
 
-import com.latinhouse.backend.domain.user.User;
-import com.latinhouse.backend.domain.user.command.AddUserCommand;
-import com.latinhouse.backend.port.in.dto.AddUserAppRequest;
+import com.latinhouse.backend.application.signup.mapper.AppToCommandStrategy;
+import com.latinhouse.backend.domain.todo.Todo;
+import com.latinhouse.backend.domain.todo.command.AddTodoCommand;
+import com.latinhouse.backend.port.in.dto.AddTodoAppRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class SignupAppMapper {
+public class AddTodoAppMapper {
 
     /*
         AppRequest -> Command
@@ -20,11 +21,11 @@ public class SignupAppMapper {
     private final List<AppToCommandStrategy<?, ?>> appToCommandStrategies;
     private final List<DomainToAppStrategy<?, ?>> domainToAppStrategies;
 
-    public AddUserCommand toCommand(AddUserAppRequest appReq) {
-        return dispatchAppToCommand(appReq, AddUserCommand.class);
+    public AddTodoCommand toCommand(AddTodoAppRequest appReq) {
+        return dispatchAppToCommand(appReq, AddTodoCommand.class);
     }
 
-    public <A> A toAppRes(User user, Class<A> appType) {
+    public <A> A toAppRes(Todo user, Class<A> appType) {
         return dispatchDomainToApp(user, appType);
     }
 

@@ -1,4 +1,4 @@
-package com.latinhouse.backend.domain.user.dto;
+package com.latinhouse.backend.domain.user.command;
 
 import com.latinhouse.backend.common.SelfValidating;
 import com.latinhouse.backend.domain.user.Role;
