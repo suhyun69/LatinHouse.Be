@@ -38,6 +38,7 @@ public class TodoStrategy implements
                 .no(userT.getNo())
                 .todo(userT.getTodo())
                 .isCompleted(userT.getIsCompleted())
+                .createdBy(userT.getCreatedBy())
                 .build();
     }
 }
