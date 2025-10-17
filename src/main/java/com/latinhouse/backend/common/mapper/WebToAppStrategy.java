@@ -1,4 +1,4 @@
-package com.latinhouse.backend.adapter.in.web.home.mapper;
+package com.latinhouse.backend.common.mapper;
 
 public interface WebToAppStrategy<W, A> {
     boolean supports(Class<?> webType, Class<?> appType);

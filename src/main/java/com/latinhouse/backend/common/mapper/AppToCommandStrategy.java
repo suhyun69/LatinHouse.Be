@@ -1,4 +1,4 @@
-package com.latinhouse.backend.application.addTodo.mapper;
+package com.latinhouse.backend.common.mapper;
 
 public interface AppToCommandStrategy<A, C> {
     boolean supports(Class<?> appType, Class<?> commandType);

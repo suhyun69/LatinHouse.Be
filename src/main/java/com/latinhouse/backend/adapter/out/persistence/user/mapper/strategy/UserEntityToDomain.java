@@ -1,7 +1,7 @@
 package com.latinhouse.backend.adapter.out.persistence.user.mapper.strategy;
 
 import com.latinhouse.backend.adapter.out.persistence.user.entity.UserJpaEntity;
-import com.latinhouse.backend.adapter.out.persistence.user.mapper.EntityToDomainStrategy;
+import com.latinhouse.backend.common.mapper.EntityToDomainStrategy;
 import com.latinhouse.backend.domain.user.Role;
 import com.latinhouse.backend.domain.user.User;
 import org.springframework.stereotype.Component;

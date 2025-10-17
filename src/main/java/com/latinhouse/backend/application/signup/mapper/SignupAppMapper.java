@@ -1,5 +1,7 @@
 package com.latinhouse.backend.application.signup.mapper;
 
+import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
+import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
 import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.domain.user.command.AddUserCommand;
 import com.latinhouse.backend.port.in.dto.AddUserAppRequest;

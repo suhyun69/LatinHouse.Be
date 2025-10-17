@@ -1,6 +1,6 @@
 package com.latinhouse.backend.application.signup.mapper.strategy;
 
-import com.latinhouse.backend.application.signup.mapper.AppToCommandStrategy;
+import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
 import com.latinhouse.backend.domain.user.command.AddUserCommand;
 import com.latinhouse.backend.port.in.dto.AddUserAppRequest;
 import lombok.RequiredArgsConstructor;

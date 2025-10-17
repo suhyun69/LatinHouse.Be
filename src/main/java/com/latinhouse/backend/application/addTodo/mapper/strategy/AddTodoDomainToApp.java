@@ -1,6 +1,6 @@
 package com.latinhouse.backend.application.addTodo.mapper.strategy;
 
-import com.latinhouse.backend.application.addTodo.mapper.DomainToAppStrategy;
+import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
 import com.latinhouse.backend.domain.todo.Todo;
 import com.latinhouse.backend.port.in.dto.AddTodoAppResponse;
 import org.springframework.stereotype.Component;

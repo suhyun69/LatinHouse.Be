@@ -1,4 +1,4 @@
-package com.latinhouse.backend.adapter.in.web.signin.mapper;
+package com.latinhouse.backend.common.mapper;
 
 public interface AppToWebStrategy<A, W> {
     boolean supports(Class<?> appType, Class<?> webType);

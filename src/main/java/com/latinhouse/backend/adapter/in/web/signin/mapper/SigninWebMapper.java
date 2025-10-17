@@ -2,6 +2,8 @@ package com.latinhouse.backend.adapter.in.web.signin.mapper;
 
 import com.latinhouse.backend.adapter.in.web.signin.dto.SigninWebRequest;
 import com.latinhouse.backend.adapter.in.web.signin.dto.SigninWebResponse;
+import com.latinhouse.backend.common.mapper.AppToWebStrategy;
+import com.latinhouse.backend.common.mapper.WebToAppStrategy;
 import com.latinhouse.backend.port.in.dto.SigninAppRequest;
 import com.latinhouse.backend.port.in.dto.SigninAppResponse;
 import lombok.RequiredArgsConstructor;

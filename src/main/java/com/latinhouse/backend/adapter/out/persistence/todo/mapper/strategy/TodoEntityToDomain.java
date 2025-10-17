@@ -1,7 +1,7 @@
 package com.latinhouse.backend.adapter.out.persistence.todo.mapper.strategy;
 
 import com.latinhouse.backend.adapter.out.persistence.todo.entity.TodoJpaEntity;
-import com.latinhouse.backend.adapter.out.persistence.todo.mapper.EntityToDomainStrategy;
+import com.latinhouse.backend.common.mapper.EntityToDomainStrategy;
 import com.latinhouse.backend.domain.todo.Todo;
 import org.springframework.stereotype.Component;
 

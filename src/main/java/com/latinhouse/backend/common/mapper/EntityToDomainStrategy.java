@@ -1,4 +1,4 @@
-package com.latinhouse.backend.adapter.out.persistence.todo.mapper;
+package com.latinhouse.backend.common.mapper;
 
 public interface EntityToDomainStrategy<E, D> {
     boolean supports(Class<?> entityType, Class<?> domainType);

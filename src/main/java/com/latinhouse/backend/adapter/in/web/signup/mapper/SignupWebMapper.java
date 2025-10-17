@@ -2,6 +2,8 @@ package com.latinhouse.backend.adapter.in.web.signup.mapper;
 
 import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebRequest;
 import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebResponse;
+import com.latinhouse.backend.common.mapper.AppToWebStrategy;
+import com.latinhouse.backend.common.mapper.WebToAppStrategy;
 import com.latinhouse.backend.port.in.dto.AddUserAppRequest;
 import com.latinhouse.backend.port.in.dto.AddUserAppResponse;
 import lombok.RequiredArgsConstructor;

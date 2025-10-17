@@ -1,7 +1,7 @@
 package com.latinhouse.backend.adapter.in.web.home.mapper.strategy;
 
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebResponse;
-import com.latinhouse.backend.adapter.in.web.home.mapper.AppToWebStrategy;
+import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.port.in.dto.AddTodoAppResponse;
 import org.springframework.stereotype.Component;
 

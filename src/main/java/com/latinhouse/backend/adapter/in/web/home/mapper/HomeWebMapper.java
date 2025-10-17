@@ -2,6 +2,8 @@ package com.latinhouse.backend.adapter.in.web.home.mapper;
 
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebRequest;
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebResponse;
+import com.latinhouse.backend.common.mapper.AppToWebStrategy;
+import com.latinhouse.backend.common.mapper.WebToAppStrategy;
 import com.latinhouse.backend.port.in.dto.AddTodoAppRequest;
 import com.latinhouse.backend.port.in.dto.AddTodoAppResponse;
 import lombok.RequiredArgsConstructor;
