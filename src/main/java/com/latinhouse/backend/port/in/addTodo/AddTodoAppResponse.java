@@ -1,4 +1,4 @@
-package com.latinhouse.backend.port.in.dto;
+package com.latinhouse.backend.port.in.addTodo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

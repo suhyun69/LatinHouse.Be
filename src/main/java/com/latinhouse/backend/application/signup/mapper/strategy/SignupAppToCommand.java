@@ -2,7 +2,7 @@ package com.latinhouse.backend.application.signup.mapper.strategy;
 
 import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
 import com.latinhouse.backend.domain.user.command.AddUserCommand;
-import com.latinhouse.backend.port.in.dto.AddUserAppRequest;
+import com.latinhouse.backend.port.in.addUser.AddUserAppRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

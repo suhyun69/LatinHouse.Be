@@ -1,9 +1,9 @@
 package com.latinhouse.backend.application.signup;
 
 import com.latinhouse.backend.application.signup.mapper.SignupAppMapper;
-import com.latinhouse.backend.port.in.dto.AddUserAppRequest;
-import com.latinhouse.backend.port.in.dto.AddUserAppResponse;
-import com.latinhouse.backend.port.in.SignupUseCase;
+import com.latinhouse.backend.port.in.addUser.AddUserAppRequest;
+import com.latinhouse.backend.port.in.addUser.AddUserAppResponse;
+import com.latinhouse.backend.port.in.addUser.SignupUseCase;
 import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;

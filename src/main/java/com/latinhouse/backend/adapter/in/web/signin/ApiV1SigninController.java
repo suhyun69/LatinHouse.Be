@@ -3,7 +3,7 @@ package com.latinhouse.backend.adapter.in.web.signin;
 import com.latinhouse.backend.adapter.in.web.signin.dto.SigninWebRequest;
 import com.latinhouse.backend.adapter.in.web.signin.dto.SigninWebResponse;
 import com.latinhouse.backend.adapter.in.web.signin.mapper.SigninWebMapper;
-import com.latinhouse.backend.port.in.SigninUseCase;
+import com.latinhouse.backend.port.in.signin.SigninUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

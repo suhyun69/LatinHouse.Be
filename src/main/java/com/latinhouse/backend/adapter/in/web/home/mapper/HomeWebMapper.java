@@ -4,8 +4,8 @@ import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebRequest;
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
-import com.latinhouse.backend.port.in.dto.AddTodoAppRequest;
-import com.latinhouse.backend.port.in.dto.AddTodoAppResponse;
+import com.latinhouse.backend.port.in.addTodo.AddTodoAppRequest;
+import com.latinhouse.backend.port.in.addTodo.AddTodoAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

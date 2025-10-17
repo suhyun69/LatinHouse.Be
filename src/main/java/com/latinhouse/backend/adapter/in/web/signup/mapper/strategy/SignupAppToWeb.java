@@ -2,7 +2,7 @@ package com.latinhouse.backend.adapter.in.web.signup.mapper.strategy;
 
 import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
-import com.latinhouse.backend.port.in.dto.AddUserAppResponse;
+import com.latinhouse.backend.port.in.addUser.AddUserAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component

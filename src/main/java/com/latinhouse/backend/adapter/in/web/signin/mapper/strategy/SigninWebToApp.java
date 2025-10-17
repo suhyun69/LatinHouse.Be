@@ -2,7 +2,7 @@ package com.latinhouse.backend.adapter.in.web.signin.mapper.strategy;
 
 import com.latinhouse.backend.adapter.in.web.signin.dto.SigninWebRequest;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
-import com.latinhouse.backend.port.in.dto.SigninAppRequest;
+import com.latinhouse.backend.port.in.signin.SigninAppRequest;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -2,7 +2,7 @@ package com.latinhouse.backend.adapter.in.web.home.mapper.strategy;
 
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
-import com.latinhouse.backend.port.in.dto.AddTodoAppResponse;
+import com.latinhouse.backend.port.in.addTodo.AddTodoAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component

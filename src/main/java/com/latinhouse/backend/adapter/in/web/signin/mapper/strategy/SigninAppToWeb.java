@@ -2,7 +2,7 @@ package com.latinhouse.backend.adapter.in.web.signin.mapper.strategy;
 
 import com.latinhouse.backend.adapter.in.web.signin.dto.SigninWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
-import com.latinhouse.backend.port.in.dto.SigninAppResponse;
+import com.latinhouse.backend.port.in.signin.SigninAppResponse;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
