@@ -2,7 +2,7 @@ package com.latinhouse.backend.domain.user.service;
 
 import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.domain.user.command.AddUserCommand;
-import com.latinhouse.backend.port.out.CreateUserPort;
+import com.latinhouse.backend.port.out.user.CreateUserPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

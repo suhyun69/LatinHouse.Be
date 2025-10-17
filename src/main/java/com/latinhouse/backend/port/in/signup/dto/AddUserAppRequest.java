@@ -1,4 +1,4 @@
-package com.latinhouse.backend.port.in.signin;
+package com.latinhouse.backend.port.in.signup.dto;
 
 import com.latinhouse.backend.common.SelfValidating;
 import jakarta.validation.constraints.NotBlank;
@@ -8,7 +8,7 @@ import lombok.Value;
 
 @Value
 @EqualsAndHashCode(callSuper = false)
-public class SigninAppRequest extends SelfValidating<SigninAppRequest> {
+public class AddUserAppRequest extends SelfValidating<AddUserAppRequest> {
 
     @NotBlank(message = "email cannot be blank.")
     String email;
@@ -17,7 +17,7 @@ public class SigninAppRequest extends SelfValidating<SigninAppRequest> {
     String password;
 
     @Builder
-    public SigninAppRequest(String email, String password) {
+    public AddUserAppRequest(String email, String password) {
         this.email = email;
         this.password = password;
 

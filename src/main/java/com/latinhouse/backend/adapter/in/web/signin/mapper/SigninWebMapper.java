@@ -4,8 +4,8 @@ import com.latinhouse.backend.adapter.in.web.signin.dto.SigninWebRequest;
 import com.latinhouse.backend.adapter.in.web.signin.dto.SigninWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
-import com.latinhouse.backend.port.in.signin.SigninAppRequest;
-import com.latinhouse.backend.port.in.signin.SigninAppResponse;
+import com.latinhouse.backend.port.in.signin.dto.SigninAppRequest;
+import com.latinhouse.backend.port.in.signin.dto.SigninAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +33,7 @@ public class SigninWebMapper {
     @SuppressWarnings("unchecked")
     private <W, A> A dispatchWebToApp(W webReq, Class<A> appType) {
         var s = (WebToAppStrategy<W, A>) webToAppStrategies.stream()
-                .filter(st -> st.supports(webReq.getClass(), appType))
+                .filter(st -> st.webToAppSupports(webReq.getClass(), appType))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(
                         "No WebToAppStrategy for %s -> %s".formatted(webReq.getClass().getSimpleName(), appType.getSimpleName())));
@@ -43,7 +43,7 @@ public class SigninWebMapper {
     @SuppressWarnings("unchecked")
     private <A, W> W dispatchAppToWeb(A appRes, Class<W> webType) {
         var s = (AppToWebStrategy<A, W>) appToWebStrategies.stream()
-                .filter(st -> st.supports(appRes.getClass(), webType))
+                .filter(st -> st.appToWebSupports(appRes.getClass(), webType))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(
                         "No AppToWebStrategy for %s -> %s".formatted(appRes.getClass().getSimpleName(), webType.getSimpleName())));

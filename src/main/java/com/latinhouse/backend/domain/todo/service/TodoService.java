@@ -2,8 +2,8 @@ package com.latinhouse.backend.domain.todo.service;
 
 import com.latinhouse.backend.domain.todo.Todo;
 import com.latinhouse.backend.domain.todo.command.AddTodoCommand;
-import com.latinhouse.backend.port.out.CreateTodoPort;
-import com.latinhouse.backend.port.out.ReadTodoPort;
+import com.latinhouse.backend.port.out.todo.CreateTodoPort;
+import com.latinhouse.backend.port.out.todo.ReadTodoPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

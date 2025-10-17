@@ -1,8 +1,8 @@
 package com.latinhouse.backend.application.signup;
 
 import com.latinhouse.backend.application.signup.mapper.SignupAppMapper;
-import com.latinhouse.backend.port.in.signup.AddUserAppRequest;
-import com.latinhouse.backend.port.in.signup.AddUserAppResponse;
+import com.latinhouse.backend.port.in.signup.dto.AddUserAppRequest;
+import com.latinhouse.backend.port.in.signup.dto.AddUserAppResponse;
 import com.latinhouse.backend.port.in.signup.SignupUseCase;
 import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.domain.user.service.UserService;

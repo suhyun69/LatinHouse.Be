@@ -1,4 +1,4 @@
-package com.latinhouse.backend.port.in.signin;
+package com.latinhouse.backend.port.in.signin.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

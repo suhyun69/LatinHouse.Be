@@ -27,7 +27,7 @@ public class TodoPersistenceMapper {
     @SuppressWarnings("unchecked")
     private <D, E> E dispatchDomainToEntity(D domain, Class<E> entityType) {
         var s = (DomainToEntityStrategy<D, E>) domainToEntityStrategies.stream()
-                .filter(st -> st.supports(domain.getClass(), entityType))
+                .filter(st -> st.domainToEntitySupports(domain.getClass(), entityType))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(
                         "No DomainToEntityStrategy for %s -> %s".formatted(domain.getClass().getSimpleName(), entityType.getSimpleName())));
@@ -37,7 +37,7 @@ public class TodoPersistenceMapper {
     @SuppressWarnings("unchecked")
     private <E, D> D dispatchEntityToDomain(E entity, Class<D> domainType) {
         var s = (EntityToDomainStrategy<E, D>) entityToDomainStrategies.stream()
-                .filter(st -> st.supports(entity.getClass(), domainType))
+                .filter(st -> st.entityToDomainSupports(entity.getClass(), domainType))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(
                         "No EntityToDomainStrategy for %s -> %s".formatted(entity.getClass().getSimpleName(), domainType.getSimpleName())));

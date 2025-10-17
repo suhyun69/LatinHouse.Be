@@ -4,7 +4,7 @@ import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
 import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
 import com.latinhouse.backend.domain.todo.Todo;
 import com.latinhouse.backend.domain.todo.command.AddTodoCommand;
-import com.latinhouse.backend.port.in.home.AddTodoAppRequest;
+import com.latinhouse.backend.port.in.home.dto.AddTodoAppRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

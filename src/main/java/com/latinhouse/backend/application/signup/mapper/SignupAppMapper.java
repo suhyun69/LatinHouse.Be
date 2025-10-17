@@ -4,7 +4,7 @@ import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
 import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
 import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.domain.user.command.AddUserCommand;
-import com.latinhouse.backend.port.in.signup.AddUserAppRequest;
+import com.latinhouse.backend.port.in.signup.dto.AddUserAppRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

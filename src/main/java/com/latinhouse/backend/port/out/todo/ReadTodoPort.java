@@ -1,4 +1,4 @@
-package com.latinhouse.backend.port.out;
+package com.latinhouse.backend.port.out.todo;
 
 import com.latinhouse.backend.domain.todo.Todo;
 

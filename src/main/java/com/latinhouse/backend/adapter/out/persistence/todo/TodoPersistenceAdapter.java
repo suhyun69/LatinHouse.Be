@@ -1,11 +1,10 @@
 package com.latinhouse.backend.adapter.out.persistence.todo;
 
-import com.latinhouse.backend.adapter.out.persistence.todo.entity.TodoJpaEntity;
 import com.latinhouse.backend.adapter.out.persistence.todo.mapper.TodoPersistenceMapper;
 import com.latinhouse.backend.adapter.out.persistence.todo.repository.TodoRepository;
 import com.latinhouse.backend.domain.todo.Todo;
-import com.latinhouse.backend.port.out.CreateTodoPort;
-import com.latinhouse.backend.port.out.ReadTodoPort;
+import com.latinhouse.backend.port.out.todo.CreateTodoPort;
+import com.latinhouse.backend.port.out.todo.ReadTodoPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -2,7 +2,7 @@ package com.latinhouse.backend.domain.user.service;
 
 import com.latinhouse.backend.domain.user.CustomUserDetails;
 import com.latinhouse.backend.domain.user.User;
-import com.latinhouse.backend.port.out.ReadUserPort;
+import com.latinhouse.backend.port.out.user.ReadUserPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

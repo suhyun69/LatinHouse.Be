@@ -1,11 +1,10 @@
 package com.latinhouse.backend.adapter.out.persistence.user;
 
-import com.latinhouse.backend.adapter.out.persistence.user.entity.UserJpaEntity;
 import com.latinhouse.backend.adapter.out.persistence.user.mapper.UserPersistenceMapper;
 import com.latinhouse.backend.adapter.out.persistence.user.repository.UserRepository;
-import com.latinhouse.backend.port.out.CreateUserPort;
+import com.latinhouse.backend.port.out.user.CreateUserPort;
 import com.latinhouse.backend.domain.user.User;
-import com.latinhouse.backend.port.out.ReadUserPort;
+import com.latinhouse.backend.port.out.user.ReadUserPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

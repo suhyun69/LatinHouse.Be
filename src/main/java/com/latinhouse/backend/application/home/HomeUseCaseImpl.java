@@ -3,10 +3,10 @@ package com.latinhouse.backend.application.home;
 import com.latinhouse.backend.application.home.mapper.TodoAppMapper;
 import com.latinhouse.backend.domain.todo.Todo;
 import com.latinhouse.backend.domain.todo.service.TodoService;
-import com.latinhouse.backend.port.in.home.GetTodoAppResponse;
+import com.latinhouse.backend.port.in.home.dto.GetTodoAppResponse;
 import com.latinhouse.backend.port.in.home.HomeUseCase;
-import com.latinhouse.backend.port.in.home.AddTodoAppRequest;
-import com.latinhouse.backend.port.in.home.AddTodoAppResponse;
+import com.latinhouse.backend.port.in.home.dto.AddTodoAppRequest;
+import com.latinhouse.backend.port.in.home.dto.AddTodoAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

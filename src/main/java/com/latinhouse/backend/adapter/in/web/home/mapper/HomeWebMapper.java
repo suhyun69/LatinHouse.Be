@@ -5,9 +5,9 @@ import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebResponse;
 import com.latinhouse.backend.adapter.in.web.home.dto.GetTodoWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
-import com.latinhouse.backend.port.in.home.AddTodoAppRequest;
-import com.latinhouse.backend.port.in.home.AddTodoAppResponse;
-import com.latinhouse.backend.port.in.home.GetTodoAppResponse;
+import com.latinhouse.backend.port.in.home.dto.AddTodoAppRequest;
+import com.latinhouse.backend.port.in.home.dto.AddTodoAppResponse;
+import com.latinhouse.backend.port.in.home.dto.GetTodoAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -40,7 +40,7 @@ public class HomeWebMapper {
     @SuppressWarnings("unchecked")
     private <W, A> A dispatchWebToApp(W webReq, Class<A> appType) {
         var s = (WebToAppStrategy<W, A>) webToAppStrategies.stream()
-                .filter(st -> st.supports(webReq.getClass(), appType))
+                .filter(st -> st.webToAppSupports(webReq.getClass(), appType))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(
                         "No WebToAppStrategy for %s -> %s".formatted(webReq.getClass().getSimpleName(), appType.getSimpleName())));
@@ -50,7 +50,7 @@ public class HomeWebMapper {
     @SuppressWarnings("unchecked")
     private <A, W> W dispatchAppToWeb(A appRes, Class<W> webType) {
         var s = (AppToWebStrategy<A, W>) appToWebStrategies.stream()
-                .filter(st -> st.supports(appRes.getClass(), webType))
+                .filter(st -> st.appToWebSupports(appRes.getClass(), webType))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(
                         "No AppToWebStrategy for %s -> %s".formatted(appRes.getClass().getSimpleName(), webType.getSimpleName())));
