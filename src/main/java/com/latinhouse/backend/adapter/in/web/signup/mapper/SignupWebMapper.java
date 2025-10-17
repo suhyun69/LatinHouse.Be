@@ -4,8 +4,8 @@ import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebRequest;
 import com.latinhouse.backend.adapter.in.web.signup.dto.SignupWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
-import com.latinhouse.backend.port.in.addUser.AddUserAppRequest;
-import com.latinhouse.backend.port.in.addUser.AddUserAppResponse;
+import com.latinhouse.backend.port.in.signup.AddUserAppRequest;
+import com.latinhouse.backend.port.in.signup.AddUserAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

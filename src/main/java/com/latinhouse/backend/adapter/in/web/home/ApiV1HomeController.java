@@ -3,7 +3,7 @@ package com.latinhouse.backend.adapter.in.web.home;
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebRequest;
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebResponse;
 import com.latinhouse.backend.adapter.in.web.home.mapper.HomeWebMapper;
-import com.latinhouse.backend.port.in.addTodo.AddTodoUseCase;
+import com.latinhouse.backend.port.in.home.HomeUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -21,16 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ApiV1HomeController {
 
-    private final AddTodoUseCase addTodoUseCase;
+    private final HomeUseCase homeUseCase;
 
     private final HomeWebMapper homeWebMapper;
 
     @PostMapping("/todo")
     @Operation(summary = "Add Todo", description = "Add Todo")
-    public ResponseEntity<AddTodoWebResponse> Signup(@Valid @RequestBody AddTodoWebRequest webReq) {
+    public ResponseEntity<AddTodoWebResponse> addTodo(@Valid @RequestBody AddTodoWebRequest webReq) {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(homeWebMapper.toWebRes(addTodoUseCase.addTodo(homeWebMapper.toAppReq(webReq))));
+                .body(homeWebMapper.toWebRes(homeUseCase.addTodo(homeWebMapper.toAppReq(webReq))));
     }
 }

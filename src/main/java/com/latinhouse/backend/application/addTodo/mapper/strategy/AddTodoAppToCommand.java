@@ -2,7 +2,7 @@ package com.latinhouse.backend.application.addTodo.mapper.strategy;
 
 import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
 import com.latinhouse.backend.domain.todo.command.AddTodoCommand;
-import com.latinhouse.backend.port.in.addTodo.AddTodoAppRequest;
+import com.latinhouse.backend.port.in.home.AddTodoAppRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

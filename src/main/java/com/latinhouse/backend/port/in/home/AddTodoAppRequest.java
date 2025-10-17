@@ -1,4 +1,4 @@
-package com.latinhouse.backend.port.in.addTodo;
+package com.latinhouse.backend.port.in.home;
 
 import com.latinhouse.backend.common.SelfValidating;
 import jakarta.validation.constraints.NotBlank;

@@ -3,15 +3,15 @@ package com.latinhouse.backend.application.addTodo;
 import com.latinhouse.backend.application.addTodo.mapper.AddTodoAppMapper;
 import com.latinhouse.backend.domain.todo.Todo;
 import com.latinhouse.backend.domain.todo.service.TodoService;
-import com.latinhouse.backend.port.in.addTodo.AddTodoUseCase;
-import com.latinhouse.backend.port.in.addTodo.AddTodoAppRequest;
-import com.latinhouse.backend.port.in.addTodo.AddTodoAppResponse;
+import com.latinhouse.backend.port.in.home.HomeUseCase;
+import com.latinhouse.backend.port.in.home.AddTodoAppRequest;
+import com.latinhouse.backend.port.in.home.AddTodoAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AddTodoUseCaseImpl implements AddTodoUseCase {
+public class HomeUseCaseImpl implements HomeUseCase {
 
     private final AddTodoAppMapper addTodoAppMapper;
     private final TodoService todoService;

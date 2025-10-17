@@ -1,4 +1,4 @@
-package com.latinhouse.backend.port.in.addUser;
+package com.latinhouse.backend.port.in.signup;
 
 import com.latinhouse.backend.common.SelfValidating;
 import jakarta.validation.constraints.NotBlank;
