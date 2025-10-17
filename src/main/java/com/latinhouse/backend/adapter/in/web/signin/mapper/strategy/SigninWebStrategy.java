@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.time.Instant;
 
 @Component
-public class SigninStrategy implements
+public class SigninWebStrategy implements
         AppToWebStrategy<SigninAppResponse, SigninWebResponse>,
         WebToAppStrategy<SigninWebRequest, SigninAppRequest> {
 

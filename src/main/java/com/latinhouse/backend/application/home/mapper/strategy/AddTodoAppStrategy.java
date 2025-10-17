@@ -9,7 +9,7 @@ import com.latinhouse.backend.port.in.home.dto.AddTodoAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AddTodoStrategy implements
+public class AddTodoAppStrategy implements
         AppToCommandStrategy<AddTodoAppRequest, AddTodoCommand>,
         DomainToAppStrategy<Todo, AddTodoAppResponse> {
 

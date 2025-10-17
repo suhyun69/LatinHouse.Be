@@ -6,10 +6,10 @@ import com.latinhouse.backend.port.in.home.dto.GetTodoAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetTodoDomainToApp implements DomainToAppStrategy<Todo, GetTodoAppResponse> {
+public class GetTodoAppStrategy implements DomainToAppStrategy<Todo, GetTodoAppResponse> {
 
     @Override
-    public boolean supports(Class<?> d, Class<?> a) {
+    public boolean domainToAppSupports(Class<?> d, Class<?> a) {
         return Todo.class.isAssignableFrom(d)
                 && GetTodoAppResponse.class.isAssignableFrom(a);
     }

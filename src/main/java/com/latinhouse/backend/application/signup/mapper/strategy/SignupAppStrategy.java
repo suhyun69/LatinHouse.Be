@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class SignupStrategy implements
+public class SignupAppStrategy implements
         AppToCommandStrategy<AddUserAppRequest, AddUserCommand>,
         DomainToAppStrategy<User, AddUserAppResponse> {
 

@@ -33,7 +33,7 @@ public class SignupAppMapper {
     @SuppressWarnings("unchecked")
     private <A, C> C dispatchAppToCommand(A appReq, Class<C> commandType) {
         var s = (AppToCommandStrategy<A, C>) appToCommandStrategies.stream()
-                .filter(st -> st.supports(appReq.getClass(), commandType))
+                .filter(st -> st.appToCommandSupports(appReq.getClass(), commandType))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(
                         "No AppToCommandStrategy for %s -> %s".formatted(appReq.getClass().getSimpleName(), commandType.getSimpleName())));
@@ -43,7 +43,7 @@ public class SignupAppMapper {
     @SuppressWarnings("unchecked")
     private <D, A> A dispatchDomainToApp(D domain, Class<A> appType) {
         var s = (DomainToAppStrategy<D, A>) domainToAppStrategies.stream()
-                .filter(st -> st.supports(domain.getClass(), appType))
+                .filter(st -> st.domainToAppSupports(domain.getClass(), appType))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(
                         "No DomainToAppStrategy for %s -> %s".formatted(domain.getClass().getSimpleName(), appType.getSimpleName())));

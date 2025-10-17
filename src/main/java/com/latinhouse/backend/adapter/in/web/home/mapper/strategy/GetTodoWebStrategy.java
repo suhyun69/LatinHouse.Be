@@ -6,7 +6,7 @@ import com.latinhouse.backend.port.in.home.dto.GetTodoAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetTodoStrategy implements AppToWebStrategy<GetTodoAppResponse, GetTodoWebResponse> {
+public class GetTodoWebStrategy implements AppToWebStrategy<GetTodoAppResponse, GetTodoWebResponse> {
 
     @Override public boolean appToWebSupports(Class<?> a, Class<?> w) {
         return GetTodoAppResponse.class.isAssignableFrom(a)

@@ -9,7 +9,7 @@ import com.latinhouse.backend.port.in.signup.dto.AddUserAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SignupStrategy implements
+public class SignupWebStrategy implements
         AppToWebStrategy<AddUserAppResponse, SignupWebResponse>,
         WebToAppStrategy<SignupWebRequest, AddUserAppRequest> {
 
