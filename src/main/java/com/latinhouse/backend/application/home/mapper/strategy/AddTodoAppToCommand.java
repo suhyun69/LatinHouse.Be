@@ -1,4 +1,4 @@
-package com.latinhouse.backend.application.addTodo.mapper.strategy;
+package com.latinhouse.backend.application.home.mapper.strategy;
 
 import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
 import com.latinhouse.backend.domain.todo.command.AddTodoCommand;

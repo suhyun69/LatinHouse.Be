@@ -1,4 +1,4 @@
-package com.latinhouse.backend.application.addTodo.mapper.strategy;
+package com.latinhouse.backend.application.home.mapper.strategy;
 
 import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
 import com.latinhouse.backend.domain.todo.Todo;
@@ -15,9 +15,9 @@ public class AddTodoDomainToApp implements DomainToAppStrategy<Todo, AddTodoAppR
     }
 
     @Override
-    public AddTodoAppResponse toAppRes(Todo user) {
+    public AddTodoAppResponse toAppRes(Todo todo) {
         return AddTodoAppResponse.builder()
-                .no(user.getNo())
+                .no(todo.getNo())
                 .build();
     }
 }

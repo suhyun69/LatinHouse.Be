@@ -1,6 +1,7 @@
-package com.latinhouse.backend.application.addTodo.mapper;
+package com.latinhouse.backend.application.home.mapper;
 
 import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
+import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
 import com.latinhouse.backend.domain.todo.Todo;
 import com.latinhouse.backend.domain.todo.command.AddTodoCommand;
 import com.latinhouse.backend.port.in.home.AddTodoAppRequest;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class AddTodoAppMapper {
+public class TodoAppMapper {
 
     /*
         AppRequest -> Command

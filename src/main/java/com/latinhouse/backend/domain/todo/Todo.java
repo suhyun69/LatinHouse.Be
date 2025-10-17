@@ -16,6 +16,7 @@ public class Todo {
     private Long no;
     private String todo;
     private Boolean isCompleted;
+    private String createdBy;
 
     public static Todo from(AddTodoCommand command) {
         return Todo.builder()
