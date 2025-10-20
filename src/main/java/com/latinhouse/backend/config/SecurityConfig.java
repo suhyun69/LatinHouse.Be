@@ -42,6 +42,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/signup/**").permitAll()
                         .requestMatchers("/api/v1/signin/**").permitAll()
+                        .requestMatchers("/api/v1/home/**").permitAll()
                         // (선택) Swagger/H2 등 개발 편의
                         .requestMatchers("/v3/api-docs/**","/swagger-ui/**","/h2-console/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/public/**").permitAll()
