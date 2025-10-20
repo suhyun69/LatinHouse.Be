@@ -24,4 +24,8 @@ public class Todo {
                 .isCompleted(command.getIsCompleted())
                 .build();
     }
+
+    public void done() {
+        this.isCompleted = true;
+    }
 }

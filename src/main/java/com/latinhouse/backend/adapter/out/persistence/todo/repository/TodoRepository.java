@@ -4,4 +4,5 @@ import com.latinhouse.backend.adapter.out.persistence.todo.entity.TodoJpaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TodoRepository extends JpaRepository<TodoJpaEntity, String> {
+    TodoJpaEntity findByNo(Long no);
 }

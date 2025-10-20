@@ -47,4 +47,11 @@ public class ApiV1HomeController {
                         .toList()
         );
     }
+
+    @PutMapping("/done/{no}")
+    @Operation(summary = "Get Todos", description = "Get Todos")
+    public ResponseEntity<GetTodoWebResponse> getTodos(@PathVariable Long no) {
+
+        return ResponseEntity.ok(homeWebMapper.toWebRes(homeUseCase.done(no)));
+    }
 }

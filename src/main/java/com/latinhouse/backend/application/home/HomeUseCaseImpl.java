@@ -32,4 +32,13 @@ public class HomeUseCaseImpl implements HomeUseCase {
                 .map(todo -> todoAppMapper.toAppRes(todo, GetTodoAppResponse.class))
                 .collect(Collectors.toList());
     }
+
+    public GetTodoAppResponse done(Long no) {
+        Todo todo = todoService.getTodo(no);
+        todo.done();
+        todoService.update(todo);
+
+        return todoAppMapper.toAppRes(todo, GetTodoAppResponse.class);
+
+    }
 }

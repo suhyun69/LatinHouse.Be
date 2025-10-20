@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ReadTodoPort {
     List<Todo> readTodos();
+    Todo readTodo(Long no);
 }
