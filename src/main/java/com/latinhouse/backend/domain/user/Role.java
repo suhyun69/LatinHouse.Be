@@ -23,4 +23,8 @@ public enum Role {
                 .orElseThrow(() ->
                         new IllegalArgumentException("Invalid role value: " + code));
     }
+
+    public Boolean isAdmin() {
+        return this.equals(Role.ADMIN);
+    }
 }

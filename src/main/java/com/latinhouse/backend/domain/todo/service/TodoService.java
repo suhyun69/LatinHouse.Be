@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +27,7 @@ public class TodoService {
         return readTodoPort.readTodos();
     }
 
-    public Todo getTodo(Long no) {
+    public Optional<Todo> getTodo(Long no) {
         return readTodoPort.readTodo(no);
     }
 

@@ -2,8 +2,11 @@ package com.latinhouse.backend.adapter.in.web.home;
 
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebRequest;
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebResponse;
+import com.latinhouse.backend.adapter.in.web.home.dto.DoneTodoWebRequest;
 import com.latinhouse.backend.adapter.in.web.home.dto.GetTodoWebResponse;
 import com.latinhouse.backend.adapter.in.web.home.mapper.HomeWebMapper;
+import com.latinhouse.backend.domain.user.CustomUserDetails;
+import com.latinhouse.backend.domain.user.Role;
 import com.latinhouse.backend.port.in.home.HomeUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,9 +54,16 @@ public class ApiV1HomeController {
     }
 
     @PutMapping("/done/{no}")
-    @Operation(summary = "Get Todos", description = "Get Todos")
-    public ResponseEntity<GetTodoWebResponse> getTodos(@PathVariable Long no) {
+    @PreAuthorize("isAuthenticated()")
+    @Operation(summary = "Done Todo", description = "Done Todo")
+    public ResponseEntity<GetTodoWebResponse> doneTodo(@PathVariable Long no,
+                                                       @AuthenticationPrincipal CustomUserDetails userDetails) {
 
-        return ResponseEntity.ok(homeWebMapper.toWebRes(homeUseCase.done(no)));
+        DoneTodoWebRequest webReq = DoneTodoWebRequest.builder()
+                .no(no)
+                .email(userDetails.getUsername())
+                .isAdmin(userDetails.getRole().isAdmin())
+                .build();
+        return ResponseEntity.ok(homeWebMapper.toWebRes(homeUseCase.done(homeWebMapper.toAppReq(webReq))));
     }
 }

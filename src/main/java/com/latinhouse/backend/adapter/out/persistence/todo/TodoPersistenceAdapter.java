@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -30,8 +31,8 @@ public class TodoPersistenceAdapter implements CreateTodoPort, ReadTodoPort, Upd
     }
 
     @Override
-    public Todo readTodo(Long no) {
-        return todoPersistenceMapper.toDomain(todoRepository.findByNo(no));
+    public Optional<Todo> readTodo(Long no) {
+        return todoRepository.findByNo(no).map(todoPersistenceMapper::toDomain);
     }
 
     @Override

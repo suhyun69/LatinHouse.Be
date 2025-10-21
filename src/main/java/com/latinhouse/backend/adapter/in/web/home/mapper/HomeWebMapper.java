@@ -2,11 +2,13 @@ package com.latinhouse.backend.adapter.in.web.home.mapper;
 
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebRequest;
 import com.latinhouse.backend.adapter.in.web.home.dto.AddTodoWebResponse;
+import com.latinhouse.backend.adapter.in.web.home.dto.DoneTodoWebRequest;
 import com.latinhouse.backend.adapter.in.web.home.dto.GetTodoWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
 import com.latinhouse.backend.port.in.home.dto.AddTodoAppRequest;
 import com.latinhouse.backend.port.in.home.dto.AddTodoAppResponse;
+import com.latinhouse.backend.port.in.home.dto.DoneTodoAppRequest;
 import com.latinhouse.backend.port.in.home.dto.GetTodoAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -35,6 +37,10 @@ public class HomeWebMapper {
 
     public GetTodoWebResponse toWebRes(GetTodoAppResponse res) {
         return dispatchAppToWeb(res, GetTodoWebResponse.class);
+    }
+
+    public DoneTodoAppRequest toAppReq(DoneTodoWebRequest req) {
+        return dispatchWebToApp(req, DoneTodoAppRequest.class);
     }
 
     @SuppressWarnings("unchecked")
