@@ -1,10 +1,12 @@
 package com.latinhouse.backend.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -37,11 +39,35 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
      */
     @org.springframework.web.bind.annotation.ExceptionHandler(BadRequestException.class)
     public ResponseEntity<?> handleBadRequestException(BadRequestException ex) {
-        StackTraceElement element = ex.getStackTrace()[1];
+        int index = ex.getStackTraceIndex();
+        StackTraceElement element = ex.getStackTrace()[index];
         String[] parts = element.getClassName().split("\\.");
         String className = parts[parts.length - 1]; // 마지막 요소
         ErrorResponse errorResponse = new ErrorResponse(String.format("[%s] %s", className, ex.getMessage()));
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException ex) {
+        StackTraceElement element = ex.getStackTrace()[0];
+        String[] parts = element.getClassName().split("\\.");
+        String className = parts[parts.length - 1]; // 마지막 요소
+        ErrorResponse errorResponse = new ErrorResponse(String.format("[%s] %s", className, ex.getMessage()));
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    // 403: 커스텀 Forbidden
+    @org.springframework.web.bind.annotation.ExceptionHandler(ForbiddenException.class)
+    protected ResponseEntity<ErrorResponse> handleAccessDenied(ForbiddenException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
+    }
+
+    // 404: 커스텀 NotFound
+    @org.springframework.web.bind.annotation.ExceptionHandler(ChangeSetPersister.NotFoundException.class)
+    protected ResponseEntity<ErrorResponse> handleNotFound(ChangeSetPersister.NotFoundException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)

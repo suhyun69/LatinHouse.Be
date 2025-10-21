@@ -18,12 +18,10 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI openAPI() {
 
-        /*
         SecurityScheme securityScheme = new SecurityScheme()
                 .type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")
                 .in(SecurityScheme.In.HEADER).name("Authorization");
         SecurityRequirement schemaRequirement = new SecurityRequirement().addList("bearerAuth");
-        */
 
         Info info = new Info()
                 .title("Latinhouse Project API Document")
@@ -31,9 +29,9 @@ public class OpenApiConfig {
                 .description("Latinhouse 프로젝트의 API 명세서입니다.");
 
         return new OpenAPI()
-                // .components(new Components().addSecuritySchemes("bearerAuth", securityScheme))
-                // .addSecurityItem(schemaRequirement)
-                // .security(Arrays.asList(schemaRequirement))
+                .components(new Components().addSecuritySchemes("bearerAuth", securityScheme))
+                .addSecurityItem(schemaRequirement)
+                .security(Arrays.asList(schemaRequirement))
                 .info(info);
     }
 }

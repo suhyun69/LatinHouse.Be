@@ -1,3 +1,13 @@
+server:
+  port: 8080
+app:
+  jwt:
+    # macOS/Linux (OpenSSL)
+    # 64바이트 무작위 → Base64
+    # openssl rand -base64 64
+    secret: "bDmonrfSh6mtGW7WRq2wNbnZsHuIfVgstkR4lKDfre8x+0scsbgXoSKXWjfulHSeQog/pqnnTkypjD6rPhCn9A=="
+    access-exp-minutes: 60
+    issuer: "latinhouse.be"
 spring:
   profiles:
     active: local

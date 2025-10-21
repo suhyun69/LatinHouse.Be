@@ -1,0 +1,14 @@
+package com.latinhouse.backend.port.in.home.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+@AllArgsConstructor
+public class DoneTodoAppRequest {
+    private Long no;
+    private String email;
+    private Boolean isAdmin;
+}
