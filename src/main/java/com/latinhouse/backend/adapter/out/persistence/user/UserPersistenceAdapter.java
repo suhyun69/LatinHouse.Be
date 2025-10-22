@@ -24,7 +24,7 @@ public class UserPersistenceAdapter implements CreateUserPort, ReadUserPort {
 
     @Override
     public Optional<User> getUser(String email) {
-        return userRepository.findByEmail(email)
+        return userRepository.findById(email)
                 .map(userPersistenceMapper::toDomain);
     }
 }
