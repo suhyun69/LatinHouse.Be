@@ -22,8 +22,9 @@ public class ProfileStrategy implements
     public ProfileJpaEntity toEntity(Profile profile) {
         return ProfileJpaEntity.builder()
                 .id(profile.getId())
+                .email(profile.getEmail())
                 .nickname(profile.getNickname())
-                .sex(profile.getSex().getCode())
+                .isInstructor(profile.getIsInstructor())
                 .build();
     }
 
@@ -37,8 +38,8 @@ public class ProfileStrategy implements
     public Profile toDomain(ProfileJpaEntity profileT) {
         return Profile.builder()
                 .id(profileT.getId())
+                .email(profileT.getEmail())
                 .nickname(profileT.getNickname())
-                .sex(Sex.of(profileT.getSex()))
                 .isInstructor(profileT.getIsInstructor())
                 .build();
     }

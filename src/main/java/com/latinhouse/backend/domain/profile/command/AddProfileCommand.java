@@ -15,20 +15,19 @@ public class AddProfileCommand extends SelfValidating<AddProfileCommand> {
     @NotBlank(message = "id cannot be blank.")
     String id;
 
+    String email;
+
     @NotBlank(message = "nickname cannot be blank.")
     String nickname;
-
-    @NotNull(message = "sex cannot be null.")
-    Sex sex;
 
     Boolean isInstructor;
 
     @Builder
-    public AddProfileCommand(String id, String nickname, Sex sex, Boolean isInstructor) {
+    public AddProfileCommand(String id, String email, String nickname) {
         this.id = id;
+        this.email = email;
         this.nickname = nickname;
-        this.sex = sex;
-        this.isInstructor = isInstructor;
+        this.isInstructor = false;
 
         this.validateSelf();
     }

@@ -12,15 +12,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Profile {
     private String id;
+    private String email;
     private String nickname;
-    private Sex sex;
     private Boolean isInstructor;
 
     public static Profile from(AddProfileCommand command) {
         return Profile.builder()
                 .id(command.getId())
+                .email(command.getEmail())
                 .nickname(command.getNickname())
-                .sex(command.getSex())
                 .isInstructor(command.getIsInstructor())
                 .build();
     }
