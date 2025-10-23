@@ -1,6 +1,7 @@
 package com.latinhouse.backend.adapter.in.web.signup.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,4 +16,8 @@ public class SignupWebRequest {
 
     @NotBlank(message = "password cannot be blank")
     private String password;
+
+    @NotBlank(message = "sex cannot be blank")
+    @Pattern(regexp = "^[MF]$", message = "sex must be 'M' or 'F'")
+    private String sex;
 }

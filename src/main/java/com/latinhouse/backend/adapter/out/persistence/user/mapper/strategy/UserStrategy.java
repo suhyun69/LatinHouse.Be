@@ -3,6 +3,7 @@ package com.latinhouse.backend.adapter.out.persistence.user.mapper.strategy;
 import com.latinhouse.backend.adapter.out.persistence.user.entity.UserJpaEntity;
 import com.latinhouse.backend.common.mapper.DomainToEntityStrategy;
 import com.latinhouse.backend.common.mapper.EntityToDomainStrategy;
+import com.latinhouse.backend.domain.profile.Sex;
 import com.latinhouse.backend.domain.user.Role;
 import com.latinhouse.backend.domain.user.User;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,7 @@ public class UserStrategy implements
         return UserJpaEntity.builder()
                 .email(user.getEmail())
                 .password(user.getPassword())
+                .sex(user.getSex().getCode())
                 .role(user.getRole().getCode())
                 .build();
     }
@@ -38,6 +40,7 @@ public class UserStrategy implements
         return User.builder()
                 .email(userT.getEmail())
                 .password(userT.getPassword())
+                .sex(Sex.of(userT.getSex()))
                 .role(Role.of(userT.getRole()))
                 .build();
     }

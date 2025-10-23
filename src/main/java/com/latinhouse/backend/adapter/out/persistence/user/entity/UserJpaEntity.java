@@ -20,5 +20,6 @@ public class UserJpaEntity extends BaseEntity {
     @Id
     private String email;
     private String password;
+    private String sex;
     private String role;
 }

@@ -33,6 +33,7 @@ public class SignupWebStrategy implements
         return AddUserAppRequest.builder()
                 .email(webReq.getEmail())
                 .password(webReq.getPassword())
+                .sex(webReq.getSex())
                 .build();
     }
 }

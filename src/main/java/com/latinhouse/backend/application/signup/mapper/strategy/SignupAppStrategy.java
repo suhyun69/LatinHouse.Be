@@ -29,6 +29,7 @@ public class SignupAppStrategy implements
         return AddUserCommand.builder()
                 .email(appReq.getEmail())
                 .password(passwordEncoder.encode(appReq.getPassword()))
+                .sex(appReq.getSex())
                 .build();
     }
 
