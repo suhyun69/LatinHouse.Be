@@ -29,7 +29,6 @@ public class MyAppStrategy implements
     @Override
     public AddProfileCommand toCommand(AddProfileAppRequest appReq) {
         return AddProfileCommand.builder()
-                .id(RandomUtils.generateRandomId())
                 .email(appReq.getEmail())
                 .nickname(appReq.getNickname())
                 .build();

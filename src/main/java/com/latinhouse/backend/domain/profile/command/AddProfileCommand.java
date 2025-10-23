@@ -5,10 +5,11 @@ import com.latinhouse.backend.domain.profile.Sex;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 
-@Value
+@Data
 @EqualsAndHashCode(callSuper = false)
 public class AddProfileCommand extends SelfValidating<AddProfileCommand> {
 
@@ -23,12 +24,13 @@ public class AddProfileCommand extends SelfValidating<AddProfileCommand> {
     Boolean isInstructor;
 
     @Builder
-    public AddProfileCommand(String id, String email, String nickname) {
-        this.id = id;
+    public AddProfileCommand(String email, String nickname) {
         this.email = email;
         this.nickname = nickname;
         this.isInstructor = false;
+    }
 
+    public void validate() {
         this.validateSelf();
     }
 }
