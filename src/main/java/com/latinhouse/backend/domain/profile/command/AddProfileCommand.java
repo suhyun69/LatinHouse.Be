@@ -21,6 +21,9 @@ public class AddProfileCommand extends SelfValidating<AddProfileCommand> {
     @NotBlank(message = "nickname cannot be blank.")
     String nickname;
 
+    @NotNull(message = "sex cannot be null.")
+    Sex sex;
+
     Boolean isInstructor;
 
     @Builder
