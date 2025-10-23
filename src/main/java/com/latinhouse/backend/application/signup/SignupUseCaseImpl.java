@@ -1,6 +1,7 @@
 package com.latinhouse.backend.application.signup;
 
 import com.latinhouse.backend.application.signup.mapper.SignupAppMapper;
+import com.latinhouse.backend.common.exception.DuplicateMemberException;
 import com.latinhouse.backend.port.in.signup.dto.AddUserAppRequest;
 import com.latinhouse.backend.port.in.signup.dto.AddUserAppResponse;
 import com.latinhouse.backend.port.in.signup.SignupUseCase;
@@ -9,6 +10,8 @@ import com.latinhouse.backend.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +23,12 @@ public class SignupUseCaseImpl implements SignupUseCase {
     @Override
     @Transactional
     public AddUserAppResponse addUser(AddUserAppRequest appReq) {
+
+        userService.getUser(appReq.getEmail())
+                .ifPresent(u -> {
+                    throw new DuplicateMemberException("이미 가입된 이메일입니다.");
+                });
+
         User user = userService.addUser(signupAppMapper.toCommand(appReq));
         return signupAppMapper.toAppRes(user, AddUserAppResponse.class);
     }
