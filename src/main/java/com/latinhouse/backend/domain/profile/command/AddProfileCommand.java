@@ -1,0 +1,34 @@
+package com.latinhouse.backend.domain.profile.command;
+
+import com.latinhouse.backend.common.SelfValidating;
+import com.latinhouse.backend.domain.profile.Sex;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+
+@Value
+@EqualsAndHashCode(callSuper = false)
+public class AddProfileCommand extends SelfValidating<AddProfileCommand> {
+
+    @NotBlank(message = "id cannot be blank.")
+    String id;
+
+    String email;
+
+    @NotBlank(message = "nickname cannot be blank.")
+    String nickname;
+
+    Boolean isInstructor;
+
+    @Builder
+    public AddProfileCommand(String id, String email, String nickname) {
+        this.id = id;
+        this.email = email;
+        this.nickname = nickname;
+        this.isInstructor = false;
+
+        this.validateSelf();
+    }
+}
