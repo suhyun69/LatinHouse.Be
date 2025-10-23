@@ -4,7 +4,7 @@ import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebRequest;
 import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebResponse;
 import com.latinhouse.backend.adapter.in.web.my.mapper.MyWebMapper;
 import com.latinhouse.backend.domain.user.CustomUserDetails;
-import com.latinhouse.backend.port.in.my.GenerateProfileUseCase;
+import com.latinhouse.backend.port.in.my.MyUseCase;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ApiV1MyController {
 
-    private final GenerateProfileUseCase generateProfileUseCase;
+    private final MyUseCase myUseCase;
     private final MyWebMapper myWebMapper;
 
     @PostMapping("profile")
@@ -37,6 +37,6 @@ public class ApiV1MyController {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(myWebMapper.toWebRes(generateProfileUseCase.generateProfile(appReq)));
+                .body(myWebMapper.toWebRes(myUseCase.generateProfile(appReq)));
     }
 }
