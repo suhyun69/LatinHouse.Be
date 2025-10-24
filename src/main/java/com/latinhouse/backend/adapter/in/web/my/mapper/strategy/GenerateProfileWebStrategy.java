@@ -9,7 +9,7 @@ import com.latinhouse.backend.port.in.my.dto.AddProfileAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyWebStrategy implements
+public class GenerateProfileWebStrategy implements
         AppToWebStrategy<AddProfileAppResponse, GenerateProfileWebResponse>,
         WebToAppStrategy<GenerateProfileWebRequest, AddProfileAppRequest> {
 

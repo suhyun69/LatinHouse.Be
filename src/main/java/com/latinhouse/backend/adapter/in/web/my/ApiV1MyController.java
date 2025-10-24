@@ -2,6 +2,7 @@ package com.latinhouse.backend.adapter.in.web.my;
 
 import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebRequest;
 import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebResponse;
+import com.latinhouse.backend.adapter.in.web.my.dto.GetProfileWebResponse;
 import com.latinhouse.backend.adapter.in.web.my.mapper.MyWebMapper;
 import com.latinhouse.backend.domain.user.CustomUserDetails;
 import com.latinhouse.backend.port.in.my.MyUseCase;
@@ -13,10 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/my")
@@ -38,5 +38,15 @@ public class ApiV1MyController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(myWebMapper.toWebRes(myUseCase.generateProfile(appReq)));
+    }
+
+    @GetMapping("profiles")
+    public ResponseEntity<List<GetProfileWebResponse>> getProfiles(@AuthenticationPrincipal CustomUserDetails userDetails) {
+
+        return ResponseEntity.ok(
+                myUseCase.getProfiles(userDetails.getUsername()).stream()
+                        .map(myWebMapper::toWebRes)
+                        .toList()
+        );
     }
 }

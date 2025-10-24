@@ -2,10 +2,12 @@ package com.latinhouse.backend.adapter.in.web.my.mapper;
 
 import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebRequest;
 import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebResponse;
+import com.latinhouse.backend.adapter.in.web.my.dto.GetProfileWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppResponse;
+import com.latinhouse.backend.port.in.my.dto.GetProfileAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +31,10 @@ public class MyWebMapper {
 
     public GenerateProfileWebResponse toWebRes(AddProfileAppResponse res) {
         return dispatchAppToWeb(res, GenerateProfileWebResponse.class);
+    }
+
+    public GetProfileWebResponse toWebRes(GetProfileAppResponse res) {
+        return dispatchAppToWeb(res, GetProfileWebResponse.class);
     }
 
     @SuppressWarnings("unchecked")

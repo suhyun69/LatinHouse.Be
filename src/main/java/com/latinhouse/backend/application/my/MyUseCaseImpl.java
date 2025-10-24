@@ -6,14 +6,18 @@ import com.latinhouse.backend.domain.profile.command.AddProfileCommand;
 import com.latinhouse.backend.domain.profile.service.ProfileService;
 import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.domain.user.service.UserService;
+import com.latinhouse.backend.port.in.home.dto.GetTodoAppResponse;
 import com.latinhouse.backend.port.in.my.MyUseCase;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppResponse;
+import com.latinhouse.backend.port.in.my.dto.GetProfileAppResponse;
 import com.latinhouse.backend.util.RandomUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +45,12 @@ public class MyUseCaseImpl implements MyUseCase {
 
         Profile profile = profileService.create(command);
         return myAppMapper.toAppRes(profile, AddProfileAppResponse.class);
+    }
+
+    @Override
+    public List<GetProfileAppResponse> getProfiles(String email) {
+        return profileService.getProfiles(email).stream()
+                .map(profile -> myAppMapper.toAppRes(profile, GetProfileAppResponse.class))
+                .collect(Collectors.toList());
     }
 }

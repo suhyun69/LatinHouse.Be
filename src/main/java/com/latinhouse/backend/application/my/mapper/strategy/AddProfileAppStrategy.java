@@ -3,20 +3,15 @@ package com.latinhouse.backend.application.my.mapper.strategy;
 import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
 import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
 import com.latinhouse.backend.domain.profile.Profile;
-import com.latinhouse.backend.domain.profile.Sex;
-import com.latinhouse.backend.domain.profile.command.AddProfileCommand;
-import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.command.AddProfileCommand;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppResponse;
-import com.latinhouse.backend.util.RandomUtils;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class MyAppStrategy implements
+public class AddProfileAppStrategy implements
         AppToCommandStrategy<AddProfileAppRequest, AddProfileCommand>,
         DomainToAppStrategy<Profile, AddProfileAppResponse> {
 

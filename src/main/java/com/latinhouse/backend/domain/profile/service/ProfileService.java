@@ -7,6 +7,7 @@ import com.latinhouse.backend.port.out.profile.ReadProfilePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,4 +20,8 @@ public class ProfileService {
     public Profile create(AddProfileCommand cmd) { return createProfilePort.create(Profile.from(cmd)); }
 
     public Optional<Profile> getProfile(String id) { return readProfilePort.getProfile(id); }
+
+    public List<Profile> getProfiles(String email) {
+        return readProfilePort.getProfiles(email);
+    }
 }

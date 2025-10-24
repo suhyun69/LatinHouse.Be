@@ -8,7 +8,9 @@ import com.latinhouse.backend.port.out.profile.ReadProfilePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -26,5 +28,12 @@ public class ProfilePersistenceAdapter implements CreateProfilePort, ReadProfile
     public Optional<Profile> getProfile(String id) {
         return profileRepository.findById(id)
                 .map(profilePersistenceMapper::toDomain);
+    }
+
+    @Override
+    public List<Profile> getProfiles(String email) {
+        return profileRepository.findByEmail(email).stream()
+                .map(profilePersistenceMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }
