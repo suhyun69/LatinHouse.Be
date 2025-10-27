@@ -4,6 +4,7 @@ import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.domain.user.command.AddUserCommand;
 import com.latinhouse.backend.port.out.user.CreateUserPort;
 import com.latinhouse.backend.port.out.user.ReadUserPort;
+import com.latinhouse.backend.port.out.user.UpdateUserPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ public class UserService {
 
     private final CreateUserPort createUserPort;
     private final ReadUserPort readUserPort;
+    private final UpdateUserPort updateUserPort;
 
     public User addUser(AddUserCommand cmd) {
         return createUserPort.create(User.from(cmd));
@@ -22,5 +24,9 @@ public class UserService {
 
     public Optional<User> getUser(String email) {
         return readUserPort.getUser(email);
+    }
+
+    public User update(User user) {
+        return updateUserPort.update(user);
     }
 }

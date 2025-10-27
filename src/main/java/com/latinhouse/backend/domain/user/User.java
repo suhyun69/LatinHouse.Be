@@ -1,5 +1,6 @@
 package com.latinhouse.backend.domain.user;
 
+import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.Sex;
 import com.latinhouse.backend.domain.user.command.AddUserCommand;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ public class User {
     private String password;
     private Sex sex;
     private Role role;
+    private String profileId;
 
     public static User from(AddUserCommand command) {
         return User.builder()

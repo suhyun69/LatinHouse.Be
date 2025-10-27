@@ -26,6 +26,7 @@ public class UserStrategy implements
                 .password(user.getPassword())
                 .sex(user.getSex().getCode())
                 .role(user.getRole().getCode())
+                .profileId(user.getProfileId())
                 .build();
     }
 
@@ -42,6 +43,7 @@ public class UserStrategy implements
                 .password(userT.getPassword())
                 .sex(Sex.of(userT.getSex()))
                 .role(Role.of(userT.getRole()))
+                .profileId(userT.getProfileId())
                 .build();
     }
 }
