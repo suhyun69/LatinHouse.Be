@@ -1,13 +1,13 @@
 package com.latinhouse.backend.application.my;
 
 import com.latinhouse.backend.application.my.mapper.MyAppMapper;
+import com.latinhouse.backend.common.exception.DuplicateMappingException;
 import com.latinhouse.backend.common.exception.NotFoundException;
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.command.AddProfileCommand;
 import com.latinhouse.backend.domain.profile.service.ProfileService;
 import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.domain.user.service.UserService;
-import com.latinhouse.backend.port.in.home.dto.GetTodoAppResponse;
 import com.latinhouse.backend.port.in.my.MyUseCase;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppResponse;
@@ -18,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -58,12 +57,16 @@ public class MyUseCaseImpl implements MyUseCase {
 
     @Override
     public void setProfile(SetProfileAppRequest appReq) {
-        User user = userService.getUser(appReq.getEmail())
-                .orElseThrow(() -> new NotFoundException("User not found"));
-
         Profile profile = profileService.getProfile(appReq.getProfileId())
                 .orElseThrow(() -> new NotFoundException("Profile not found"));
 
+        userService.getUserByProfile(profile.getId())
+                .ifPresent(existingUser -> {
+                    throw new DuplicateMappingException("Profile is already assigned to another user: " + existingUser.getEmail());
+                });
+
+        User user = userService.getUser(appReq.getEmail())
+                .orElseThrow(() -> new NotFoundException("User not found"));
         user.setProfileId(profile.getId());
 
         userService.update(user);

@@ -26,6 +26,10 @@ public class UserService {
         return readUserPort.getUser(email);
     }
 
+    public Optional<User> getUserByProfile(String profileId) {
+        return readUserPort.getUserByProfile(profileId);
+    }
+
     public User update(User user) {
         return updateUserPort.update(user);
     }

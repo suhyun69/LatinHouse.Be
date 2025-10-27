@@ -77,6 +77,13 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
 
+    // 409: 커스텀 CONFLICT
+    @org.springframework.web.bind.annotation.ExceptionHandler(DuplicateMappingException.class)
+    protected ResponseEntity<ErrorResponse> handleDuplicateMapping(DuplicateMappingException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+    }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
     protected final ResponseEntity<?> handleAllExceptions(Exception ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());

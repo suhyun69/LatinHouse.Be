@@ -24,6 +24,7 @@ public class ProfileStrategy implements
                 .id(profile.getId())
                 .email(profile.getEmail())
                 .nickname(profile.getNickname())
+                .sex(profile.getSex().getCode())
                 .isInstructor(profile.getIsInstructor())
                 .build();
     }
@@ -40,6 +41,7 @@ public class ProfileStrategy implements
                 .id(profileT.getId())
                 .email(profileT.getEmail())
                 .nickname(profileT.getNickname())
+                .sex(Sex.of(profileT.getSex()))
                 .isInstructor(profileT.getIsInstructor())
                 .build();
     }

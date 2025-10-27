@@ -31,6 +31,12 @@ public class UserPersistenceAdapter implements CreateUserPort, ReadUserPort, Upd
     }
 
     @Override
+    public Optional<User> getUserByProfile(String profileId) {
+        return userRepository.findById(profileId)
+                .map(userPersistenceMapper::toDomain);
+    }
+
+    @Override
     public User update(User toBe) {
        return userPersistenceMapper.toDomain(userRepository.save(userPersistenceMapper.toEntity(toBe)));
     }
