@@ -2,8 +2,10 @@ package com.latinhouse.backend.domain.profile.service;
 
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.command.AddProfileCommand;
+import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.port.out.profile.CreateProfilePort;
 import com.latinhouse.backend.port.out.profile.ReadProfilePort;
+import com.latinhouse.backend.port.out.profile.UpdateProfilePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class ProfileService {
 
     private final CreateProfilePort createProfilePort;
     private final ReadProfilePort readProfilePort;
+    private final UpdateProfilePort updateProfilePort;
 
     public Profile create(AddProfileCommand cmd) { return createProfilePort.create(Profile.from(cmd)); }
 
@@ -23,5 +26,9 @@ public class ProfileService {
 
     public List<Profile> getProfiles(String email) {
         return readProfilePort.getProfiles(email);
+    }
+
+    public Profile update(Profile toBe) {
+        return updateProfilePort.update(toBe);
     }
 }

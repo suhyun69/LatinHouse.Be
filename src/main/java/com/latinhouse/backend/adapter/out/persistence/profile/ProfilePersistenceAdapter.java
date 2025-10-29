@@ -5,6 +5,7 @@ import com.latinhouse.backend.adapter.out.persistence.profile.repository.Profile
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.port.out.profile.CreateProfilePort;
 import com.latinhouse.backend.port.out.profile.ReadProfilePort;
+import com.latinhouse.backend.port.out.profile.UpdateProfilePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class ProfilePersistenceAdapter implements CreateProfilePort, ReadProfilePort {
+public class ProfilePersistenceAdapter implements CreateProfilePort, ReadProfilePort, UpdateProfilePort {
 
     private final ProfilePersistenceMapper profilePersistenceMapper;
     private final ProfileRepository profileRepository;
@@ -35,5 +36,10 @@ public class ProfilePersistenceAdapter implements CreateProfilePort, ReadProfile
         return profileRepository.findByEmail(email).stream()
                 .map(profilePersistenceMapper::toDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Profile update(Profile toBe) {
+        return profilePersistenceMapper.toDomain(profileRepository.save(profilePersistenceMapper.toEntity(toBe)));
     }
 }

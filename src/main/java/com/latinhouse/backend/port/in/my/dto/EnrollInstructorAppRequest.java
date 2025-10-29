@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SetProfileAppRequest extends SelfValidating<SetProfileAppRequest> {
+public class EnrollInstructorAppRequest extends SelfValidating<EnrollInstructorAppRequest> {
 
     @NotBlank(message = "profileId cannot be blank.")
     String profileId;
@@ -17,11 +17,10 @@ public class SetProfileAppRequest extends SelfValidating<SetProfileAppRequest> {
     String email;
 
     @Builder
-    public SetProfileAppRequest(String profileId) {
+    public EnrollInstructorAppRequest(String profileId, String email) {
         this.profileId = profileId;
-    }
+        this.email = email;
 
-    public void validate() {
         this.validateSelf();
     }
 }

@@ -26,4 +26,8 @@ public class Profile {
                 .isInstructor(command.getIsInstructor())
                 .build();
     }
+
+    public void enrollInstructor() {
+        this.isInstructor = true;
+    }
 }

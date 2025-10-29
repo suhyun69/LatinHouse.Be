@@ -8,5 +8,6 @@ import lombok.Getter;
 public class GetProfileWebResponse {
     private String id;
     private String nickname;
+    private String sex;
     private Boolean isInstructor;
 }

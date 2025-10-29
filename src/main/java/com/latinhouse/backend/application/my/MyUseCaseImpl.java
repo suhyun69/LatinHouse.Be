@@ -2,6 +2,7 @@ package com.latinhouse.backend.application.my;
 
 import com.latinhouse.backend.application.my.mapper.MyAppMapper;
 import com.latinhouse.backend.common.exception.DuplicateMappingException;
+import com.latinhouse.backend.common.exception.ForbiddenException;
 import com.latinhouse.backend.common.exception.NotFoundException;
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.command.AddProfileCommand;
@@ -9,10 +10,7 @@ import com.latinhouse.backend.domain.profile.service.ProfileService;
 import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.domain.user.service.UserService;
 import com.latinhouse.backend.port.in.my.MyUseCase;
-import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
-import com.latinhouse.backend.port.in.my.dto.AddProfileAppResponse;
-import com.latinhouse.backend.port.in.my.dto.GetProfileAppResponse;
-import com.latinhouse.backend.port.in.my.dto.SetProfileAppRequest;
+import com.latinhouse.backend.port.in.my.dto.*;
 import com.latinhouse.backend.util.RandomUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,17 +29,12 @@ public class MyUseCaseImpl implements MyUseCase {
     @Override
     public AddProfileAppResponse generateProfile(AddProfileAppRequest appReq) {
 
+        User user = userService.getUser(appReq.getEmail())
+                .orElseThrow(() -> new NotFoundException("User not found"));
+
         AddProfileCommand command = myAppMapper.toCommand(appReq);
         command.setId(RandomUtils.generateRandomId());
-
-        String email = appReq.getEmail();
-        if (email != null && !email.isBlank()) {
-            userService.getUser(email)
-                    .map(User::getSex)
-                    .ifPresent(command::setSex);
-        }
-        else command.setSex(appReq.getSex());
-
+        command.setSex(user.getSex());
         command.validate();
 
         Profile profile = profileService.create(command);
@@ -56,7 +49,7 @@ public class MyUseCaseImpl implements MyUseCase {
     }
 
     @Override
-    public void setProfile(SetProfileAppRequest appReq) {
+    public void assignProfile(AssignProfileAppRequest appReq) {
         Profile profile = profileService.getProfile(appReq.getProfileId())
                 .orElseThrow(() -> new NotFoundException("Profile not found"));
 
@@ -73,7 +66,16 @@ public class MyUseCaseImpl implements MyUseCase {
     }
 
     @Override
-    public void enrollInstructor(String profileId) {
+    public void enrollInstructor(EnrollInstructorAppRequest appReq) {
+        User user = userService.getUser(appReq.getEmail())
+                .orElseThrow(() -> new NotFoundException("User not found"));
 
+        if(!user.getProfileId().equals(appReq.getProfileId())) throw new ForbiddenException("User not allowed to enroll instructor");
+
+        Profile profile = profileService.getProfile(appReq.getProfileId())
+                .orElseThrow(() -> new NotFoundException("Profile not found"));
+        profile.enrollInstructor();
+
+        profileService.update(profile);
     }
 }

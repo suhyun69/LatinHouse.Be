@@ -18,6 +18,7 @@ public class GetProfilesWebStrategy implements
         return GetProfileWebResponse.builder()
                 .id(appRes.getId())
                 .nickname(appRes.getNickname())
+                .sex(appRes.getSex().getCode())
                 .isInstructor(appRes.getIsInstructor())
                 .build();
     }

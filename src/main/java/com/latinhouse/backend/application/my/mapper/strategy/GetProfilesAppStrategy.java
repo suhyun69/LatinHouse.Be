@@ -26,6 +26,7 @@ public class GetProfilesAppStrategy implements
         return GetProfileAppResponse.builder()
                 .id(profile.getId())
                 .nickname(profile.getNickname())
+                .sex(profile.getSex())
                 .isInstructor(profile.getIsInstructor())
                 .build();
     }

@@ -3,12 +3,12 @@ package com.latinhouse.backend.adapter.in.web.my;
 import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebRequest;
 import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebResponse;
 import com.latinhouse.backend.adapter.in.web.my.dto.GetProfileWebResponse;
-import com.latinhouse.backend.adapter.in.web.my.dto.SetProfileWebRequest;
 import com.latinhouse.backend.adapter.in.web.my.mapper.MyWebMapper;
 import com.latinhouse.backend.domain.user.CustomUserDetails;
 import com.latinhouse.backend.port.in.my.MyUseCase;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
-import com.latinhouse.backend.port.in.my.dto.SetProfileAppRequest;
+import com.latinhouse.backend.port.in.my.dto.EnrollInstructorAppRequest;
+import com.latinhouse.backend.port.in.my.dto.AssignProfileAppRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -52,23 +52,29 @@ public class ApiV1MyController {
         );
     }
 
-    @PostMapping("/profile/assign")
+    @PostMapping("/profile/{profileId}/assign")
     @Operation(summary = "Assign Profile", description = "Set Profile to Email")
-    public ResponseEntity<Void> setProfile(@Valid @RequestBody SetProfileWebRequest webReq,
+    public ResponseEntity<Void> setProfile(@PathVariable("profileId") String profileId,
                                            @AuthenticationPrincipal CustomUserDetails userDetails) {
 
-        SetProfileAppRequest appReq = myWebMapper.toAppReq(webReq);
-        appReq.setEmail(userDetails.getUsername());
-        appReq.validate();
-
-        myUseCase.setProfile(appReq);
+        AssignProfileAppRequest appReq = AssignProfileAppRequest.builder()
+                .profileId(profileId)
+                .email(userDetails.getUsername())
+                .build();
+        myUseCase.assignProfile(appReq);
 
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/profile/instructor")
+    @PutMapping("/profile/{profileId}/instructor")
     @Operation(summary = "Enroll Instructor", description = "enroll Profile")
-    public ResponseEntity<Void> setInstructor(@AuthenticationPrincipal CustomUserDetails userDetails) {
+    public ResponseEntity<Void> enrollInstructor(@PathVariable("profileId") String profileId, @AuthenticationPrincipal CustomUserDetails userDetails) {
+
+        EnrollInstructorAppRequest appReq = EnrollInstructorAppRequest.builder()
+                .profileId(profileId)
+                .email(userDetails.getUsername())
+                .build();
+        myUseCase.enrollInstructor(appReq);
 
         return ResponseEntity.ok().build();
     }
