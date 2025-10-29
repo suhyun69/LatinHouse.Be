@@ -50,6 +50,9 @@ public class MyUseCaseImpl implements MyUseCase {
 
     @Override
     public void assignProfile(AssignProfileAppRequest appReq) {
+        User user = userService.getUser(appReq.getEmail())
+                .orElseThrow(() -> new NotFoundException("User not found"));
+
         Profile profile = profileService.getProfile(appReq.getProfileId())
                 .orElseThrow(() -> new NotFoundException("Profile not found"));
 
@@ -58,8 +61,6 @@ public class MyUseCaseImpl implements MyUseCase {
                     throw new DuplicateMappingException("Profile is already assigned to another user: " + existingUser.getEmail());
                 });
 
-        User user = userService.getUser(appReq.getEmail())
-                .orElseThrow(() -> new NotFoundException("User not found"));
         user.setProfileId(profile.getId());
 
         userService.update(user);
