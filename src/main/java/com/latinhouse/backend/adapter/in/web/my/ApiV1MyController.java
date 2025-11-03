@@ -1,8 +1,6 @@
 package com.latinhouse.backend.adapter.in.web.my;
 
-import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebRequest;
-import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebResponse;
-import com.latinhouse.backend.adapter.in.web.my.dto.GetProfileWebResponse;
+import com.latinhouse.backend.adapter.in.web.my.dto.*;
 import com.latinhouse.backend.adapter.in.web.my.mapper.MyWebMapper;
 import com.latinhouse.backend.domain.user.CustomUserDetails;
 import com.latinhouse.backend.port.in.my.MyUseCase;
@@ -77,5 +75,25 @@ public class ApiV1MyController {
         myUseCase.enrollInstructor(appReq);
 
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/lesson")
+    @Operation(summary = "Add Lesson", description = "Add Lesson")
+    public ResponseEntity<AddLessonWebResponse> addLesson(@Valid @RequestBody AddLessonWebRequest webReq) {
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(myWebMapper.toWebRes(myUseCase.addLesson(myWebMapper.toAppReq(webReq))));
+    }
+
+    @GetMapping("/lessons")
+    @Operation(summary = "Get Lessons", description = "Get All Lessons")
+    public ResponseEntity<List<GetLessonWebResponse>> getLessons() {
+
+        return ResponseEntity.ok(
+                myUseCase.getLessons().stream()
+                        .map(myWebMapper::toWebRes)
+                        .toList()
+        );
     }
 }

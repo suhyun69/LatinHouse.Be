@@ -9,4 +9,7 @@ public interface MyUseCase {
     List<GetProfileAppResponse> getProfiles(String email);
     void assignProfile(AssignProfileAppRequest appReq);
     void enrollInstructor(EnrollInstructorAppRequest appReq);
+
+    AddLessonAppResponse addLesson(AddLessonAppRequest appReq);
+    List<GetLessonAppResponse> getLessons();
 }

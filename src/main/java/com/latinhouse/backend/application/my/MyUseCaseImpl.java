@@ -4,6 +4,9 @@ import com.latinhouse.backend.application.my.mapper.MyAppMapper;
 import com.latinhouse.backend.common.exception.DuplicateMappingException;
 import com.latinhouse.backend.common.exception.ForbiddenException;
 import com.latinhouse.backend.common.exception.NotFoundException;
+import com.latinhouse.backend.domain.lesson.Lesson;
+import com.latinhouse.backend.domain.lesson.command.AddLessonCommand;
+import com.latinhouse.backend.domain.lesson.service.LessonService;
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.command.AddProfileCommand;
 import com.latinhouse.backend.domain.profile.service.ProfileService;
@@ -25,6 +28,7 @@ public class MyUseCaseImpl implements MyUseCase {
     private final MyAppMapper myAppMapper;
     private final ProfileService profileService;
     private final UserService userService;
+    private final LessonService lessonService;
 
     @Override
     public AddProfileAppResponse generateProfile(AddProfileAppRequest appReq) {
@@ -78,5 +82,18 @@ public class MyUseCaseImpl implements MyUseCase {
         profile.enrollInstructor();
 
         profileService.update(profile);
+    }
+
+    @Override
+    public AddLessonAppResponse addLesson(AddLessonAppRequest appReq) {
+        Lesson lesson = lessonService.create(myAppMapper.toCommand(appReq));
+        return myAppMapper.toAppRes(lesson, AddLessonAppResponse.class);
+    }
+
+    @Override
+    public List<GetLessonAppResponse> getLessons() {
+        return lessonService.getLessons().stream()
+                .map(lesson -> myAppMapper.toAppRes(lesson, GetLessonAppResponse.class))
+                .collect(Collectors.toList());
     }
 }
