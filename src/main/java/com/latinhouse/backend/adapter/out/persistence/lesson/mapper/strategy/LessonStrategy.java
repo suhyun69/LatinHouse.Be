@@ -41,7 +41,7 @@ public class LessonStrategy implements
             entity.getOptions().addAll(
                     lesson.getOptions().stream()
                             .map(option -> OptionJpaEntity.builder()
-                                    .lesson(entity)
+                                    // .lesson(entity)
                                     .seq(option.getSeq())
                                     .startDateTime(option.getStartDateTime())
                                     .endDateTime(option.getEndDateTime())
@@ -59,7 +59,7 @@ public class LessonStrategy implements
             entity.getDiscounts().addAll(
                     lesson.getDiscounts().stream()
                             .map(discount -> DiscountJpaEntity.builder()
-                                    .lesson(entity)
+                                    // .lesson(entity)
                                     .seq(discount.getSeq())
                                     .type(discount.getType() != null ? discount.getType().getCode() : null)
                                     .condition(discount.getCondition())
@@ -74,7 +74,7 @@ public class LessonStrategy implements
             entity.getContacts().addAll(
                     lesson.getContacts().stream()
                             .map(contact -> ContactJpaEntity.builder()
-                                    .lesson(entity)
+                                    // .lesson(entity)
                                     .seq(contact.getSeq())
                                     .type(contact.getType() != null ? contact.getType().getCode() : null)
                                     .name(contact.getName())

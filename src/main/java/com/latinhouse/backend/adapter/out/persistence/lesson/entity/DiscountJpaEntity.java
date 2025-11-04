@@ -18,14 +18,14 @@ public class DiscountJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lesson_no", nullable = false)
-    private LessonJpaEntity lesson;
-
-    @Column(nullable = false)
     private Long seq;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "lesson_no", nullable = false)
+//    private LessonJpaEntity lesson;
+
+    @Column(name = "lesson_no", insertable = false, updatable = false)
+    private Long lessonNo; // 선택 사항
 
     @Column(length = 10)
     private String type;

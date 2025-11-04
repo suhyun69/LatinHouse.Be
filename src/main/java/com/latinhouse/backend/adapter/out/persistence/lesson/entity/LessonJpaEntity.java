@@ -33,7 +33,8 @@ public class LessonJpaEntity extends BaseEntity {
 
     private String instructorLo;
 
-    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "lesson_no", nullable = false) // FK는 자식 테이블에 생성/관리
     @Builder.Default
     private List<OptionJpaEntity> options = new ArrayList<>();
 
@@ -43,13 +44,15 @@ public class LessonJpaEntity extends BaseEntity {
 
     private String accountOwner;
 
-    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "lesson_no", nullable = false) // FK는 자식 테이블에 생성/관리
     @Builder.Default
     private List<DiscountJpaEntity> discounts = new ArrayList<>();
 
     private BigDecimal maxDiscountAmount;
 
-    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "lesson_no", nullable = false) // FK는 자식 테이블에 생성/관리
     @Builder.Default
     private List<ContactJpaEntity> contacts = new ArrayList<>();
 }

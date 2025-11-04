@@ -38,7 +38,7 @@ public class MyWebMapper {
     }
 
     public AddLessonWebResponse toWebRes(AddLessonAppResponse res) {
-        return dispatchWebToApp(res, AddLessonWebResponse.class);
+        return dispatchAppToWeb(res, AddLessonWebResponse.class);
     }
 
     public GetLessonWebResponse toWebRes(GetLessonAppResponse res) {
