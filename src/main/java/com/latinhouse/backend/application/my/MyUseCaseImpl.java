@@ -35,6 +35,7 @@ public class MyUseCaseImpl implements MyUseCase {
 
         AddProfileCommand command = myAppMapper.toCommand(appReq);
         command.setId(RandomUtils.generateRandomId());
+        command.setEmail(user.getEmail());
         command.setSex(user.getSex());
         command.validate();
 
