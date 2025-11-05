@@ -46,19 +46,6 @@ public class ApiV1MyController {
         );
     }
 
-    @PostMapping("/profile/{profileId}/assign")
-    @Operation(summary = "Assign Profile", description = "Set Profile to Email")
-    public ResponseEntity<Void> setProfile(@PathVariable("profileId") String profileId,
-                                           @AuthenticationPrincipal CustomUserDetails userDetails) {
-
-        AssignProfileAppRequest appReq = AssignProfileAppRequest.builder()
-                .profileId(profileId)
-                .build();
-        myUseCase.assignProfile(appReq, userDetails.getUser());
-
-        return ResponseEntity.ok().build();
-    }
-
     @PutMapping("/profile/{profileId}/instructor")
     @Operation(summary = "Enroll Instructor", description = "enroll Profile")
     public ResponseEntity<Void> enrollInstructor(@PathVariable("profileId") String profileId, @AuthenticationPrincipal CustomUserDetails userDetails) {

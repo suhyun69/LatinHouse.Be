@@ -6,7 +6,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -71,15 +70,8 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     // 409: 커스텀 CONFLICT
-    @org.springframework.web.bind.annotation.ExceptionHandler(DuplicateMemberException.class)
-    protected ResponseEntity<ErrorResponse> handleDuplicateMember(DuplicateMemberException ex) {
-        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
-    }
-
-    // 409: 커스텀 CONFLICT
-    @org.springframework.web.bind.annotation.ExceptionHandler(DuplicateMappingException.class)
-    protected ResponseEntity<ErrorResponse> handleDuplicateMapping(DuplicateMappingException ex) {
+    @org.springframework.web.bind.annotation.ExceptionHandler(ConflictException.class)
+    protected ResponseEntity<ErrorResponse> handleConflict(ConflictException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }

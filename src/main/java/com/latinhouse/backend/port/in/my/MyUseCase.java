@@ -8,7 +8,6 @@ import java.util.List;
 public interface MyUseCase {
     AddProfileAppResponse generateProfile(AddProfileAppRequest appReq, User user);
     List<GetProfileAppResponse> getProfiles(String email);
-    void assignProfile(AssignProfileAppRequest appReq, User user);
     void enrollInstructor(EnrollInstructorAppRequest appReq, User user);
 
     AddLessonAppResponse addLesson(AddLessonAppRequest appReq);

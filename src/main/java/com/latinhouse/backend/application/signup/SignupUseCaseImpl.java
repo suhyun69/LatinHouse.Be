@@ -1,7 +1,6 @@
 package com.latinhouse.backend.application.signup;
 
 import com.latinhouse.backend.application.signup.mapper.SignupAppMapper;
-import com.latinhouse.backend.common.exception.DuplicateMemberException;
 import com.latinhouse.backend.port.in.signup.dto.AddUserAppRequest;
 import com.latinhouse.backend.port.in.signup.dto.AddUserAppResponse;
 import com.latinhouse.backend.port.in.signup.SignupUseCase;
@@ -10,8 +9,6 @@ import com.latinhouse.backend.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

@@ -1,11 +1,10 @@
 package com.latinhouse.backend.application.my;
 
 import com.latinhouse.backend.application.my.mapper.MyAppMapper;
-import com.latinhouse.backend.common.exception.DuplicateMappingException;
+import com.latinhouse.backend.common.exception.ConflictException;
 import com.latinhouse.backend.common.exception.ForbiddenException;
 import com.latinhouse.backend.common.exception.NotFoundException;
 import com.latinhouse.backend.domain.lesson.Lesson;
-import com.latinhouse.backend.domain.lesson.command.AddLessonCommand;
 import com.latinhouse.backend.domain.lesson.service.LessonService;
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.command.AddProfileCommand;
@@ -34,6 +33,8 @@ public class MyUseCaseImpl implements MyUseCase {
     @Override
     public AddProfileAppResponse generateProfile(AddProfileAppRequest appReq, User user) {
 
+        if(StringUtils.isBlank(user.getProfileId())) throw new ConflictException("user have profile");
+
         AddProfileCommand command = myAppMapper.toCommand(appReq);
         command.setId(RandomUtils.generateRandomId());
         command.setEmail(user.getEmail());
@@ -51,22 +52,6 @@ public class MyUseCaseImpl implements MyUseCase {
         return profileService.getProfiles(email).stream()
                 .map(profile -> myAppMapper.toAppRes(profile, GetProfileAppResponse.class))
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public void assignProfile(AssignProfileAppRequest appReq, User user) {
-
-        Profile profile = profileService.getProfile(appReq.getProfileId())
-                .orElseThrow(() -> new NotFoundException("Profile not found"));
-
-        userService.getUserByProfile(profile.getId())
-                .ifPresent(existingUser -> {
-                    throw new DuplicateMappingException("Profile is already assigned to another user: " + existingUser.getEmail());
-                });
-
-        user.setProfileId(profile.getId());
-
-        userService.update(user);
     }
 
     @Override
