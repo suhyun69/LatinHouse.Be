@@ -6,6 +6,7 @@ import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.port.in.signin.SigninUseCase;
 import com.latinhouse.backend.port.in.signin.dto.SigninAppRequest;
 import com.latinhouse.backend.port.in.signin.dto.SigninAppResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,6 +23,7 @@ public class SigninUseCaseImpl implements SigninUseCase {
     private final JwtTokenProvider jwt;
 
     @Override
+    @Transactional
     public SigninAppResponse signin(SigninAppRequest appReq) {
 
         // call CustomUserDetailsService

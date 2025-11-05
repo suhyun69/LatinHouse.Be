@@ -17,6 +17,7 @@ import com.latinhouse.backend.util.RandomUtils;
 import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,9 +32,10 @@ public class MyUseCaseImpl implements MyUseCase {
     private final LessonService lessonService;
 
     @Override
+    @Transactional
     public AddProfileAppResponse generateProfile(AddProfileAppRequest appReq, User user) {
 
-        if(StringUtils.isBlank(user.getProfileId())) throw new ConflictException("user have profile");
+        if(!StringUtils.isBlank(user.getProfileId())) throw new ConflictException("user have profile");
 
         AddProfileCommand command = myAppMapper.toCommand(appReq);
         command.setId(RandomUtils.generateRandomId());
@@ -48,24 +50,31 @@ public class MyUseCaseImpl implements MyUseCase {
     }
 
     @Override
-    public List<GetProfileAppResponse> getProfiles(String email) {
-        return profileService.getProfiles(email).stream()
-                .map(profile -> myAppMapper.toAppRes(profile, GetProfileAppResponse.class))
-                .collect(Collectors.toList());
+    public GetProfileAppResponse getProfile(User user) {
+
+        if(StringUtils.isBlank(user.getProfileId())) throw new NotFoundException("Profile not found");
+
+        Profile profile = profileService.getProfile(user.getProfileId())
+                .orElseThrow(() -> new NotFoundException("Profile not found"));
+
+        return myAppMapper.toAppRes(profile, GetProfileAppResponse.class);
     }
 
     @Override
+    @Transactional
     public void enrollInstructor(EnrollInstructorAppRequest appReq, User user) {
 
         Profile profile = profileService.getProfile(appReq.getProfileId())
                 .orElseThrow(() -> new NotFoundException("Profile not found"));
         
-        if(!user.getProfileId().equals(appReq.getProfileId())) throw new ForbiddenException("User not allowed to enroll instructor");
+        if(!user.getProfileId().equals(appReq.getProfileId()))
+            throw new ForbiddenException("User not allowed to enroll instructor");
 
         profileService.enrollInstructor(profile);
     }
 
     @Override
+    @Transactional
     public AddLessonAppResponse addLesson(AddLessonAppRequest appReq) {
         Lesson lesson = lessonService.create(myAppMapper.toCommand(appReq));
         return myAppMapper.toAppRes(lesson, AddLessonAppResponse.class);

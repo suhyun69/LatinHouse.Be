@@ -1,6 +1,7 @@
 package com.latinhouse.backend.application.signup;
 
 import com.latinhouse.backend.application.signup.mapper.SignupAppMapper;
+import com.latinhouse.backend.common.exception.ConflictException;
 import com.latinhouse.backend.port.in.signup.dto.AddUserAppRequest;
 import com.latinhouse.backend.port.in.signup.dto.AddUserAppResponse;
 import com.latinhouse.backend.port.in.signup.SignupUseCase;
@@ -23,7 +24,7 @@ public class SignupUseCaseImpl implements SignupUseCase {
 
         userService.getUser(appReq.getEmail())
                 .ifPresent(u -> {
-                    throw new DuplicateMemberException("이미 가입된 이메일입니다.");
+                    throw new ConflictException("이미 가입된 이메일입니다.");
                 });
 
         User user = userService.addUser(signupAppMapper.toCommand(appReq));

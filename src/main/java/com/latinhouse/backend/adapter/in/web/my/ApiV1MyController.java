@@ -36,14 +36,12 @@ public class ApiV1MyController {
                 .body(myWebMapper.toWebRes(myUseCase.generateProfile(myWebMapper.toAppReq(webReq), userDetails.getUser())));
     }
 
-    @GetMapping("profiles")
-    public ResponseEntity<List<GetProfileWebResponse>> getProfiles(@AuthenticationPrincipal CustomUserDetails userDetails) {
+    @GetMapping("profile")
+    public ResponseEntity<GetProfileWebResponse> getProfile(@AuthenticationPrincipal CustomUserDetails userDetails) {
 
-        return ResponseEntity.ok(
-                myUseCase.getProfiles(userDetails.getUsername()).stream()
-                        .map(myWebMapper::toWebRes)
-                        .toList()
-        );
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(myWebMapper.toWebRes(myUseCase.getProfile(userDetails.getUser())));
     }
 
     @PutMapping("/profile/{profileId}/instructor")
