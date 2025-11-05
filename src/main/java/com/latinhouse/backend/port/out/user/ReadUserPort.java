@@ -6,5 +6,4 @@ import java.util.Optional;
 
 public interface ReadUserPort {
     Optional<User> getUser(String email);
-    Optional<User> getUserByProfile(String profileId);
 }

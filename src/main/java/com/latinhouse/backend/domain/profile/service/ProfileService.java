@@ -24,11 +24,8 @@ public class ProfileService {
 
     public Optional<Profile> getProfile(String id) { return readProfilePort.getProfile(id); }
 
-    public List<Profile> getProfiles(String email) {
-        return readProfilePort.getProfiles(email);
-    }
-
-    public Profile update(Profile toBe) {
-        return updateProfilePort.update(toBe);
+    public void enrollInstructor(Profile profile) {
+        profile.setIsInstructor(true);
+        updateProfilePort.update(profile);
     }
 }

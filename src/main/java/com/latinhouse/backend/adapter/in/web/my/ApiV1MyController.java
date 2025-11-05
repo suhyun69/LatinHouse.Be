@@ -1,8 +1,6 @@
 package com.latinhouse.backend.adapter.in.web.my;
 
-import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebRequest;
-import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebResponse;
-import com.latinhouse.backend.adapter.in.web.my.dto.GetProfileWebResponse;
+import com.latinhouse.backend.adapter.in.web.my.dto.*;
 import com.latinhouse.backend.adapter.in.web.my.mapper.MyWebMapper;
 import com.latinhouse.backend.domain.user.CustomUserDetails;
 import com.latinhouse.backend.port.in.my.MyUseCase;
@@ -33,49 +31,48 @@ public class ApiV1MyController {
     @Operation(summary = "Generate Profile", description = "Generate Profile")
     public ResponseEntity<GenerateProfileWebResponse> generateProfile(@Valid @RequestBody GenerateProfileWebRequest webReq,
                                                                       @AuthenticationPrincipal CustomUserDetails userDetails) {
-
-        AddProfileAppRequest appReq = myWebMapper.toAppReq(webReq);
-        appReq.setEmail(userDetails.getUsername());
-
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(myWebMapper.toWebRes(myUseCase.generateProfile(appReq)));
+                .body(myWebMapper.toWebRes(myUseCase.generateProfile(myWebMapper.toAppReq(webReq), userDetails.getUser())));
     }
 
-    @GetMapping("profiles")
-    public ResponseEntity<List<GetProfileWebResponse>> getProfiles(@AuthenticationPrincipal CustomUserDetails userDetails) {
+    @GetMapping("profile")
+    public ResponseEntity<GetProfileWebResponse> getProfile(@AuthenticationPrincipal CustomUserDetails userDetails) {
 
-        return ResponseEntity.ok(
-                myUseCase.getProfiles(userDetails.getUsername()).stream()
-                        .map(myWebMapper::toWebRes)
-                        .toList()
-        );
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(myWebMapper.toWebRes(myUseCase.getProfile(userDetails.getUser())));
     }
 
-    @PostMapping("/profile/{profileId}/assign")
-    @Operation(summary = "Assign Profile", description = "Set Profile to Email")
-    public ResponseEntity<Void> setProfile(@PathVariable("profileId") String profileId,
-                                           @AuthenticationPrincipal CustomUserDetails userDetails) {
-
-        AssignProfileAppRequest appReq = AssignProfileAppRequest.builder()
-                .profileId(profileId)
-                .email(userDetails.getUsername())
-                .build();
-        myUseCase.assignProfile(appReq);
-
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("/profile/{profileId}/instructor")
+    @PutMapping("/profiles/{profileId}/instructor")
     @Operation(summary = "Enroll Instructor", description = "enroll Profile")
     public ResponseEntity<Void> enrollInstructor(@PathVariable("profileId") String profileId, @AuthenticationPrincipal CustomUserDetails userDetails) {
 
         EnrollInstructorAppRequest appReq = EnrollInstructorAppRequest.builder()
                 .profileId(profileId)
-                .email(userDetails.getUsername())
                 .build();
-        myUseCase.enrollInstructor(appReq);
+        myUseCase.enrollInstructor(appReq, userDetails.getUser());
 
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/lesson")
+    @Operation(summary = "Add Lesson", description = "Add Lesson")
+    public ResponseEntity<AddLessonWebResponse> addLesson(@Valid @RequestBody AddLessonWebRequest webReq, @AuthenticationPrincipal CustomUserDetails userDetails) {
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(myWebMapper.toWebRes(myUseCase.addLesson(myWebMapper.toAppReq(webReq), userDetails.getUser())));
+    }
+
+    @GetMapping("/lessons")
+    @Operation(summary = "Get Lessons", description = "Get My Lessons")
+    public ResponseEntity<List<GetLessonWebResponse>> getLessons(@AuthenticationPrincipal CustomUserDetails userDetails) {
+
+        return ResponseEntity.ok(
+                myUseCase.getLessons(userDetails.getUser()).stream()
+                        .map(myWebMapper::toWebRes)
+                        .toList()
+        );
     }
 }

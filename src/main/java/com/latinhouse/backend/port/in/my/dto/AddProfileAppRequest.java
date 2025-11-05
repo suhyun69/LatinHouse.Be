@@ -5,22 +5,16 @@ import com.latinhouse.backend.domain.profile.Sex;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
-@Data
+@Value
 @EqualsAndHashCode(callSuper = false)
 public class AddProfileAppRequest extends SelfValidating<AddProfileAppRequest> {
-
-    String email;
 
     @NotBlank(message = "nickname cannot be blank.")
     String nickname;
 
-    Sex sex;
-
     @Builder
-    public AddProfileAppRequest(String email, String nickname, Sex sex) {
-        this.email = email;
+    public AddProfileAppRequest(String nickname) {
         this.nickname = nickname;
-        this.sex = sex;
 
         this.validateSelf();
     }

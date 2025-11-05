@@ -1,14 +1,9 @@
 package com.latinhouse.backend.adapter.in.web.my.mapper;
 
-import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebRequest;
-import com.latinhouse.backend.adapter.in.web.my.dto.GenerateProfileWebResponse;
-import com.latinhouse.backend.adapter.in.web.my.dto.GetProfileWebResponse;
+import com.latinhouse.backend.adapter.in.web.my.dto.*;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
-import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
-import com.latinhouse.backend.port.in.my.dto.AddProfileAppResponse;
-import com.latinhouse.backend.port.in.my.dto.GetProfileAppResponse;
-import com.latinhouse.backend.port.in.my.dto.AssignProfileAppRequest;
+import com.latinhouse.backend.port.in.my.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +31,18 @@ public class MyWebMapper {
 
     public GetProfileWebResponse toWebRes(GetProfileAppResponse res) {
         return dispatchAppToWeb(res, GetProfileWebResponse.class);
+    }
+
+    public AddLessonAppRequest toAppReq(AddLessonWebRequest req) {
+        return dispatchWebToApp(req, AddLessonAppRequest.class);
+    }
+
+    public AddLessonWebResponse toWebRes(AddLessonAppResponse res) {
+        return dispatchAppToWeb(res, AddLessonWebResponse.class);
+    }
+
+    public GetLessonWebResponse toWebRes(GetLessonAppResponse res) {
+        return dispatchWebToApp(res, GetLessonWebResponse.class);
     }
 
     @SuppressWarnings("unchecked")

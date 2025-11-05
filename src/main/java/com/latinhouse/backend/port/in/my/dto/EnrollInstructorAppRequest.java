@@ -13,13 +13,9 @@ public class EnrollInstructorAppRequest extends SelfValidating<EnrollInstructorA
     @NotBlank(message = "profileId cannot be blank.")
     String profileId;
 
-    @NotBlank(message = "email cannot be blank.")
-    String email;
-
     @Builder
-    public EnrollInstructorAppRequest(String profileId, String email) {
+    public EnrollInstructorAppRequest(String profileId) {
         this.profileId = profileId;
-        this.email = email;
 
         this.validateSelf();
     }

@@ -2,9 +2,12 @@ package com.latinhouse.backend.application.my.mapper;
 
 import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
 import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
+import com.latinhouse.backend.domain.lesson.Lesson;
+import com.latinhouse.backend.domain.lesson.command.AddLessonCommand;
 import com.latinhouse.backend.domain.profile.Profile;
 import com.latinhouse.backend.domain.profile.command.AddProfileCommand;
 import com.latinhouse.backend.domain.user.command.AddUserCommand;
+import com.latinhouse.backend.port.in.my.dto.AddLessonAppRequest;
 import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -27,8 +30,16 @@ public class MyAppMapper {
         return dispatchAppToCommand(appReq, AddProfileCommand.class);
     }
 
+    public AddLessonCommand toCommand(AddLessonAppRequest appReq) {
+        return dispatchAppToCommand(appReq, AddLessonCommand.class);
+    }
+
     public <A> A toAppRes(Profile profile, Class<A> appType) {
         return dispatchDomainToApp(profile, appType);
+    }
+
+    public <A> A toAppRes(Lesson lesson, Class<A> appType) {
+        return dispatchDomainToApp(lesson, appType);
     }
 
     @SuppressWarnings("unchecked")
