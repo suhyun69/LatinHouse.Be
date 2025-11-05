@@ -1,10 +1,15 @@
 package com.latinhouse.backend.port.in.my.dto;
 
-import com.latinhouse.backend.domain.lesson.*;
+import com.latinhouse.backend.domain.lesson.ContactType;
+import com.latinhouse.backend.domain.lesson.DiscountType;
+import com.latinhouse.backend.domain.lesson.Genre;
+import com.latinhouse.backend.domain.lesson.Region;
 import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -22,4 +27,31 @@ public class GetLessonAppResponse {
     private List<Discount> discounts;
     private BigDecimal maxDiscountAmount;
     private List<Contact> contacts;
+
+    @Data
+    @Builder
+    public static class Option {
+        LocalDateTime startDateTime;
+        LocalDateTime endDateTime;
+        Region region;
+        String location;
+        String locationUrl;
+        BigDecimal price;
+    }
+
+    @Data
+    @Builder
+    public static class Discount {
+        DiscountType type;
+        String condition;
+        BigDecimal amount;
+    }
+
+    @Data
+    @Builder
+    public static class Contact {
+        ContactType type;
+        String name;
+        String address;
+    }
 }
