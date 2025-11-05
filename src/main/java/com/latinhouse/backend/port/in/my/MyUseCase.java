@@ -10,6 +10,6 @@ public interface MyUseCase {
     GetProfileAppResponse getProfile(User user);
     void enrollInstructor(EnrollInstructorAppRequest appReq, User user);
 
-    AddLessonAppResponse addLesson(AddLessonAppRequest appReq);
+    AddLessonAppResponse addLesson(AddLessonAppRequest appReq, User user);
     List<GetLessonAppResponse> getLessons();
 }

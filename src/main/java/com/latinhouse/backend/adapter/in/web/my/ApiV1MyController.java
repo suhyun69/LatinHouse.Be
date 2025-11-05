@@ -44,7 +44,7 @@ public class ApiV1MyController {
                 .body(myWebMapper.toWebRes(myUseCase.getProfile(userDetails.getUser())));
     }
 
-    @PutMapping("/profile/{profileId}/instructor")
+    @PutMapping("/profiles/{profileId}/instructor")
     @Operation(summary = "Enroll Instructor", description = "enroll Profile")
     public ResponseEntity<Void> enrollInstructor(@PathVariable("profileId") String profileId, @AuthenticationPrincipal CustomUserDetails userDetails) {
 
@@ -58,11 +58,11 @@ public class ApiV1MyController {
 
     @PostMapping("/lesson")
     @Operation(summary = "Add Lesson", description = "Add Lesson")
-    public ResponseEntity<AddLessonWebResponse> addLesson(@Valid @RequestBody AddLessonWebRequest webReq) {
+    public ResponseEntity<AddLessonWebResponse> addLesson(@Valid @RequestBody AddLessonWebRequest webReq, @AuthenticationPrincipal CustomUserDetails userDetails) {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(myWebMapper.toWebRes(myUseCase.addLesson(myWebMapper.toAppReq(webReq))));
+                .body(myWebMapper.toWebRes(myUseCase.addLesson(myWebMapper.toAppReq(webReq), userDetails.getUser())));
     }
 
     @GetMapping("/lessons")
