@@ -27,8 +27,7 @@ public class AddProfileCommand extends SelfValidating<AddProfileCommand> {
     Boolean isInstructor;
 
     @Builder
-    public AddProfileCommand(String email, String nickname) {
-        this.email = email;
+    public AddProfileCommand(String nickname) {
         this.nickname = nickname;
         this.isInstructor = false;
     }

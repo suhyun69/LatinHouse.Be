@@ -31,13 +31,9 @@ public class ApiV1MyController {
     @Operation(summary = "Generate Profile", description = "Generate Profile")
     public ResponseEntity<GenerateProfileWebResponse> generateProfile(@Valid @RequestBody GenerateProfileWebRequest webReq,
                                                                       @AuthenticationPrincipal CustomUserDetails userDetails) {
-
-        AddProfileAppRequest appReq = myWebMapper.toAppReq(webReq);
-        appReq.setEmail(userDetails.getUsername());
-
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(myWebMapper.toWebRes(myUseCase.generateProfile(appReq)));
+                .body(myWebMapper.toWebRes(myUseCase.generateProfile(myWebMapper.toAppReq(webReq), userDetails.getUser())));
     }
 
     @GetMapping("profiles")
@@ -57,9 +53,8 @@ public class ApiV1MyController {
 
         AssignProfileAppRequest appReq = AssignProfileAppRequest.builder()
                 .profileId(profileId)
-                .email(userDetails.getUsername())
                 .build();
-        myUseCase.assignProfile(appReq);
+        myUseCase.assignProfile(appReq, userDetails.getUser());
 
         return ResponseEntity.ok().build();
     }
@@ -70,9 +65,8 @@ public class ApiV1MyController {
 
         EnrollInstructorAppRequest appReq = EnrollInstructorAppRequest.builder()
                 .profileId(profileId)
-                .email(userDetails.getUsername())
                 .build();
-        myUseCase.enrollInstructor(appReq);
+        myUseCase.enrollInstructor(appReq, userDetails.getUser());
 
         return ResponseEntity.ok().build();
     }

@@ -31,10 +31,7 @@ public class MyUseCaseImpl implements MyUseCase {
     private final LessonService lessonService;
 
     @Override
-    public AddProfileAppResponse generateProfile(AddProfileAppRequest appReq) {
-
-        User user = userService.getUser(appReq.getEmail())
-                .orElseThrow(() -> new NotFoundException("User not found"));
+    public AddProfileAppResponse generateProfile(AddProfileAppRequest appReq, User user) {
 
         AddProfileCommand command = myAppMapper.toCommand(appReq);
         command.setId(RandomUtils.generateRandomId());
@@ -53,9 +50,7 @@ public class MyUseCaseImpl implements MyUseCase {
     }
 
     @Override
-    public void assignProfile(AssignProfileAppRequest appReq) {
-        User user = userService.getUser(appReq.getEmail())
-                .orElseThrow(() -> new NotFoundException("User not found"));
+    public void assignProfile(AssignProfileAppRequest appReq, User user) {
 
         Profile profile = profileService.getProfile(appReq.getProfileId())
                 .orElseThrow(() -> new NotFoundException("Profile not found"));
@@ -71,10 +66,8 @@ public class MyUseCaseImpl implements MyUseCase {
     }
 
     @Override
-    public void enrollInstructor(EnrollInstructorAppRequest appReq) {
-        User user = userService.getUser(appReq.getEmail())
-                .orElseThrow(() -> new NotFoundException("User not found"));
-
+    public void enrollInstructor(EnrollInstructorAppRequest appReq, User user) {
+        
         if(!user.getProfileId().equals(appReq.getProfileId())) throw new ForbiddenException("User not allowed to enroll instructor");
 
         Profile profile = profileService.getProfile(appReq.getProfileId())

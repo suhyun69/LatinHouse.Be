@@ -24,7 +24,6 @@ public class AddProfileAppStrategy implements
     @Override
     public AddProfileCommand toCommand(AddProfileAppRequest appReq) {
         return AddProfileCommand.builder()
-                .email(appReq.getEmail())
                 .nickname(appReq.getNickname())
                 .build();
     }

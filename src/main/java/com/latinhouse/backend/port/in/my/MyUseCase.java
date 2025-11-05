@@ -1,14 +1,15 @@
 package com.latinhouse.backend.port.in.my;
 
+import com.latinhouse.backend.domain.user.User;
 import com.latinhouse.backend.port.in.my.dto.*;
 
 import java.util.List;
 
 public interface MyUseCase {
-    AddProfileAppResponse generateProfile(AddProfileAppRequest appReq);
+    AddProfileAppResponse generateProfile(AddProfileAppRequest appReq, User user);
     List<GetProfileAppResponse> getProfiles(String email);
-    void assignProfile(AssignProfileAppRequest appReq);
-    void enrollInstructor(EnrollInstructorAppRequest appReq);
+    void assignProfile(AssignProfileAppRequest appReq, User user);
+    void enrollInstructor(EnrollInstructorAppRequest appReq, User user);
 
     AddLessonAppResponse addLesson(AddLessonAppRequest appReq);
     List<GetLessonAppResponse> getLessons();

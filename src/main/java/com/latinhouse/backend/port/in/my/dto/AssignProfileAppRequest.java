@@ -13,13 +13,9 @@ public class AssignProfileAppRequest extends SelfValidating<AssignProfileAppRequ
     @NotBlank(message = "profileId cannot be blank.")
     String profileId;
 
-    @NotBlank(message = "email cannot be blank.")
-    String email;
-
     @Builder
-    public AssignProfileAppRequest(String profileId, String email) {
+    public AssignProfileAppRequest(String profileId) {
         this.profileId = profileId;
-        this.email = email;
 
         this.validateSelf();
     }
