@@ -15,6 +15,7 @@ import com.latinhouse.backend.domain.user.service.UserService;
 import com.latinhouse.backend.port.in.my.MyUseCase;
 import com.latinhouse.backend.port.in.my.dto.*;
 import com.latinhouse.backend.util.RandomUtils;
+import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +39,10 @@ public class MyUseCaseImpl implements MyUseCase {
         command.setEmail(user.getEmail());
         command.setSex(user.getSex());
         command.validate();
-
         Profile profile = profileService.create(command);
+
+        userService.assignProfile(user, profile.getId());
+
         return myAppMapper.toAppRes(profile, AddProfileAppResponse.class);
     }
 
