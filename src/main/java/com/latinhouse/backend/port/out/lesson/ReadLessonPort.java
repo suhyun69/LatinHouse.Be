@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface ReadLessonPort {
     Optional<Lesson> getLesson(Long no);
-    List<Lesson> getLessons();
+    List<Lesson> getLessons(String profileId);
 }

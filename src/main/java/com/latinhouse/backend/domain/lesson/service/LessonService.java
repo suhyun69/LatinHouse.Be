@@ -27,8 +27,8 @@ public class LessonService {
         return readLessonPort.getLesson(no);
     }
 
-    public List<Lesson> getLessons() {
-        return readLessonPort.getLessons();
+    public List<Lesson> getLessons(String profileId) {
+        return readLessonPort.getLessons(profileId);
     }
 
     public Lesson update(Lesson toBe) {

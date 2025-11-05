@@ -66,11 +66,11 @@ public class ApiV1MyController {
     }
 
     @GetMapping("/lessons")
-    @Operation(summary = "Get Lessons", description = "Get All Lessons")
-    public ResponseEntity<List<GetLessonWebResponse>> getLessons() {
+    @Operation(summary = "Get Lessons", description = "Get My Lessons")
+    public ResponseEntity<List<GetLessonWebResponse>> getLessons(@AuthenticationPrincipal CustomUserDetails userDetails) {
 
         return ResponseEntity.ok(
-                myUseCase.getLessons().stream()
+                myUseCase.getLessons(userDetails.getUser()).stream()
                         .map(myWebMapper::toWebRes)
                         .toList()
         );

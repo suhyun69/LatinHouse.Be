@@ -11,5 +11,5 @@ public interface MyUseCase {
     void enrollInstructor(EnrollInstructorAppRequest appReq, User user);
 
     AddLessonAppResponse addLesson(AddLessonAppRequest appReq, User user);
-    List<GetLessonAppResponse> getLessons();
+    List<GetLessonAppResponse> getLessons(User user);
 }

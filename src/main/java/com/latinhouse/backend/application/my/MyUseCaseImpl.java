@@ -109,8 +109,8 @@ public class MyUseCaseImpl implements MyUseCase {
     }
 
     @Override
-    public List<GetLessonAppResponse> getLessons() {
-        return lessonService.getLessons().stream()
+    public List<GetLessonAppResponse> getLessons(User user) {
+        return lessonService.getLessons(user.getProfileId()).stream()
                 .map(lesson -> myAppMapper.toAppRes(lesson, GetLessonAppResponse.class))
                 .collect(Collectors.toList());
     }

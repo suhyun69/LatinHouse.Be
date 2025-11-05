@@ -22,8 +22,7 @@ public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPor
 
     @Override
     public Lesson create(Lesson lesson) {
-        return lessonPersistenceMapper.toDomain(
-                lessonRepository.save(lessonPersistenceMapper.toEntity(lesson)));
+        return lessonPersistenceMapper.toDomain(lessonRepository.save(lessonPersistenceMapper.toEntity(lesson)));
     }
 
     @Override
@@ -33,7 +32,7 @@ public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPor
     }
 
     @Override
-    public List<Lesson> getLessons() {
+    public List<Lesson> getLessons(String profileId) {
         return lessonRepository.findAll().stream()
                 .map(lessonPersistenceMapper::toDomain)
                 .collect(Collectors.toList());
@@ -41,7 +40,6 @@ public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPor
 
     @Override
     public Lesson update(Lesson toBe) {
-        return lessonPersistenceMapper.toDomain(
-                lessonRepository.save(lessonPersistenceMapper.toEntity(toBe)));
+        return lessonPersistenceMapper.toDomain(lessonRepository.save(lessonPersistenceMapper.toEntity(toBe)));
     }
 }
