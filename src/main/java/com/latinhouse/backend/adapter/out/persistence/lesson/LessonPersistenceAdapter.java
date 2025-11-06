@@ -33,7 +33,7 @@ public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPor
 
     @Override
     public List<Lesson> getLessons(String profileId) {
-        return lessonRepository.findAll().stream()
+        return lessonRepository.findByProfileId(profileId).stream()
                 .map(lessonPersistenceMapper::toDomain)
                 .collect(Collectors.toList());
     }
