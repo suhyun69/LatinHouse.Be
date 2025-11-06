@@ -86,7 +86,7 @@ public class MyUseCaseImpl implements MyUseCase {
 
         if(profile.getIsInstructor()) {
             if(user.getSex().equals(Sex.Male)) {
-                if(!appReq.getInstructorLo().equals(user.getProfileId())) throw new BadRequestException("user should be instructorLo");
+                if(!StringUtils.isBlank(appReq.getInstructorLo()) && !appReq.getInstructorLo().equals(user.getProfileId())) throw new BadRequestException("user should be instructorLo");
                 if(StringUtils.isBlank(appReq.getInstructorLa())) {
                     Profile instructorLa = profileService.getProfile(appReq.getInstructorLa())
                             .orElseThrow(() -> new NotFoundException("instructorLa not found"));
@@ -94,7 +94,7 @@ public class MyUseCaseImpl implements MyUseCase {
                 }
             }
             else if(user.getSex().equals(Sex.Female)) {
-                if(!appReq.getInstructorLa().equals(user.getProfileId())) throw new BadRequestException("user should be instructorLa");
+                if(!StringUtils.isBlank(appReq.getInstructorLa()) && !appReq.getInstructorLa().equals(user.getProfileId())) throw new BadRequestException("user should be instructorLa");
                 if(StringUtils.isBlank(appReq.getInstructorLo())) {
                     Profile instructorLo = profileService.getProfile(appReq.getInstructorLo())
                             .orElseThrow(() -> new NotFoundException("instructorLa not found"));

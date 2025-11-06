@@ -42,7 +42,7 @@ public class MyWebMapper {
     }
 
     public GetLessonWebResponse toWebRes(GetLessonAppResponse res) {
-        return dispatchWebToApp(res, GetLessonWebResponse.class);
+        return dispatchAppToWeb(res, GetLessonWebResponse.class);
     }
 
     @SuppressWarnings("unchecked")
