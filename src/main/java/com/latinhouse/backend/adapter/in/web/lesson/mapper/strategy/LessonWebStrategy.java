@@ -6,7 +6,7 @@ import com.latinhouse.backend.port.in.my.dto.GetProfileAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetProfilesWebStrategy implements
+public class LessonWebStrategy implements
         AppToWebStrategy<GetProfileAppResponse, GetProfileWebResponse> {
 
     @Override public boolean appToWebSupports(Class<?> a, Class<?> w) {
