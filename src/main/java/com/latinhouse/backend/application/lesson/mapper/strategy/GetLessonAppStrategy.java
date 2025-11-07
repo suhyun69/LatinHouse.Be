@@ -45,6 +45,7 @@ public class GetLessonAppStrategy implements DomainToAppStrategy<Lesson, GetLess
 
     private GetLessonAppResponse.Option toAppOption(Option option) {
         return GetLessonAppResponse.Option.builder()
+                .seq(option.getSeq())
                 .startDateTime(option.getStartDateTime())
                 .endDateTime(option.getEndDateTime())
                 .region(option.getRegion())
@@ -56,6 +57,7 @@ public class GetLessonAppStrategy implements DomainToAppStrategy<Lesson, GetLess
 
     private GetLessonAppResponse.Discount toAppDiscount(Discount discount) {
         return GetLessonAppResponse.Discount.builder()
+                .seq(discount.getSeq())
                 .type(discount.getType())
                 .condition(discount.getCondition())
                 .amount(discount.getAmount())
@@ -64,6 +66,7 @@ public class GetLessonAppStrategy implements DomainToAppStrategy<Lesson, GetLess
 
     private GetLessonAppResponse.Contact toAppContact(Contact contact) {
         return GetLessonAppResponse.Contact.builder()
+                .seq(contact.getSeq())
                 .type(contact.getType())
                 .name(contact.getName())
                 .address(contact.getAddress())
