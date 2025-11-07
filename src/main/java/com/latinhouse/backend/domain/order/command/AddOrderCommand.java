@@ -17,7 +17,7 @@ public class AddOrderCommand extends SelfValidating<AddOrderCommand> {
     @NotNull(message = "lessonNo cannot be blank.")
     private Long lessonNo;
 
-    @NotBlank(message = "lessonOptionSeq cannot be blank.")
+    @NotNull(message = "lessonOptionSeq cannot be blank.")
     private Long lessonOptionSeq;
 
     @NotBlank(message = "status cannot be blank.")

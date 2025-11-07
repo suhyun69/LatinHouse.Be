@@ -15,6 +15,8 @@ import com.latinhouse.backend.port.in.lesson.dto.GetLessonAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class LessonUseCaseImpl implements LessonUseCase {
@@ -44,10 +46,12 @@ public class LessonUseCaseImpl implements LessonUseCase {
                 .orElseThrow(() -> new NotFoundException("Option not found"));
 
         AddOrderCommand cmd = lessonAppMapper.toCommand(appReq);
+        cmd.setId(UUID.randomUUID().toString());
+        cmd.setStatus("결제대기");
         cmd.validate();
 
         Order order = orderService.create(cmd);
-        return lessonAppMapper.toAppRes(lesson, ApplyLessonAppResponse.class);
+        return lessonAppMapper.toAppRes(order, ApplyLessonAppResponse.class);
     }
 
 }

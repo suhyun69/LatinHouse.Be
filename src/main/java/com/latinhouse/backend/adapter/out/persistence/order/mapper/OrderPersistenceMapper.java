@@ -21,7 +21,7 @@ public class OrderPersistenceMapper {
     }
 
     public Order toDomain(OrderJpaEntity order) {
-        return dispatchDomainToEntity(order, Order.class);
+        return dispatchEntityToDomain(order, Order.class);
     }
 
     private <D, E> E dispatchDomainToEntity(D domain, Class<E> entityType) {

@@ -31,7 +31,7 @@ public class ApiV1LessonController {
                 .body(lessonWebMapper.toWebRes(lessonUseCase.getLesson(lessonNo)));
     }
 
-    @GetMapping("/apply")
+    @PostMapping("/apply")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApplyLessonWebResponse> applyLesson(@Valid @RequestBody ApplyLessonWebRequest webReq, @AuthenticationPrincipal CustomUserDetails userDetails) {
         return ResponseEntity.status(HttpStatus.OK)
