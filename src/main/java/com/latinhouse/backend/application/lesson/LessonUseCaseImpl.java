@@ -3,7 +3,6 @@ package com.latinhouse.backend.application.lesson;
 import com.latinhouse.backend.application.lesson.mapper.LessonAppMapper;
 import com.latinhouse.backend.common.exception.NotFoundException;
 import com.latinhouse.backend.domain.lesson.Lesson;
-import com.latinhouse.backend.domain.lesson.Option;
 import com.latinhouse.backend.domain.lesson.service.LessonService;
 import com.latinhouse.backend.domain.order.Order;
 import com.latinhouse.backend.domain.order.command.AddOrderCommand;

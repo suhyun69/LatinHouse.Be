@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
-@Component("MyGetLessonWebStrategy")
+@Component("My.GetLessonWebStrategy")
 public class GetLessonWebStrategy implements AppToWebStrategy<GetLessonAppResponse, GetLessonWebResponse> {
 
     @Override
@@ -47,6 +47,7 @@ public class GetLessonWebStrategy implements AppToWebStrategy<GetLessonAppRespon
 
     private GetLessonWebResponse.Option toAppOption(GetLessonAppResponse.Option option) {
         return GetLessonWebResponse.Option.builder()
+                .seq(option.getSeq())
                 .startDate(option.getStartDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .endDate(option.getEndDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .startTime(option.getStartDateTime().format(DateTimeFormatter.ofPattern("HH:mm")))
@@ -60,6 +61,7 @@ public class GetLessonWebStrategy implements AppToWebStrategy<GetLessonAppRespon
 
     private GetLessonWebResponse.Discount toAppDiscount(GetLessonAppResponse.Discount discount) {
         return GetLessonWebResponse.Discount.builder()
+                .seq(discount.getSeq())
                 .type(discount.getType().getCode())
                 .condition(discount.getCondition())
                 .amount(discount.getAmount())
@@ -68,6 +70,7 @@ public class GetLessonWebStrategy implements AppToWebStrategy<GetLessonAppRespon
 
     private GetLessonWebResponse.Contact toAppContact(GetLessonAppResponse.Contact contact) {
         return GetLessonWebResponse.Contact.builder()
+                .seq(contact.getSeq())
                 .type(contact.getType().getCode())
                 .name(contact.getName())
                 .address(contact.getAddress())

@@ -39,6 +39,7 @@ public class GetLessonWebResponse {
     @Getter
     @Builder
     public static class Discount {
+        Long seq;
         String type;
         String condition;
         BigDecimal amount;
@@ -47,6 +48,7 @@ public class GetLessonWebResponse {
     @Getter
     @Builder
     public static class Contact {
+        Long seq;
         String type;
         String name;
         String address;
