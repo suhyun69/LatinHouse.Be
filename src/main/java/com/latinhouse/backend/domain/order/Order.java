@@ -14,14 +14,14 @@ public class Order {
     private Long seq;
     private String id;
     private Long lessonNo;
-    private Long lessonOptionNo;
+    private Long lessonOptionSeq;
     private String status;
 
     public static Order from(AddOrderCommand cmd) {
         return Order.builder()
                 .id(cmd.getId())
                 .lessonNo(cmd.getLessonNo())
-                .lessonOptionNo(cmd.getLessonOptionNo())
+                .lessonOptionSeq(cmd.getLessonOptionSeq())
                 .status(cmd.getStatus())
                 .build();
     }

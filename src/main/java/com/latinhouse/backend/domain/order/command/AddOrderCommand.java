@@ -17,16 +17,16 @@ public class AddOrderCommand extends SelfValidating<AddOrderCommand> {
     @NotNull(message = "lessonNo cannot be blank.")
     private Long lessonNo;
 
-    @NotBlank(message = "lessonOptionNo cannot be blank.")
-    private Long lessonOptionNo;
+    @NotBlank(message = "lessonOptionSeq cannot be blank.")
+    private Long lessonOptionSeq;
 
     @NotBlank(message = "status cannot be blank.")
     private String status;
 
     @Builder
-    public AddOrderCommand(Long lessonNo, Long lessonOptionNo, String status) {
+    public AddOrderCommand(Long lessonNo, Long lessonOptionSeq, String status) {
         this.lessonNo = lessonNo;
-        this.lessonOptionNo = lessonOptionNo;
+        this.lessonOptionSeq = lessonOptionSeq;
         this.status = status;
     }
 

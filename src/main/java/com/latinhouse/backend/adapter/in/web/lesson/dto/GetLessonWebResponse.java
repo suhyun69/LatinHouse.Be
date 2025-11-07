@@ -25,6 +25,7 @@ public class GetLessonWebResponse {
     @Getter
     @Builder
     public static class Option {
+        Long seq;
         String startDate;
         String endDate;
         String startTime;

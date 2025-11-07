@@ -3,6 +3,8 @@ package com.latinhouse.backend.application.lesson.mapper;
 import com.latinhouse.backend.common.mapper.AppToCommandStrategy;
 import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
 import com.latinhouse.backend.domain.lesson.Lesson;
+import com.latinhouse.backend.domain.order.command.AddOrderCommand;
+import com.latinhouse.backend.port.in.lesson.dto.ApplyLessonAppRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,10 @@ public class LessonAppMapper {
 
     public <A> A toAppRes(Lesson lesson, Class<A> appType) {
         return dispatchDomainToApp(lesson, appType);
+    }
+
+    public AddOrderCommand toCommand(ApplyLessonAppRequest appReq) {
+        return dispatchAppToCommand(appReq, AddOrderCommand.class);
     }
 
     private <A, C> C dispatchAppToCommand(A appReq, Class<C> commandType) {

@@ -23,7 +23,7 @@ public class OrderStrategy implements
                 .seq(order.getSeq())
                 .id(order.getId())
                 .lessonNo(order.getLessonNo())
-                .lessonOptionNo(order.getLessonOptionNo())
+                .lessonOptionSeq(order.getLessonOptionSeq())
                 .status(order.getStatus())
                 .build();
     }
@@ -40,7 +40,7 @@ public class OrderStrategy implements
                 .seq(entity.getSeq())
                 .id(entity.getId())
                 .lessonNo(entity.getLessonNo())
-                .lessonOptionNo(entity.getLessonOptionNo())
+                .lessonOptionSeq(entity.getLessonOptionSeq())
                 .status(entity.getStatus())
                 .build();
     }
