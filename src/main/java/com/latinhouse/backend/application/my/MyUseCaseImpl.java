@@ -66,13 +66,10 @@ public class MyUseCaseImpl implements MyUseCase {
 
     @Override
     @Transactional
-    public void enrollInstructor(EnrollInstructorAppRequest appReq, User user) {
+    public void enrollInstructor(User user) {
 
-        Profile profile = profileService.getProfile(appReq.getProfileId())
+        Profile profile = profileService.getProfile(user.getProfileId())
                 .orElseThrow(() -> new NotFoundException("Profile not found"));
-        
-        if(!user.getProfileId().equals(appReq.getProfileId()))
-            throw new ForbiddenException("User not allowed to enroll instructor");
 
         profileService.enrollInstructor(profile);
     }

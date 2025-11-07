@@ -4,9 +4,6 @@ import com.latinhouse.backend.adapter.in.web.my.dto.*;
 import com.latinhouse.backend.adapter.in.web.my.mapper.MyWebMapper;
 import com.latinhouse.backend.domain.user.CustomUserDetails;
 import com.latinhouse.backend.port.in.my.MyUseCase;
-import com.latinhouse.backend.port.in.my.dto.AddProfileAppRequest;
-import com.latinhouse.backend.port.in.my.dto.EnrollInstructorAppRequest;
-import com.latinhouse.backend.port.in.my.dto.AssignProfileAppRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -44,14 +41,11 @@ public class ApiV1MyController {
                 .body(myWebMapper.toWebRes(myUseCase.getProfile(userDetails.getUser())));
     }
 
-    @PutMapping("/profiles/{profileId}/instructor")
+    @PutMapping("/profile/instructor")
     @Operation(summary = "Enroll Instructor", description = "enroll Profile")
-    public ResponseEntity<Void> enrollInstructor(@PathVariable("profileId") String profileId, @AuthenticationPrincipal CustomUserDetails userDetails) {
+    public ResponseEntity<Void> enrollInstructor(@AuthenticationPrincipal CustomUserDetails userDetails) {
 
-        EnrollInstructorAppRequest appReq = EnrollInstructorAppRequest.builder()
-                .profileId(profileId)
-                .build();
-        myUseCase.enrollInstructor(appReq, userDetails.getUser());
+        myUseCase.enrollInstructor(userDetails.getUser());
 
         return ResponseEntity.ok().build();
     }
