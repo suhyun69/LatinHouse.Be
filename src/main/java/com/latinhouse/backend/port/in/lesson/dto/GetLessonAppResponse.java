@@ -30,6 +30,7 @@ public class GetLessonAppResponse {
     @Data
     @Builder
     public static class Option {
+        Long seq;
         LocalDateTime startDateTime;
         LocalDateTime endDateTime;
         Region region;
@@ -41,6 +42,7 @@ public class GetLessonAppResponse {
     @Data
     @Builder
     public static class Discount {
+        Long seq;
         DiscountType type;
         String condition;
         BigDecimal amount;
@@ -49,6 +51,7 @@ public class GetLessonAppResponse {
     @Data
     @Builder
     public static class Contact {
+        Long seq;
         ContactType type;
         String name;
         String address;

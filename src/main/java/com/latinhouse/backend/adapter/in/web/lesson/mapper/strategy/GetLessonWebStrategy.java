@@ -1,34 +1,31 @@
-package com.latinhouse.backend.adapter.in.web.my.mapper.strategy;
+package com.latinhouse.backend.adapter.in.web.lesson.mapper.strategy;
 
-import com.latinhouse.backend.adapter.in.web.my.dto.GetLessonWebResponse;
+import com.latinhouse.backend.adapter.in.web.lesson.dto.GetLessonWebResponse;
+import com.latinhouse.backend.adapter.in.web.my.dto.GetProfileWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
-import com.latinhouse.backend.domain.lesson.Contact;
-import com.latinhouse.backend.domain.lesson.Discount;
-import com.latinhouse.backend.domain.lesson.DiscountType;
-import com.latinhouse.backend.domain.lesson.Option;
-import com.latinhouse.backend.port.in.my.dto.GetLessonAppResponse;
+import com.latinhouse.backend.port.in.lesson.dto.GetLessonAppResponse;
+import com.latinhouse.backend.port.in.my.dto.GetProfileAppResponse;
 import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
-@Component("My.GetLessonWebStrategy")
-public class GetLessonWebStrategy implements AppToWebStrategy<GetLessonAppResponse, GetLessonWebResponse> {
+@Component("Lesson.GetLessonWebStrategy")
+public class GetLessonWebStrategy implements
+        AppToWebStrategy<GetLessonAppResponse, GetLessonWebResponse> {
 
-    @Override
-    public boolean appToWebSupports(Class<?> c, Class<?> d) {
-        return GetLessonAppResponse.class.isAssignableFrom(c)
-                && GetLessonWebResponse.class.isAssignableFrom(d);
+    @Override public boolean appToWebSupports(Class<?> a, Class<?> w) {
+        return GetLessonAppResponse.class.isAssignableFrom(a)
+                && GetLessonWebResponse.class.isAssignableFrom(w);
     }
 
-    @Override
-    public GetLessonWebResponse toWebRes(GetLessonAppResponse appRes) {
+    @Override public GetLessonWebResponse toWebRes(GetLessonAppResponse appRes) {
         return GetLessonWebResponse.builder()
                 .no(appRes.getNo())
                 .title(appRes.getTitle())
                 .genre(appRes.getGenre().getCode())
-                .instructorLa(appRes.getInstructorLa())
                 .instructorLo(appRes.getInstructorLo())
+                .instructorLa(appRes.getInstructorLa())
                 .options(appRes.getOptions().stream()
                         .map(this::toAppOption)
                         .collect(Collectors.toList()))

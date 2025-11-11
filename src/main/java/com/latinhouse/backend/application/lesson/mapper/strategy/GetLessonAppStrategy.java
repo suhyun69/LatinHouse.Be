@@ -1,18 +1,16 @@
-package com.latinhouse.backend.application.my.mapper.strategy;
+package com.latinhouse.backend.application.lesson.mapper.strategy;
 
 import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
 import com.latinhouse.backend.domain.lesson.Contact;
 import com.latinhouse.backend.domain.lesson.Discount;
 import com.latinhouse.backend.domain.lesson.Lesson;
 import com.latinhouse.backend.domain.lesson.Option;
-import com.latinhouse.backend.port.in.my.dto.AddLessonAppRequest;
-import com.latinhouse.backend.port.in.my.dto.GetLessonAppResponse;
+import com.latinhouse.backend.port.in.lesson.dto.GetLessonAppResponse;
 import org.springframework.stereotype.Component;
 
-import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
-@Component("My.GetLessonAppStrategy")
+@Component("Lesson.GetLessonAppStrategy")
 public class GetLessonAppStrategy implements DomainToAppStrategy<Lesson, GetLessonAppResponse> {
 
     @Override

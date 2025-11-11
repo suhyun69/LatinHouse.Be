@@ -27,6 +27,10 @@ public class LessonService {
         return readLessonPort.getLesson(no);
     }
 
+    public Optional<Lesson> getLessonByOption(Long seq) {
+        return readLessonPort.getLessonByOption(seq);
+    }
+
     public List<Lesson> getLessons(String profileId) {
         return readLessonPort.getLessons(profileId);
     }
