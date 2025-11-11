@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public enum OrderStatus {
     APPROVAL_REQUESTED("S0"),
-    PAYMENT_PENDING("S1"),
+    PAYMENT_READY("S1"),
     PAYMENT_COMPLETED("S2");
 
     private final String code;
