@@ -13,4 +13,12 @@ public interface LessonRepository extends JpaRepository<LessonJpaEntity, Long> {
 
     @Query("SELECT l FROM LessonJpaEntity l WHERE l.instructorLo = :profileId OR l.instructorLa = :profileId")
     List<LessonJpaEntity> findByProfileId(@Param("profileId") String profileId);
+
+    @Query("""
+        SELECT l
+        FROM LessonJpaEntity l
+            JOIN l.options o
+        WHERE o.seq = :optionSeq
+    """)
+    Optional<LessonJpaEntity> findLessonByOptionSeq(@Param("optionSeq") Long optionSeq);
 }

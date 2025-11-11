@@ -1,6 +1,7 @@
 package com.latinhouse.backend.domain.order.command;
 
 import com.latinhouse.backend.common.SelfValidating;
+import com.latinhouse.backend.domain.order.OrderStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -20,14 +21,12 @@ public class AddOrderCommand extends SelfValidating<AddOrderCommand> {
     @NotNull(message = "lessonOptionSeq cannot be blank.")
     private Long lessonOptionSeq;
 
-    @NotBlank(message = "status cannot be blank.")
-    private String status;
+    @NotNull(message = "status cannot be null.")
+    private OrderStatus status;
 
     @Builder
-    public AddOrderCommand(Long lessonNo, Long lessonOptionSeq, String status) {
-        this.lessonNo = lessonNo;
+    public AddOrderCommand(Long lessonOptionSeq) {
         this.lessonOptionSeq = lessonOptionSeq;
-        this.status = status;
     }
 
     public void validate() {

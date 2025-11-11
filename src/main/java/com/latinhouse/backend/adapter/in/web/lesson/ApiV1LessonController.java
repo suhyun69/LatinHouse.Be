@@ -25,10 +25,10 @@ public class ApiV1LessonController {
     private final LessonUseCase lessonUseCase;
     private final LessonWebMapper lessonWebMapper;
 
-    @GetMapping("/{lessonNo}")
-    public ResponseEntity<GetLessonWebResponse> getLesson(@PathVariable("lessonNo") Long lessonNo) {
+    @GetMapping("/{no}")
+    public ResponseEntity<GetLessonWebResponse> getLesson(@PathVariable("no") Long no) {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(lessonWebMapper.toWebRes(lessonUseCase.getLesson(lessonNo)));
+                .body(lessonWebMapper.toWebRes(lessonUseCase.getLesson(no)));
     }
 
     @PostMapping("/apply")

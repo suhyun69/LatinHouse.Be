@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ApplyLessonWebRequest {
 
-    @NotNull(message = "lessonNo cannot be null.")
-    private Long lessonNo;
-
     @NotNull(message = "lessonOptionSeq cannot be null.")
     private Long lessonOptionSeq;
 }

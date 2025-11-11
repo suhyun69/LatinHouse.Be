@@ -6,6 +6,6 @@ import com.latinhouse.backend.port.in.lesson.dto.ApplyLessonAppResponse;
 import com.latinhouse.backend.port.in.lesson.dto.GetLessonAppResponse;
 
 public interface LessonUseCase {
-    GetLessonAppResponse getLesson(Long lessonNo);
+    GetLessonAppResponse getLesson(Long no);
     ApplyLessonAppResponse applyLeson(ApplyLessonAppRequest appReq, User user);
 }

@@ -15,7 +15,7 @@ public class Order {
     private String id;
     private Long lessonNo;
     private Long lessonOptionSeq;
-    private String status;
+    private OrderStatus status;
 
     public static Order from(AddOrderCommand cmd) {
         return Order.builder()

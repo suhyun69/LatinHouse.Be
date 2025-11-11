@@ -4,6 +4,7 @@ import com.latinhouse.backend.adapter.out.persistence.order.entity.OrderJpaEntit
 import com.latinhouse.backend.common.mapper.DomainToEntityStrategy;
 import com.latinhouse.backend.common.mapper.EntityToDomainStrategy;
 import com.latinhouse.backend.domain.order.Order;
+import com.latinhouse.backend.domain.order.OrderStatus;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,7 +25,7 @@ public class OrderStrategy implements
                 .id(order.getId())
                 .lessonNo(order.getLessonNo())
                 .lessonOptionSeq(order.getLessonOptionSeq())
-                .status(order.getStatus())
+                .status(order.getStatus().getCode())
                 .build();
     }
 
@@ -41,7 +42,7 @@ public class OrderStrategy implements
                 .id(entity.getId())
                 .lessonNo(entity.getLessonNo())
                 .lessonOptionSeq(entity.getLessonOptionSeq())
-                .status(entity.getStatus())
+                .status(OrderStatus.of(entity.getStatus()))
                 .build();
     }
 

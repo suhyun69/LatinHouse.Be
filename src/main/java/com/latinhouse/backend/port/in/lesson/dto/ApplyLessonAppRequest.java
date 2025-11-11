@@ -10,15 +10,11 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = false)
 public class ApplyLessonAppRequest extends SelfValidating<ApplyLessonAppRequest> {
 
-    @NotNull(message = "lessonNo cannot be null.")
-    Long lessonNo;
-
     @NotNull(message = "lessonOptionSeq cannot be null.")
     Long lessonOptionSeq;
 
     @Builder
-    public ApplyLessonAppRequest(Long lessonNo, Long lessonOptionSeq) {
-        this.lessonNo = lessonNo;
+    public ApplyLessonAppRequest(Long lessonOptionSeq) {
         this.lessonOptionSeq = lessonOptionSeq;
 
         this.validateSelf();

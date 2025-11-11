@@ -5,6 +5,7 @@ import com.latinhouse.backend.common.exception.NotFoundException;
 import com.latinhouse.backend.domain.lesson.Lesson;
 import com.latinhouse.backend.domain.lesson.service.LessonService;
 import com.latinhouse.backend.domain.order.Order;
+import com.latinhouse.backend.domain.order.OrderStatus;
 import com.latinhouse.backend.domain.order.command.AddOrderCommand;
 import com.latinhouse.backend.domain.order.service.OrderService;
 import com.latinhouse.backend.domain.user.User;
@@ -26,9 +27,9 @@ public class LessonUseCaseImpl implements LessonUseCase {
     private final OrderService orderService;
 
     @Override
-    public GetLessonAppResponse getLesson(Long lessonNo) {
+    public GetLessonAppResponse getLesson(Long no) {
 
-        Lesson lesson = lessonService.getLesson(lessonNo)
+        Lesson lesson = lessonService.getLesson(no)
                 .orElseThrow(() -> new NotFoundException("Lesson not found"));
 
         return lessonAppMapper.toAppRes(lesson, GetLessonAppResponse.class);
@@ -37,21 +38,16 @@ public class LessonUseCaseImpl implements LessonUseCase {
     @Override
     public ApplyLessonAppResponse applyLeson(ApplyLessonAppRequest appReq, User user) {
 
-        Lesson lesson = lessonService.getLesson(appReq.getLessonNo())
+        Lesson lesson = lessonService.getLessonByOption(appReq.getLessonOptionSeq())
                 .orElseThrow(() -> new NotFoundException("Lesson not found"));
-
-        lesson.getOptions().stream()
-                .filter(o -> o.getSeq().equals(appReq.getLessonOptionSeq()))
-                .findAny()
-                .orElseThrow(() -> new NotFoundException("Option not found"));
 
         AddOrderCommand cmd = lessonAppMapper.toCommand(appReq);
         cmd.setId(UUID.randomUUID().toString());
-        cmd.setStatus("결제대기");
+        cmd.setLessonNo(lesson.getNo());
+        cmd.setStatus(OrderStatus.PAYMENT_PENDING);
         cmd.validate();
 
         Order order = orderService.create(cmd);
         return lessonAppMapper.toAppRes(order, ApplyLessonAppResponse.class);
     }
-
 }

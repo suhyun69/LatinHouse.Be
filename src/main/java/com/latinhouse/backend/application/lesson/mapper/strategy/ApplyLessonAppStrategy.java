@@ -22,7 +22,6 @@ public class ApplyLessonAppStrategy implements
     @Override
     public AddOrderCommand toCommand(ApplyLessonAppRequest appReq) {
         return AddOrderCommand.builder()
-                .lessonNo(appReq.getLessonNo())
                 .lessonOptionSeq(appReq.getLessonOptionSeq())
                 .build();
     }
