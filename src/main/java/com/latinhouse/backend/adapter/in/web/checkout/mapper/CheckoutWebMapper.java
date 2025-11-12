@@ -1,13 +1,15 @@
-package com.latinhouse.backend.adapter.in.web.lesson.mapper;
+package com.latinhouse.backend.adapter.in.web.checkout.mapper;
 
+import com.latinhouse.backend.adapter.in.web.checkout.dto.GetCheckoutWebRequest;
+import com.latinhouse.backend.adapter.in.web.checkout.dto.GetCheckoutWebResponse;
 import com.latinhouse.backend.adapter.in.web.lesson.dto.ApplyLessonWebRequest;
 import com.latinhouse.backend.adapter.in.web.lesson.dto.ApplyLessonWebResponse;
-import com.latinhouse.backend.adapter.in.web.lesson.dto.GetLessonWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
+import com.latinhouse.backend.port.in.checkout.dto.GetCheckoutAppRequest;
+import com.latinhouse.backend.port.in.checkout.dto.GetCheckoutAppResponse;
 import com.latinhouse.backend.port.in.lesson.dto.ApplyLessonAppRequest;
 import com.latinhouse.backend.port.in.lesson.dto.ApplyLessonAppResponse;
-import com.latinhouse.backend.port.in.lesson.dto.GetLessonAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +17,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class LessonWebMapper {
+public class CheckoutWebMapper {
 
     /*
         WebRequest -> AppRequest
@@ -25,21 +27,15 @@ public class LessonWebMapper {
     private final List<WebToAppStrategy<?, ?>> webToAppStrategies;
     private final List<AppToWebStrategy<?, ?>> appToWebStrategies;
 
-    /* start of GetLesson */
-    public GetLessonWebResponse toWebRes(GetLessonAppResponse res) {
-        return dispatchAppToWeb(res, GetLessonWebResponse.class);
-    }
-    /* end of GetLesson */
-
-    /* start of ApplyLesson */
-    public ApplyLessonAppRequest toAppReq(ApplyLessonWebRequest webReq) {
-        return dispatchWebToApp(webReq, ApplyLessonAppRequest.class);
+    /* start of GetCheckout */
+    public GetCheckoutAppRequest toAppReq(GetCheckoutWebRequest webReq) {
+        return dispatchWebToApp(webReq, GetCheckoutAppRequest.class);
     }
 
-    public ApplyLessonWebResponse toWebRes(ApplyLessonAppResponse res) {
-        return dispatchAppToWeb(res, ApplyLessonWebResponse.class);
+    public GetCheckoutWebResponse toWebRes(GetCheckoutAppResponse res) {
+        return dispatchAppToWeb(res, GetCheckoutWebResponse.class);
     }
-    /* end of ApplyLesson */
+    /* end of GetCheckout */
 
     private <W, A> A dispatchWebToApp(W webReq, Class<A> appType) {
         var s = (WebToAppStrategy<W, A>) webToAppStrategies.stream()

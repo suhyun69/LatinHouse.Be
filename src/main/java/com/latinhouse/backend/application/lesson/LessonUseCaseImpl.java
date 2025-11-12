@@ -44,7 +44,7 @@ public class LessonUseCaseImpl implements LessonUseCase {
         AddOrderCommand cmd = lessonAppMapper.toCommand(appReq);
         cmd.setId(UUID.randomUUID().toString());
         cmd.setLessonNo(lesson.getNo());
-        cmd.setStatus(OrderStatus.PAYMENT_PENDING);
+        cmd.setStatus(OrderStatus.PAYMENT_READY);
         cmd.validate();
 
         Order order = orderService.create(cmd);
