@@ -45,16 +45,22 @@ public class CheckoutUseCaseImpl implements CheckoutUseCase {
 
         Profile instructorLo = Optional.ofNullable(lesson.getInstructorLo())
                 .filter(StringUtils::isNotBlank)
-                .map(profileId -> profileService.getProfile(profileId)
-                        .filter(Profile::getIsInstructor)
-                        .orElseThrow(() -> new ForbiddenException("instructorLo is not instructor")))
+                .map(profileId -> {
+                    Profile profile = profileService.getProfile(profileId)
+                            .orElseThrow(() -> new NotFoundException("instructorLo not found"));
+                    if (!profile.getIsInstructor()) throw new ForbiddenException("instructorLo is not instructor");
+                    return profile;
+                })
                 .orElse(null);
 
         Profile instructorLa = Optional.ofNullable(lesson.getInstructorLa())
                 .filter(StringUtils::isNotBlank)
-                .map(profileId -> profileService.getProfile(profileId)
-                        .filter(Profile::getIsInstructor)
-                        .orElseThrow(() -> new ForbiddenException("instructorLa is not instructor")))
+                .map(profileId -> {
+                    Profile profile = profileService.getProfile(profileId)
+                            .orElseThrow(() -> new NotFoundException("instructorLa not found"));
+                    if (!profile.getIsInstructor()) throw new ForbiddenException("instructorLa is not instructor");
+                    return profile;
+                })
                 .orElse(null);
 
         GetCheckoutAppResponse appRes = checkoutAppMapper.toAppRes(order, GetCheckoutAppResponse.class);
