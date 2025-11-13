@@ -12,14 +12,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Order {
     private String id;
-    private Long lessonNo;
     private Long lessonOptionNo;
+    private String email;
     private OrderStatus status;
 
     public static Order from(AddOrderCommand cmd) {
         return Order.builder()
                 .id(cmd.getId())
-                .lessonNo(cmd.getLessonNo())
+                .email(cmd.getEmail())
                 .lessonOptionNo(cmd.getLessonOptionNo())
                 .status(cmd.getStatus())
                 .build();

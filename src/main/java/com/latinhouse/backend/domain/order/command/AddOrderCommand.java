@@ -15,11 +15,11 @@ public class AddOrderCommand extends SelfValidating<AddOrderCommand> {
     @NotBlank(message = "id cannot be blank.")
     private String id;
 
-    @NotNull(message = "lessonNo cannot be blank.")
-    private Long lessonNo;
-
     @NotNull(message = "lessonOptionSeq cannot be blank.")
     private Long lessonOptionNo;
+
+    @NotNull(message = "email cannot be blank.")
+    private String email;
 
     @NotNull(message = "status cannot be null.")
     private OrderStatus status;

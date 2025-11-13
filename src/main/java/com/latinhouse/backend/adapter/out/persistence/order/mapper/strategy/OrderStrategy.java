@@ -22,8 +22,8 @@ public class OrderStrategy implements
     public OrderJpaEntity toEntity(Order order) {
         return OrderJpaEntity.builder()
                 .id(order.getId())
-                .lessonNo(order.getLessonNo())
                 .lessonOptionNo(order.getLessonOptionNo())
+                .email(order.getEmail())
                 .status(order.getStatus().getCode())
                 .build();
     }
@@ -38,8 +38,8 @@ public class OrderStrategy implements
     public Order toDomain(OrderJpaEntity entity) {
         return Order.builder()
                 .id(entity.getId())
-                .lessonNo(entity.getLessonNo())
                 .lessonOptionNo(entity.getLessonOptionNo())
+                .email(entity.getEmail())
                 .status(OrderStatus.of(entity.getStatus()))
                 .build();
     }
