@@ -22,7 +22,7 @@ public class ApplyLessonWebStrategy implements
     @Override
     public ApplyLessonAppRequest toAppReq(ApplyLessonWebRequest webReq) {
         return ApplyLessonAppRequest.builder()
-                .lessonOptionSeq(webReq.getLessonOptionSeq())
+                .lessonOptionNo(webReq.getLessonOptionNo())
                 .build();
     }
 

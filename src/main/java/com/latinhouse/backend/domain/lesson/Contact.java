@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Contact {
-    private Long seq;
+    private Long no;
     private ContactType type;
     private String name;
     private String address;

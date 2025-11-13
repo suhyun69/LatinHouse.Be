@@ -48,7 +48,7 @@ public class AddLessonAppStrategy implements
 
     private Option toDomainOption(AddLessonAppRequest.Option appOption) {
         return Option.builder()
-                .seq(null)
+                .no(null)
                 .startDateTime(appOption.getStartDateTime())
                 .endDateTime(appOption.getEndDateTime())
                 .region(appOption.getRegion())
@@ -60,7 +60,7 @@ public class AddLessonAppStrategy implements
 
     private Discount toDomainDiscount(AddLessonAppRequest.Discount appDiscount) {
         return Discount.builder()
-                .seq(null)
+                .no(null)
                 .type(appDiscount.getType())
                 .condition(appDiscount.getCondition())
                 .amount(appDiscount.getAmount())
@@ -69,7 +69,7 @@ public class AddLessonAppStrategy implements
 
     private Contact toDomainContact(AddLessonAppRequest.Contact appContact) {
         return Contact.builder()
-                .seq(null)
+                .no(null)
                 .type(appContact.getType())
                 .name(appContact.getName())
                 .address(appContact.getAddress())

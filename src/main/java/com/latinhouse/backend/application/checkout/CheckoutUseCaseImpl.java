@@ -35,11 +35,11 @@ public class CheckoutUseCaseImpl implements CheckoutUseCase {
         Order order = orderService.getOrder(id)
                 .orElseThrow(() -> new NotFoundException("Order not found"));
 
-        Lesson lesson = lessonService.getLessonByOption(order.getLessonOptionSeq())
+        Lesson lesson = lessonService.getLessonByOption(order.getLessonOptionNo())
                 .orElseThrow(() -> new NotFoundException("Lesson not found"));
 
         Option lessonOption = lesson.getOptions().stream()
-                .filter(o -> o.getSeq().equals(order.getLessonOptionSeq()))
+                .filter(o -> o.getNo().equals(order.getLessonOptionNo()))
                 .findFirst()
                 .orElseThrow(() -> new NotFoundException("LessonOption not found"));
 

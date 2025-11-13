@@ -38,7 +38,7 @@ public class LessonUseCaseImpl implements LessonUseCase {
     @Override
     public ApplyLessonAppResponse applyLeson(ApplyLessonAppRequest appReq, User user) {
 
-        Lesson lesson = lessonService.getLessonByOption(appReq.getLessonOptionSeq())
+        Lesson lesson = lessonService.getLessonByOption(appReq.getLessonOptionNo())
                 .orElseThrow(() -> new NotFoundException("Lesson not found"));
 
         AddOrderCommand cmd = lessonAppMapper.toCommand(appReq);

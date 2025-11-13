@@ -11,17 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-    private Long seq;
     private String id;
     private Long lessonNo;
-    private Long lessonOptionSeq;
+    private Long lessonOptionNo;
     private OrderStatus status;
 
     public static Order from(AddOrderCommand cmd) {
         return Order.builder()
                 .id(cmd.getId())
                 .lessonNo(cmd.getLessonNo())
-                .lessonOptionSeq(cmd.getLessonOptionSeq())
+                .lessonOptionNo(cmd.getLessonOptionNo())
                 .status(cmd.getStatus())
                 .build();
     }

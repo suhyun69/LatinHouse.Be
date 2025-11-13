@@ -18,7 +18,7 @@ public class DiscountJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long seq;
+    private Long no;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "lesson_no", nullable = false)

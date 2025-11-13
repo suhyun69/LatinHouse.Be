@@ -21,6 +21,6 @@ public class OrderJpaEntity extends BaseEntity {
 
     private String id;
     private Long lessonNo;
-    private Long lessonOptionSeq;
+    private Long lessonOptionNo;
     private String status;
 }

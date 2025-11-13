@@ -21,10 +21,9 @@ public class OrderStrategy implements
     @Override
     public OrderJpaEntity toEntity(Order order) {
         return OrderJpaEntity.builder()
-                .seq(order.getSeq())
                 .id(order.getId())
                 .lessonNo(order.getLessonNo())
-                .lessonOptionSeq(order.getLessonOptionSeq())
+                .lessonOptionNo(order.getLessonOptionNo())
                 .status(order.getStatus().getCode())
                 .build();
     }
@@ -38,10 +37,9 @@ public class OrderStrategy implements
     @Override
     public Order toDomain(OrderJpaEntity entity) {
         return Order.builder()
-                .seq(entity.getSeq())
                 .id(entity.getId())
                 .lessonNo(entity.getLessonNo())
-                .lessonOptionSeq(entity.getLessonOptionSeq())
+                .lessonOptionNo(entity.getLessonOptionNo())
                 .status(OrderStatus.of(entity.getStatus()))
                 .build();
     }

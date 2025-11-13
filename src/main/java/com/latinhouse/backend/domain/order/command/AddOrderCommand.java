@@ -19,14 +19,14 @@ public class AddOrderCommand extends SelfValidating<AddOrderCommand> {
     private Long lessonNo;
 
     @NotNull(message = "lessonOptionSeq cannot be blank.")
-    private Long lessonOptionSeq;
+    private Long lessonOptionNo;
 
     @NotNull(message = "status cannot be null.")
     private OrderStatus status;
 
     @Builder
-    public AddOrderCommand(Long lessonOptionSeq) {
-        this.lessonOptionSeq = lessonOptionSeq;
+    public AddOrderCommand(Long lessonOptionNo) {
+        this.lessonOptionNo = lessonOptionNo;
     }
 
     public void validate() {

@@ -44,7 +44,7 @@ public class GetLessonWebStrategy implements
 
     private GetLessonWebResponse.Option toAppOption(GetLessonAppResponse.Option option) {
         return GetLessonWebResponse.Option.builder()
-                .seq(option.getSeq())
+                .no(option.getNo())
                 .startDate(option.getStartDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .endDate(option.getEndDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .startTime(option.getStartDateTime().format(DateTimeFormatter.ofPattern("HH:mm")))
@@ -58,7 +58,7 @@ public class GetLessonWebStrategy implements
 
     private GetLessonWebResponse.Discount toAppDiscount(GetLessonAppResponse.Discount discount) {
         return GetLessonWebResponse.Discount.builder()
-                .seq(discount.getSeq())
+                .no(discount.getNo())
                 .type(discount.getType().getCode())
                 .condition(discount.getCondition())
                 .amount(discount.getAmount())
@@ -67,7 +67,7 @@ public class GetLessonWebStrategy implements
 
     private GetLessonWebResponse.Contact toAppContact(GetLessonAppResponse.Contact contact) {
         return GetLessonWebResponse.Contact.builder()
-                .seq(contact.getSeq())
+                .no(contact.getNo())
                 .type(contact.getType().getCode())
                 .name(contact.getName())
                 .address(contact.getAddress())

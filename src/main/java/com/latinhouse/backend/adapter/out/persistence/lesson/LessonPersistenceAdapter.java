@@ -32,8 +32,8 @@ public class LessonPersistenceAdapter implements CreateLessonPort, ReadLessonPor
     }
 
     @Override
-    public Optional<Lesson> getLessonByOption(Long optionSeq) {
-        return lessonRepository.findLessonByOptionSeq(optionSeq)
+    public Optional<Lesson> getLessonByOption(Long optionNo) {
+        return lessonRepository.findLessonByOptionNo(optionNo)
                 .map(lessonPersistenceMapper::toDomain);
     }
 

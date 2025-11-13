@@ -18,7 +18,7 @@ public interface LessonRepository extends JpaRepository<LessonJpaEntity, Long> {
         SELECT l
         FROM LessonJpaEntity l
             JOIN l.options o
-        WHERE o.seq = :optionSeq
+        WHERE o.no = :optionNo
     """)
-    Optional<LessonJpaEntity> findLessonByOptionSeq(@Param("optionSeq") Long optionSeq);
+    Optional<LessonJpaEntity> findLessonByOptionNo(@Param("optionNo") Long optionNo);
 }
