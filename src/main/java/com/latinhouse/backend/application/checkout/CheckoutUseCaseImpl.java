@@ -17,6 +17,7 @@ import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -75,7 +76,18 @@ public class CheckoutUseCaseImpl implements CheckoutUseCase {
         appRes.setEndDateTime(lessonOption.getEndDateTime());
         appRes.setRegion(lessonOption.getRegion());
         appRes.setLocation(lessonOption.getLocation());
-        appRes.setAmount(lessonOption.getPrice());
+        appRes.setPrice(lessonOption.getPrice());
+        appRes.setDiscounts(
+            lesson.getDiscounts().stream()
+                .map(d -> GetCheckoutAppResponse.Discount.builder()
+                    .no(d.getNo())
+                    .type(d.getType())
+                    .condition(d.getCondition())
+                    .amount(d.getAmount())
+                    .build()
+                )
+                .toList() // Java 16 이상
+        );
 
         return appRes;
     }

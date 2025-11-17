@@ -1,6 +1,7 @@
 package com.latinhouse.backend.port.in.checkout.dto;
 
 import com.latinhouse.backend.adapter.in.web.checkout.dto.GetCheckoutWebResponse;
+import com.latinhouse.backend.domain.lesson.DiscountType;
 import com.latinhouse.backend.domain.lesson.Genre;
 import com.latinhouse.backend.domain.lesson.Region;
 import com.latinhouse.backend.domain.order.OrderStatus;
@@ -30,5 +31,15 @@ public class GetCheckoutAppResponse {
     private LocalDateTime endDateTime;
     private Region region;
     private String location;
-    private BigDecimal amount;
+    private BigDecimal price;
+    private List<Discount>  discounts;
+
+    @Data
+    @Builder
+    public static class Discount {
+        Long no;
+        DiscountType type;
+        String condition;
+        BigDecimal amount;
+    }
 }

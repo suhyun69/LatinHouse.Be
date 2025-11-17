@@ -1,6 +1,8 @@
 package com.latinhouse.backend.adapter.in.web.checkout.dto;
 
+import com.latinhouse.backend.domain.lesson.DiscountType;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -25,5 +27,15 @@ public class GetCheckoutWebResponse {
     private String endTime;
     private String region;
     private String location;
-    private BigDecimal amount;
+    private BigDecimal price;
+    private List<Discount>  discounts;
+
+    @Getter
+    @Builder
+    public static class Discount {
+        Long no;
+        DiscountType type;
+        String condition;
+        BigDecimal amount;
+    }
 }

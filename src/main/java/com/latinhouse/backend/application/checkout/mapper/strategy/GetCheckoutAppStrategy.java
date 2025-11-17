@@ -1,14 +1,12 @@
 package com.latinhouse.backend.application.checkout.mapper.strategy;
 
 import com.latinhouse.backend.common.mapper.DomainToAppStrategy;
-import com.latinhouse.backend.domain.lesson.Lesson;
 import com.latinhouse.backend.domain.order.Order;
 import com.latinhouse.backend.port.in.checkout.dto.GetCheckoutAppResponse;
-import com.latinhouse.backend.port.in.lesson.dto.GetLessonAppResponse;
 import org.springframework.stereotype.Component;
 
 @Component("Checkout.GetOrderAppStrategy")
-public class GetOrderAppStrategy implements DomainToAppStrategy<Order, GetCheckoutAppResponse> {
+public class GetCheckoutAppStrategy implements DomainToAppStrategy<Order, GetCheckoutAppResponse> {
 
     @Override
     public boolean domainToAppSupports(Class<?> c, Class<?> d) {
