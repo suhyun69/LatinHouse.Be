@@ -7,16 +7,20 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 
+import java.util.List;
+
 @Value
 @EqualsAndHashCode(callSuper = false)
-public class GetCheckoutAppRequest extends SelfValidating<ApplyLessonAppRequest> {
+public class PaymentAppRequest extends SelfValidating<ApplyLessonAppRequest> {
 
     @NotBlank(message = "checkoutId cannot be blank.")
     String checkoutId;
+    List<Long> discounts;
 
     @Builder
-    public GetCheckoutAppRequest(String checkoutId) {
+    public PaymentAppRequest(String checkoutId, List<Long>  discounts) {
         this.checkoutId = checkoutId;
+        this.discounts = discounts;
 
         this.validateSelf();
     }

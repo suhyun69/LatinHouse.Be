@@ -2,14 +2,14 @@ package com.latinhouse.backend.adapter.in.web.checkout.mapper;
 
 import com.latinhouse.backend.adapter.in.web.checkout.dto.GetCheckoutWebRequest;
 import com.latinhouse.backend.adapter.in.web.checkout.dto.GetCheckoutWebResponse;
-import com.latinhouse.backend.adapter.in.web.lesson.dto.ApplyLessonWebRequest;
-import com.latinhouse.backend.adapter.in.web.lesson.dto.ApplyLessonWebResponse;
+import com.latinhouse.backend.adapter.in.web.checkout.dto.PaymentWebRequest;
+import com.latinhouse.backend.adapter.in.web.checkout.dto.PaymentWebResponse;
 import com.latinhouse.backend.common.mapper.AppToWebStrategy;
 import com.latinhouse.backend.common.mapper.WebToAppStrategy;
 import com.latinhouse.backend.port.in.checkout.dto.GetCheckoutAppRequest;
 import com.latinhouse.backend.port.in.checkout.dto.GetCheckoutAppResponse;
-import com.latinhouse.backend.port.in.lesson.dto.ApplyLessonAppRequest;
-import com.latinhouse.backend.port.in.lesson.dto.ApplyLessonAppResponse;
+import com.latinhouse.backend.port.in.checkout.dto.PaymentAppRequest;
+import com.latinhouse.backend.port.in.checkout.dto.PaymentAppResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +36,16 @@ public class CheckoutWebMapper {
         return dispatchAppToWeb(res, GetCheckoutWebResponse.class);
     }
     /* end of GetCheckout */
+
+    /* start of Payment */
+    public PaymentAppRequest toAppReq(PaymentWebRequest webReq) {
+        return dispatchWebToApp(webReq, PaymentAppRequest.class);
+    }
+
+    public PaymentWebResponse toWebRes(PaymentAppResponse res) {
+        return dispatchAppToWeb(res, PaymentWebResponse.class);
+    }
+    /* end of Payment */
 
     private <W, A> A dispatchWebToApp(W webReq, Class<A> appType) {
         var s = (WebToAppStrategy<W, A>) webToAppStrategies.stream()
